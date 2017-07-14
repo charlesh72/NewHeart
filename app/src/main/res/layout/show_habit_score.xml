@@ -42,7 +42,7 @@
             android:layout_alignParentTop="true"
             android:text="@string/habit_strength"/>
 
-        <org.isoron.uhabits.activities.common.views.ScoreChart
+        <com.beakon.newheart.activities.common.views.ScoreChart
             android:id="@+id/scoreView"
             android:layout_width="match_parent"
             android:layout_height="220dp"

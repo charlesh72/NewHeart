@@ -8,7 +8,7 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        applicationId "org.isoron.uhabits"
+        applicationId "com.beakon.newheart"
         minSdkVersion 15
         targetSdkVersion 25
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-PACKAGE_NAME=org.isoron.uhabits
+PACKAGE_NAME=com.beakon.newheart
 OUTPUT_DIR=app/build/outputs
 LOG=${OUTPUT_DIR}/test.log
 
@@ -30,7 +30,7 @@ adb install -r ${OUTPUT_DIR}/apk/app-debug-androidTest.apk \
     >> $LOG 2>> $LOG || fail
 
 info "Granting permissions..."
-adb shell pm grant org.isoron.uhabits android.permission.SET_ANIMATION_SCALE \
+adb shell pm grant com.beakon.newheart android.permission.SET_ANIMATION_SCALE \
     >> $LOG 2>> $LOG || fail
 
 info "Running instrumentation tests..."

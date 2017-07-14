@@ -16,7 +16,7 @@
 
 package com.android.datetimepicker.time;
 
-import org.isoron.uhabits.R;
+import com.beakon.newheart.R;
 
 import android.animation.Keyframe;
 import android.animation.ObjectAnimator;

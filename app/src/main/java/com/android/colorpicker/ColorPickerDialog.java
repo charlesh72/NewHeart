@@ -27,7 +27,7 @@ import android.widget.ProgressBar;
 
 import com.android.colorpicker.ColorPickerSwatch.OnColorSelectedListener;
 
-import org.isoron.uhabits.R;
+import com.beakon.newheart.R;
 
 /**
  * A dialog which takes in as input an array of palette and creates a palette allowing the user to

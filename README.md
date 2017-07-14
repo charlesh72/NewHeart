@@ -1,4 +1,4 @@
-# Loop Habit Tracker
+# New Heart
 
 <a href="https://circleci.com/gh/iSoron/uhabits/tree/dev">
   <img src="https://img.shields.io/circleci/project/iSoron/uhabits/dev.svg">
@@ -9,14 +9,14 @@
 </a>
 -->
 
-Loop is a simple Android app that helps you create and maintain good habits,
+New Heart is a simple Android app that helps you create and maintain good habits,
 allowing you to achieve your long-term goals. Detailed graphs and statistics
 show you how your habits improved over time. It is completely ad-free and open
 source.
 
 <p align="center">
-<a href="https://play.google.com/store/apps/details?id=org.isoron.uhabits&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png" height="75px"/></a>
-<a href="http://f-droid.org/app/org.isoron.uhabits"><img alt="Git if on F-Droid" src="http://i.imgur.com/baSPE7X.png" height="75px"/></a>
+<a href="https://play.google.com/store/apps/details?id=com.beakon.newheart&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png" height="75px"/></a>
+<a href="http://f-droid.org/app/com.beakon.newheart"><img alt="Git if on F-Droid" src="http://i.imgur.com/baSPE7X.png" height="75px"/></a>
 </p>
 
 ## Screenshots
@@ -122,9 +122,9 @@ contribute, even if you are not a software developer.
 [screen5th]: screenshots/thumbs/uhabits5.png
 [screen6th]: screenshots/thumbs/uhabits6.png
 [poedit]: https://poeditor.com/join/project/8DWX5pfjS0
-[playstore]: https://play.google.com/store/apps/details?id=org.isoron.uhabits
+[playstore]: https://play.google.com/store/apps/details?id=com.beakon.newheart
 [releases]: https://github.com/iSoron/uhabits/releases
-[fdroid]: http://f-droid.org/app/org.isoron.uhabits
+[fdroid]: http://f-droid.org/app/com.beakon.newheart
 [dev-guide]: https://github.com/iSoron/uhabits/wiki/Developer-guidelines
 [build]: https://github.com/iSoron/uhabits/wiki/Developer-guidelines#building
-[beta]: https://play.google.com/apps/testing/org.isoron.uhabits
+[beta]: https://play.google.com/apps/testing/com.beakon.newheart

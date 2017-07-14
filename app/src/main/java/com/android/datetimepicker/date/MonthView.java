@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import org.isoron.uhabits.R;
+import com.beakon.newheart.R;
 
 import android.content.Context;
 import android.content.res.Resources;

@@ -29,7 +29,7 @@
         style="@style/CardHeader"
         android:text="@string/history"/>
 
-    <org.isoron.uhabits.activities.common.views.HistoryChart
+    <com.beakon.newheart.activities.common.views.HistoryChart
         android:id="@+id/historyChart"
         android:layout_width="match_parent"
         android:layout_height="160dp"/>
