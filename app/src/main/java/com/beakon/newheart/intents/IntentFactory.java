@@ -25,8 +25,10 @@ import android.support.annotation.*;
 
 import com.beakon.newheart.*;
 import com.beakon.newheart.activities.about.*;
+import com.beakon.newheart.activities.habits.list.ListHabitsActivity;
 import com.beakon.newheart.activities.habits.show.*;
 import com.beakon.newheart.activities.intro.*;
+import com.beakon.newheart.activities.scripturefriends.ScripturesActivity;
 import com.beakon.newheart.activities.settings.*;
 import com.beakon.newheart.models.*;
 
@@ -76,6 +78,16 @@ public class IntentFactory
     {
         Intent intent = new Intent(context, ShowHabitActivity.class);
         intent.setData(habit.getUri());
+        return intent;
+    }
+
+    public Intent startListHabitsActivity(Context context) {
+        Intent intent = new Intent(context, ListHabitsActivity.class);
+        return intent;
+    }
+
+    public Intent startScripturesActivity(Context context) {
+        Intent intent = new Intent(context, ScripturesActivity.class);
         return intent;
     }
 

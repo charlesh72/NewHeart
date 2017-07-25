@@ -31,4 +31,6 @@
     <dimen name="habitNameWidth">160dp</dimen>
     <dimen name="progressbarOffset">-6dp</dimen>
     <dimen name="checkmarkWidget_heightBreakpoint">55dp</dimen>
+    <dimen name="item_width">200dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

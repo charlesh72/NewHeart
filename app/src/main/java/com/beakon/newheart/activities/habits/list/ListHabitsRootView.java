@@ -178,6 +178,11 @@ public class ListHabitsRootView extends BaseRootView
             (int) ((getMeasuredWidth() - labelWidth) / buttonWidth)));
     }
 
+    @Override
+    public boolean getDisplayHomeAsUp() {
+        return true;
+    }
+
     private void updateEmptyView()
     {
         llEmpty.setVisibility(
