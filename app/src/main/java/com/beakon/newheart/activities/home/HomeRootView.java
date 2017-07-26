@@ -54,6 +54,8 @@ public class HomeRootView extends BaseRootView {
 
         addView(inflate(getContext(), R.layout.home, null));
         ButterKnife.bind(this);
+
+        initToolbar();
     }
 
     @OnClick(R.id.homeTVHabits)
