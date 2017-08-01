@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.danmercer.ponderizer"
+    package="com.danmercer.ponderizer"
     android:versionCode="7"
     android:versionName="2.2">
 
@@ -17,11 +17,6 @@
             android:label="@string/app_name"
             android:launchMode="standard"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <!-- "Share" text from Gospel Library and add as scripture -->
@@ -76,7 +71,7 @@
             android:parentActivityName=".NewMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="net.danmercer.ponderizer.NewMainActivity" />
+                android:value="com.danmercer.ponderizer.NewMainActivity" />
         </activity>
 
         <!-- Adds a note about a certain scripture -->

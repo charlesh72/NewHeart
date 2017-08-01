@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer.scriptureview;
+package com.danmercer.ponderizer.scriptureview;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -30,8 +30,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import net.danmercer.ponderizer.R;
-import net.danmercer.ponderizer.Scripture;
+import com.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.Scripture;
 
 import java.io.File;
 

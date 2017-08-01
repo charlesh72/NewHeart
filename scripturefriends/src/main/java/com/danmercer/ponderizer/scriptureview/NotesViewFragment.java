@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer.scriptureview;
+package com.danmercer.ponderizer.scriptureview;
 
 import android.app.Activity;
 import android.content.Context;
@@ -33,8 +33,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import net.danmercer.ponderizer.R;
-import net.danmercer.ponderizer.Scripture;
+import com.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.Scripture;
 
 import java.io.File;
 import java.util.LinkedList;

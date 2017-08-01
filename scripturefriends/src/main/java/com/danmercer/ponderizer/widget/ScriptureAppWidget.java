@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer.widget;
+package com.danmercer.ponderizer.widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -29,13 +29,13 @@ import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import net.danmercer.ponderizer.NewMainActivity;
-import net.danmercer.ponderizer.R;
-import net.danmercer.ponderizer.Scripture;
-import net.danmercer.ponderizer.memorize.MemorizeActivity;
-import net.danmercer.ponderizer.scriptureview.AddNoteActivity;
-import net.danmercer.ponderizer.scriptureview.ScriptureIntent;
-import net.danmercer.ponderizer.scriptureview.ScriptureViewActivity;
+import com.danmercer.ponderizer.NewMainActivity;
+import com.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.Scripture;
+import com.danmercer.ponderizer.memorize.MemorizeActivity;
+import com.danmercer.ponderizer.scriptureview.AddNoteActivity;
+import com.danmercer.ponderizer.scriptureview.ScriptureIntent;
+import com.danmercer.ponderizer.scriptureview.ScriptureViewActivity;
 
 /**
  * Implementation of App Widget functionality.
@@ -44,14 +44,14 @@ import net.danmercer.ponderizer.scriptureview.ScriptureViewActivity;
 public class ScriptureAppWidget extends AppWidgetProvider {
 
     // CONSTANTS:
-    static final String PREFS_NAME = "net.danmercer.ponderizer.ScriptureAppWidget";
+    static final String PREFS_NAME = "com.danmercer.ponderizer.ScriptureAppWidget";
     static final String PREF_KEY_REFERENCE = "ref_";
     static final String PREF_KEY_TEXT = "body_";
     private static final String PREF_KEY_CATEGORY = "category_";
 
     public static class ListPopulatorService extends RemoteViewsService {
         static final String EXTRA_VIEW_INTENT =
-                "net.danmercer.ponderizer.ListPopulatorService.VIEW_INTENT";
+                "com.danmercer.ponderizer.ListPopulatorService.VIEW_INTENT";
 
         @Override
         public RemoteViewsFactory onGetViewFactory(Intent intent) {

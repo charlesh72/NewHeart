@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer.widget;
+package com.danmercer.ponderizer.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
@@ -24,12 +24,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import net.danmercer.ponderizer.R;
-import net.danmercer.ponderizer.Scripture;
-import net.danmercer.ponderizer.memorize.MemorizeActivity;
-import net.danmercer.ponderizer.scriptureview.AddNoteActivity;
-import net.danmercer.ponderizer.scriptureview.ScriptureIntent;
-import net.danmercer.ponderizer.scriptureview.ScriptureViewActivity;
+import com.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.Scripture;
+import com.danmercer.ponderizer.memorize.MemorizeActivity;
+import com.danmercer.ponderizer.scriptureview.AddNoteActivity;
+import com.danmercer.ponderizer.scriptureview.ScriptureIntent;
+import com.danmercer.ponderizer.scriptureview.ScriptureViewActivity;
 
 public class WidgetPopupMenuActivity extends AppCompatActivity implements View.OnClickListener {
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer.scriptureview;
+package com.danmercer.ponderizer.scriptureview;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,13 +30,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import net.danmercer.ponderizer.AppActivity;
-import net.danmercer.ponderizer.ExportActivity;
-import net.danmercer.ponderizer.NewMainActivity;
-import net.danmercer.ponderizer.R;
-import net.danmercer.ponderizer.Scripture;
-import net.danmercer.ponderizer.memorize.MemorizeActivity;
-import net.danmercer.ponderizer.memorize.MemorizeTestActivity;
+import com.danmercer.ponderizer.AppActivity;
+import com.danmercer.ponderizer.ExportActivity;
+import com.danmercer.ponderizer.NewMainActivity;
+import com.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.Scripture;
+import com.danmercer.ponderizer.memorize.MemorizeActivity;
+import com.danmercer.ponderizer.memorize.MemorizeTestActivity;
 
 public class ScriptureViewActivity extends AppActivity {
     public static final int NUM_OF_TABS = 2;
@@ -114,7 +114,7 @@ public class ScriptureViewActivity extends AppActivity {
         // Display the scripture reference in the Activty title
         String reference = scripture.getReference();
         ActionBar ab = getSupportActionBar();
-        ab.setTitle(reference);
+        //ab.setTitle(reference);
 
 
         // Set up the page fragments (scripture view and notes)

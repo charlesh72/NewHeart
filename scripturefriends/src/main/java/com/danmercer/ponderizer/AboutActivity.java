@@ -1,4 +1,4 @@
-package net.danmercer.ponderizer;
+package com.danmercer.ponderizer;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +12,7 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.TextView;
 
-import net.danmercer.ponderizer.memorize.MemorizeTestActivity;
+import com.danmercer.ponderizer.memorize.MemorizeTestActivity;
 
 public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
 

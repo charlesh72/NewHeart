@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer.memorize;
+package com.danmercer.ponderizer.memorize;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -33,11 +33,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import net.danmercer.ponderizer.AppActivity;
-import net.danmercer.ponderizer.NewMainActivity;
-import net.danmercer.ponderizer.R;
-import net.danmercer.ponderizer.Scripture;
-import net.danmercer.ponderizer.scriptureview.ScriptureIntent;
+import com.danmercer.ponderizer.AppActivity;
+import com.danmercer.ponderizer.NewMainActivity;
+import com.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.Scripture;
+import com.danmercer.ponderizer.scriptureview.ScriptureIntent;
 
 import java.util.ArrayList;
 import java.util.Arrays;

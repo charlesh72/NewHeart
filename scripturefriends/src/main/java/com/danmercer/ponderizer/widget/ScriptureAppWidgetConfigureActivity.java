@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer.widget;
+package com.danmercer.ponderizer.widget;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
@@ -26,10 +26,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import net.danmercer.ponderizer.AddScriptureInstructions;
-import net.danmercer.ponderizer.NewMainActivity;
-import net.danmercer.ponderizer.R;
-import net.danmercer.ponderizer.Scripture;
+import com.danmercer.ponderizer.AddScriptureInstructions;
+import com.danmercer.ponderizer.NewMainActivity;
+import com.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.Scripture;
 
 import java.util.LinkedList;
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer;
+package com.danmercer.ponderizer;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

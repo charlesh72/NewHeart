@@ -17,6 +17,7 @@
   ~ with this program. If not, see <http://www.gnu.org/licenses/>.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.beakon.newheart"
     android:versionCode="29"
     android:versionName="1.7.2">
@@ -30,7 +31,7 @@
         android:maxSdkVersion="18" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <application
+    <application tools:replace="android:label,android:theme"
         android:name=".HabitsApplication"
         android:allowBackup="true"
         android:backupAgent=".HabitsBackupAgent"

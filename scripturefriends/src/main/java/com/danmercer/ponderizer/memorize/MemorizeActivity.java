@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer.memorize;
+package com.danmercer.ponderizer.memorize;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,10 +30,10 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import net.danmercer.ponderizer.AppActivity;
-import net.danmercer.ponderizer.R;
-import net.danmercer.ponderizer.Scripture;
-import net.danmercer.ponderizer.scriptureview.ScriptureIntent;
+import com.danmercer.ponderizer.AppActivity;
+import com.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.Scripture;
+import com.danmercer.ponderizer.scriptureview.ScriptureIntent;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

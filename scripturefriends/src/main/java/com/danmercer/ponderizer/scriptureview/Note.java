@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer.scriptureview;
+package com.danmercer.ponderizer.scriptureview;
 
 import android.util.Log;
 

@@ -1,4 +1,4 @@
-package net.danmercer.ponderizer.settings;
+package com.danmercer.ponderizer.settings;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -15,11 +15,11 @@ import android.provider.Settings;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
-import net.danmercer.ponderizer.AddScriptureInstructions;
-import net.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.AddScriptureInstructions;
+import com.danmercer.ponderizer.R;
 
 public class ReminderReceiver extends BroadcastReceiver {
-    public static String EXTRA_KEY = "net.danmercer.ReminderReceiver.KEY";
+    public static String EXTRA_KEY = "com.danmercer.ReminderReceiver.KEY";
 
     public ReminderReceiver() {
     }

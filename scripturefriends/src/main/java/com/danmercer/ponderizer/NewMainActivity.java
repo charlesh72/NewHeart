@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer;
+package com.danmercer.ponderizer;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

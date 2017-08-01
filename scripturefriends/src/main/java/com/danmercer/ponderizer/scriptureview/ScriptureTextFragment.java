@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer.scriptureview;
+package com.danmercer.ponderizer.scriptureview;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,8 +24,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import net.danmercer.ponderizer.R;
-import net.danmercer.ponderizer.Scripture;
+import com.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.Scripture;
 
 /**
  * Created by Dan on 10/24/2015.

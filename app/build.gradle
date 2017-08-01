@@ -94,6 +94,7 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
     provided 'javax.annotation:jsr250-api:1.0'
     testApt 'com.google.dagger:dagger-compiler:2.2'
+    compile project(':scripturefriends')
 }
 
 retrolambda {

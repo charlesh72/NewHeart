@@ -32,6 +32,8 @@ import com.beakon.newheart.activities.scripturefriends.ScripturesActivity;
 import com.beakon.newheart.activities.settings.*;
 import com.beakon.newheart.models.*;
 
+import com.danmercer.ponderizer.NewMainActivity;
+
 import javax.inject.*;
 
 public class IntentFactory
@@ -87,7 +89,7 @@ public class IntentFactory
     }
 
     public Intent startScripturesActivity(Context context) {
-        Intent intent = new Intent(context, ScripturesActivity.class);
+        Intent intent = new Intent(context, NewMainActivity.class);
         return intent;
     }
 

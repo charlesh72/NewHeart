@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.danmercer.ponderizer;
+package com.danmercer.ponderizer;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -30,8 +30,8 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import net.danmercer.ponderizer.scriptureview.Note;
-import net.danmercer.ponderizer.scriptureview.ScriptureIntent;
+import com.danmercer.ponderizer.scriptureview.Note;
+import com.danmercer.ponderizer.scriptureview.ScriptureIntent;
 
 import java.util.LinkedList;
 

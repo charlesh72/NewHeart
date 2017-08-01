@@ -1,4 +1,4 @@
-package net.danmercer.ponderizer.settings;
+package com.danmercer.ponderizer.settings;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
-import net.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.R;
 
 import java.text.DateFormat;
 import java.text.ParseException;

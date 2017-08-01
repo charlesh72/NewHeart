@@ -1,4 +1,4 @@
-package net.danmercer.ponderizer;
+package com.danmercer.ponderizer;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,9 +16,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import net.danmercer.ponderizer.settings.ReminderPreference;
-import net.danmercer.ponderizer.settings.ReminderReceiver;
-import net.danmercer.ponderizer.settings.SettingsActivity;
+import com.danmercer.ponderizer.settings.ReminderPreference;
+import com.danmercer.ponderizer.settings.ReminderReceiver;
+import com.danmercer.ponderizer.settings.SettingsActivity;
 
 /**
  * Superclass to be extended by major activities in the app. This allows all superclasses to have

@@ -1,4 +1,4 @@
-package net.danmercer.ponderizer.settings;
+package com.danmercer.ponderizer.settings;
 
 import android.app.FragmentManager;
 import android.content.ComponentName;
@@ -11,8 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import net.danmercer.ponderizer.BuildConfig;
-import net.danmercer.ponderizer.R;
+import com.danmercer.ponderizer.BuildConfig;
+import com.danmercer.ponderizer.R;
 
 public class SettingsActivity extends AppCompatActivity {
     public static class SettingsFragment extends PreferenceFragment {

@@ -1,4 +1,4 @@
-package net.danmercer.ponderizer;
+package com.danmercer.ponderizer;
 
 import org.junit.Test;
 
