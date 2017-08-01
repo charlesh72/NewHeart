@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.danmercer.ponderizer"
+    android:versionCode="7"
+    android:versionName="2.2">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".NewMainActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- "Share" text from Gospel Library and add as scripture -->
+        <activity
+            android:name=".AddScriptureTextActivity"
+            android:label="Add Scripture to Ponderize"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter android:label="Ponderize Scripture">
+                <action android:name="android.intent.action.SEND" />
+            </intent-filter>
+        </activity>
+
+        <activity-alias
+            android:name=".AddScriptureTextActivityFromAnyApp"
+            android:enabled="false"
+            android:label="Add Scripture to Ponderize"
+            android:targetActivity=".AddScriptureTextActivity">
+
+            <!-- This activity-alias is disabled by default, but can be enabled from settings -->
+            <intent-filter android:label="Ponderize Scripture">
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".AddScriptureTextOnlyGospelLibrary"
+            android:enabled="true"
+            android:label="Add Scripture to Ponderize"
+            android:targetActivity=".AddScriptureTextActivity">
+
+            <!-- This activity-alias is enabled by default, but will be disabled when that^ one -->
+            <!-- is enabled -->
+            <intent-filter android:label="Ponderize Scripture">
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="org.lds.ldssa" />
+                <!-- This ^ makes it only accept intents from LDS Gospel Library -->
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- Shows instructions for adding from Gospel Library -->
+        <activity android:name=".AddScriptureInstructions"/>
+
+        <!-- Displays the text of a scripture -->
+        <activity
+            android:name=".scriptureview.ScriptureViewActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".NewMainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.danmercer.ponderizer.NewMainActivity" />
+        </activity>
+
+        <!-- Adds a note about a certain scripture -->
+        <activity
+            android:name=".scriptureview.AddNoteActivity"
+            android:label="@string/title_activity_add_note"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <!-- Practice memorizing a scripture -->
+        <activity
+            android:name=".memorize.MemorizeActivity"
+            android:label="@string/title_activity_memorize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <!-- Test your knowledge of a scripture -->
+        <activity
+            android:name=".memorize.MemorizeTestActivity"
+            android:label="@string/title_activity_memorize_test"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <!-- Scripture widget provider -->
+        <receiver android:name=".widget.ScriptureAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/scripture_app_widget_info" />
+        </receiver>
+
+        <!-- Scripture widget list data service -->
+        <service android:name=".widget.ScriptureAppWidget$ListPopulatorService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <!-- Scripture widget "context menu" -->
+        <activity
+            android:name=".widget.WidgetPopupMenuActivity"
+            android:theme="@style/AppTheme.Dialog" />
+
+        <!-- Scripture widget configuration activity -->
+        <activity android:name=".widget.ScriptureAppWidgetConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <!-- Export scriptures and notes -->
+        <activity
+            android:name=".ExportActivity"
+            android:label="@string/title_activity_export"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <!-- About the app -->
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/about"></activity>
+
+        <!-- App settings -->
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/settings"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.NOTIFICATION_PREFERENCES" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".settings.ReminderReceiver"
+            android:enabled="true"
+            android:exported="false"/>
+    </application>
+
+</manifest>

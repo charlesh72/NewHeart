@@ -13,7 +13,7 @@ android {
         targetSdkVersion 25
 
         buildConfigField "Integer", "databaseVersion", "15"
-        buildConfigField "String", "databaseFilename", "\"uhabits.db\""
+        buildConfigField "String", "databaseFilename", "\"newheartgoals.db\""
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArgument "size", "medium"
