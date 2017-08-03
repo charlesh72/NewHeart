@@ -28,7 +28,6 @@ import com.beakon.newheart.activities.about.*;
 import com.beakon.newheart.activities.habits.list.ListHabitsActivity;
 import com.beakon.newheart.activities.habits.show.*;
 import com.beakon.newheart.activities.intro.*;
-import com.beakon.newheart.activities.scripturefriends.ScripturesActivity;
 import com.beakon.newheart.activities.settings.*;
 import com.beakon.newheart.models.*;
 

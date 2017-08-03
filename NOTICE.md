@@ -226,6 +226,8 @@ Ponderizer is an app that facilitates the pondering and memorizing of scripture 
 	
 ### Loop Habit Tracker
 
+<https://github.com/iSoron/uhabits>
+
 Loop is a simple Android app that helps you create and maintain good habits.
 
     Copyright (C) 2016 Álinson Santos Xavier <isoron@gmail.com>

@@ -57,14 +57,6 @@
             android:name=".activities.home.HomeActivity"
             android:exported="true" />
 
-        <activity
-            android:name=".activities.scripturefriends.ScripturesActivity"
-            android:exported="true">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.home.HomeActivity" />
-        </activity>
-
         <activity-alias
             android:name=".MainActivity"
             android:label="@string/main_activity_title"
@@ -237,17 +229,26 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity
-            android:name=".activities.scripturefriends.ScripureListActivity"
-            android:label="@string/title_scripure_list"></activity>
-        <activity
-            android:name=".activities.scripturefriends.ScripureDetailActivity"
-            android:label="@string/title_scripure_detail"
-            android:parentActivityName=".activities.scripturefriends.ScripureListActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.beakon.newheart.activities.scripturefriends.ScripureListActivity" />
-        </activity>
+        <activity android:name="com.danmercer.ponderizer.NewMainActivity"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
+        <activity android:name="com.danmercer.ponderizer.memorize.MemorizeActivity"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
+        <activity android:name="com.danmercer.ponderizer.memorize.MemorizeTestActivity"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
+        <activity android:name="com.danmercer.ponderizer.scriptureview.ScriptureViewActivity"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
+        <activity android:name="com.danmercer.ponderizer.scriptureview.AddNoteActivity"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
     </application>
 
 </manifest>
