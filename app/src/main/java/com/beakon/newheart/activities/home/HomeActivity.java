@@ -17,29 +17,40 @@
 
 package com.beakon.newheart.activities.home;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 
-import com.beakon.newheart.R;
+import com.beakon.newheart.HabitsApplication;
+import com.beakon.newheart.activities.ActivityModule;
 import com.beakon.newheart.activities.BaseActivity;
 import com.beakon.newheart.activities.BaseScreen;
-import com.beakon.newheart.activities.habits.list.ListHabitsActivity;
 import com.beakon.newheart.intents.IntentFactory;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class HomeActivity extends BaseActivity {
+
+    private HomeComponent component;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HomeRootView rootView = new HomeRootView(this, new IntentFactory());
-        BaseScreen screen = new BaseScreen(this);
-        screen.setRootView(rootView);
+
+        HabitsApplication app = (HabitsApplication) getApplicationContext();
+
+        component = DaggerHomeComponent
+            .builder()
+            .appComponent(app.getComponent())
+            .activityModule(new ActivityModule(this))
+            .build();
+
+        HomeRootView rootView = component.getRootView();
+        HomeScreen screen = component.getScreen();
+
         setScreen(screen);
+        screen.setMenu(component.getMenu());
+
+//        HomeRootView rootView = new HomeRootView(this, new IntentFactory());
+//        BaseScreen screen = new BaseScreen(this);
+//
+//        screen.setRootView(rootView);
+//        setScreen(screen);
     }
 }

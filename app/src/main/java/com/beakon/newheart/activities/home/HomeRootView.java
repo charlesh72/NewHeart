@@ -24,17 +24,22 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.beakon.newheart.R;
+import com.beakon.newheart.activities.ActivityContext;
+import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseRootView;
 import com.beakon.newheart.intents.IntentFactory;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by beakon on 7/14/2017.
+ * Created by charlesh7272 on 7/14/2017.
  */
 
+@ActivityScope
 public class HomeRootView extends BaseRootView {
 
     @BindView(R.id.homeTVHabits)
@@ -48,7 +53,9 @@ public class HomeRootView extends BaseRootView {
 
     private final IntentFactory intents;
 
-    public HomeRootView(Context context, IntentFactory intents) {
+    @Inject
+    public HomeRootView(@NonNull @ActivityContext Context context,
+                        @NonNull IntentFactory intents) {
         super(context);
         this.intents = intents;
 

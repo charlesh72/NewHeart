@@ -11,14 +11,15 @@
         android:orderInCategory="101"
         android:title="@string/help"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/action_feedback"
-        android:orderInCategory="102"
-        android:title="@string/send_feedback"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_about"
-        android:orderInCategory="103"
-        android:title="@string/about"
-        app:showAsAction="never" />
+    <!-- TODO Change to newheart information -->
+    <!--<item-->
+        <!--android:id="@+id/action_feedback"-->
+        <!--android:orderInCategory="102"-->
+        <!--android:title="@string/send_feedback"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item-->
+        <!--android:id="@+id/action_about"-->
+        <!--android:orderInCategory="103"-->
+        <!--android:title="@string/about"-->
+        <!--app:showAsAction="never" />-->
 </menu>

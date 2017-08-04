@@ -70,18 +70,19 @@ public abstract class AppActivity extends AppCompatActivity {
         if (i == R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
             return true;
-        } else if (i == R.id.action_feedback) {
-            launchFeedbackDialog();
-            return true;
-        } else if (i == R.id.action_help) {
-            Uri url = Uri.parse("https://github.com/drmercer/Ponderizer/wiki/User-Help-Pages");
+        } else if (i == R.id.action_help) { // TODO: 8/4/2017 Merge with uhabits menu so everything is in the same place, also check menu_universal.xml
+            Uri url = Uri.parse("https://github.com/charlesh72/NewHeart/wiki/Help");
             Intent help = new Intent(Intent.ACTION_VIEW, url);
             startActivity(help);
             return true;
-        } else if (i == R.id.action_about) {
-            startActivity(new Intent(this, AboutActivity.class));
-            return true;
         }
+//        else if (i == R.id.action_feedback) {
+//            launchFeedbackDialog();
+//            return true;
+//        } else if (i == R.id.action_about) {
+//            startActivity(new Intent(this, AboutActivity.class));
+//            return true;
+//        }
         return super.onOptionsItemSelected(item);
     }
 
