@@ -22,8 +22,12 @@ import android.os.Bundle;
 import com.beakon.newheart.HabitsApplication;
 import com.beakon.newheart.activities.ActivityModule;
 import com.beakon.newheart.activities.BaseActivity;
-import com.beakon.newheart.activities.BaseScreen;
-import com.beakon.newheart.intents.IntentFactory;
+
+/**
+ * Created by Charles on 7/25/2017.
+ *
+ * Activity for the Home of the application. Top level navigation to features.
+ */
 
 public class HomeActivity extends BaseActivity {
 
@@ -47,10 +51,5 @@ public class HomeActivity extends BaseActivity {
         setScreen(screen);
         screen.setMenu(component.getMenu());
 
-//        HomeRootView rootView = new HomeRootView(this, new IntentFactory());
-//        BaseScreen screen = new BaseScreen(this);
-//
-//        screen.setRootView(rootView);
-//        setScreen(screen);
     }
 }

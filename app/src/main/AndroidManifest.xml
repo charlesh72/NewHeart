@@ -249,6 +249,18 @@
             tools:replace="android:theme"
             android:theme="@style/AppBaseTheme"/>
 
+        <activity android:name="com.danmercer.ponderizer.AddScriptureReferenceActivity"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
+        <activity android:name="com.danmercer.ponderizer.AddScriptureTextActivity"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
+        <activity android:name="com.danmercer.ponderizer.AddScriptureInstructions"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
     </application>
 
 </manifest>

@@ -29,7 +29,7 @@ import com.beakon.newheart.activities.BaseScreen;
 import javax.inject.Inject;
 
 /**
- * Created by charlesh7272 on 8/4/2017.
+ * Created by Charles on 8/4/2017.
  */
 
 @ActivityScope

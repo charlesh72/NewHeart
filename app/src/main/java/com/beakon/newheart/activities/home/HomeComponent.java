@@ -24,7 +24,7 @@ import com.beakon.newheart.activities.ActivityScope;
 import dagger.Component;
 
 /**
- * Created by charlesh7272 on 8/4/2017.
+ * Created by Charles on 8/4/2017.
  */
 
 @ActivityScope

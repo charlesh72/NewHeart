@@ -66,6 +66,9 @@ public class NewMainActivity extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // TODO: 8/4/2017 Set up dagger dependency injection for menus at least
+
         setContentView(R.layout.activity_new_main);
 
         // Set up the App Bar
@@ -116,19 +119,19 @@ public class NewMainActivity extends AppActivity {
     protected void onStart() {
         super.onStart();
 
-        // One in fifty times, show a SnackBar prompting the user to view the about page
-        int rand = new Random().nextInt(50);
-        if (rand == 33) {
-            Snackbar s = Snackbar.make(findViewById(R.id.fab),
-                    R.string.popup_like_this_app, Snackbar.LENGTH_LONG);
-            s.setAction(R.string.popup_contribute, new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(NewMainActivity.this, AboutActivity.class));
-                }
-            });
-            s.show();
-        }
+//        // One in fifty times, show a SnackBar prompting the user to view the about page
+//        int rand = new Random().nextInt(50);
+//        if (rand == 33) {
+//            Snackbar s = Snackbar.make(findViewById(R.id.fab),
+//                    R.string.popup_like_this_app, Snackbar.LENGTH_LONG);
+//            s.setAction(R.string.popup_contribute, new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    startActivity(new Intent(NewMainActivity.this, AboutActivity.class));
+//                }
+//            });
+//            s.show();
+//        }
     }
 
     @Override

@@ -36,7 +36,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by charlesh7272 on 7/14/2017.
+ * Created by Charles on 7/14/2017.
  */
 
 @ActivityScope
