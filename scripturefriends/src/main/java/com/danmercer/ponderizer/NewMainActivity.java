@@ -45,7 +45,7 @@ public class NewMainActivity extends AppActivity {
 
     public enum Category {
         IN_PROGRESS,
-        COMPLETED;
+        COMPLETED
     }
 
     /**
@@ -102,16 +102,16 @@ public class NewMainActivity extends AppActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        // Set up "Add" floating action button.
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Launch activity with instructions for adding scriptures
-                Intent i = new Intent(NewMainActivity.this.getApplicationContext(), AddScriptureInstructions.class);
-                startActivity(i);
-            }
-        });
+//        // Set up "Add" floating action button.
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Launch activity with instructions for adding scriptures
+//                Intent i = new Intent(NewMainActivity.this.getApplicationContext(), AddScriptureInstructions.class);
+//                startActivity(i);
+//            }
+//        });
 
     }
 
@@ -157,6 +157,10 @@ public class NewMainActivity extends AppActivity {
                 }
             });
             return true;
+        } else if (id == R.id.actionAdd) {
+            // Launch activity with instructions for adding scriptures
+            Intent i = new Intent(NewMainActivity.this.getApplicationContext(), AddScriptureInstructions.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
