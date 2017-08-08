@@ -291,7 +291,7 @@ public class ListHabitsScreen extends BaseScreen
 
     public void showSettingsScreen()
     {
-        Intent intent = intentFactory.startSettingsActivity(activity);
+        Intent intent = intentFactory.startHabitsSettingsActivity(activity);
         activity.startActivityForResult(intent, REQUEST_SETTINGS);
     }
 

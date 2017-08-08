@@ -16,26 +16,3 @@
  */
 
 package com.beakon.newheart.activities.home;
-
-import com.beakon.newheart.AppComponent;
-import com.beakon.newheart.activities.ActivityModule;
-import com.beakon.newheart.activities.ActivityScope;
-
-import dagger.Component;
-
-/**
- * Created by Charles on 8/4/2017.
- */
-
-@ActivityScope
-@Component(modules = {ActivityModule.class},
-            dependencies = {AppComponent.class })
-public interface HomeComponent {
-    HomeMenu getMenu();
-
-    HomeRootView getRootView();
-
-    HomeScreen getScreen();
-
-    HomeController getController();
-}

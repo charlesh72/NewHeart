@@ -1,14 +1,12 @@
 /*
- * Copyright (C) 2016 Álinson Santos Xavier <isoron@gmail.com>
+ * Copyright (C) 2017 Charles Hancock
  *
- * This file is part of Loop Habit Tracker.
- *
- * Loop Habit Tracker is free software: you can redistribute it and/or modify
+ * NewHeart is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
  *
- * Loop Habit Tracker is distributed in the hope that it will be useful, but
+ * NewHeart is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
  * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
  * more details.
@@ -17,13 +15,14 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.activities.settings;
+package com.beakon.newheart.activities.home.settings;
 
-import android.os.*;
+import android.os.Bundle;
 
-import com.beakon.newheart.*;
-import com.beakon.newheart.activities.*;
-import com.beakon.newheart.utils.*;
+import com.beakon.newheart.R;
+import com.beakon.newheart.activities.BaseActivity;
+import com.beakon.newheart.activities.BaseScreen;
+import com.beakon.newheart.utils.StyledResources;
 
 /**
  * Activity that allows the user to view and modify the app settings.

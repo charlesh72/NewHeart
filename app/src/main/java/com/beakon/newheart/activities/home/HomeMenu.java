@@ -54,6 +54,10 @@ public class HomeMenu extends BaseMenu {
                 screen.showFAQScreen();
                 return true;
 
+            case R.id.action_settings:
+                screen.showSettingsScreen();
+                return true;
+
             default:
                 return false;
         }

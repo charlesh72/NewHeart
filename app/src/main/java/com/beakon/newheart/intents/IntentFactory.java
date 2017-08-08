@@ -27,8 +27,9 @@ import com.beakon.newheart.*;
 import com.beakon.newheart.activities.about.*;
 import com.beakon.newheart.activities.habits.list.ListHabitsActivity;
 import com.beakon.newheart.activities.habits.show.*;
+import com.beakon.newheart.activities.home.settings.SettingsActivity;
 import com.beakon.newheart.activities.intro.*;
-import com.beakon.newheart.activities.settings.*;
+import com.beakon.newheart.activities.habits.settings.*;
 import com.beakon.newheart.models.*;
 
 import com.danmercer.ponderizer.NewMainActivity;
@@ -70,9 +71,13 @@ public class IntentFactory
         return new Intent(context, IntroActivity.class);
     }
 
-    public Intent startSettingsActivity(Context context)
-    {
+    public Intent startSettingsActivity(Context context) {
         return new Intent(context, SettingsActivity.class);
+    }
+
+    public Intent startHabitsSettingsActivity(Context context)
+    {
+        return new Intent(context, HabitsSettingsActivity.class);
     }
 
     public Intent startShowHabitActivity(Context context, Habit habit)

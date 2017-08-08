@@ -20,12 +20,12 @@
 <resources>
     <string name="helpURL">https://github.com/charlesh72/NewHeart/wiki/Help</string>
     <string name="playStoreURL">market://details?id=com.beakon.newheart</string>
-    <string name="feedbackURL" formatted="false">mailto:dev@loophabits.org?subject=Feedback%20about%20Loop%20Habit%20Tracker</string>
-    <string name="bugReportURL" formatted="false">mailto:dev@loophabits.org?subject=Bug%20Report%20-%20Loop%20Habit%20Tracker</string>
-    <string name="sourceCodeURL">https://github.com/iSoron/uhabits</string>
-    <string name="translateURL">http://translate.loophabits.org/</string>
-    <string name="bugReportTo">dev@loophabits.org</string>
-    <string name="bugReportSubject">Bug Report - Loop Habit Tracker</string>
+    <string name="feedbackURL" formatted="false">mailto:charles.h7272+newheartdev@gmail.com?subject=Feedback%20about%20New%20Heart</string>
+    <string name="bugReportURL" formatted="false">mailto:charles.h7272+newheartdev@gmail.com?subject=Bug%20Report%20-%20New%20Heart</string>
+    <string name="sourceCodeURL">https://github.com/charlesh72/NewHeart</string>
+    <string name="translateURL">n/a</string>
+    <string name="bugReportTo">charles.h7272+newheartdev@gmail.com</string>
+    <string name="bugReportSubject">Bug Report - New Heart</string>
 
     <string-array name="snooze_interval_names">
         <item>@string/interval_15_minutes</item>

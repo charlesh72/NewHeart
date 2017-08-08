@@ -158,7 +158,7 @@ public class Preferences
 
     public void initialize()
     {
-        PreferenceManager.setDefaultValues(context, R.xml.preferences, false);
+        PreferenceManager.setDefaultValues(context, R.xml.habits_preferences, false);
     }
 
     public boolean isFirstRun()

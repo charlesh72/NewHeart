@@ -19,6 +19,7 @@ package com.beakon.newheart.activities.home;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseActivity;
@@ -33,6 +34,12 @@ import javax.inject.Inject;
 
 @ActivityScope
 public class HomeScreen extends BaseScreen {
+
+    public static final int RESULT_BUG_REPORT = 1;
+
+    public static final int REQUEST_SETTINGS = 2;
+
+    @Nullable HomeController controller;
 
     @NonNull
     private final IntentFactory intentFactory;
@@ -51,5 +58,31 @@ public class HomeScreen extends BaseScreen {
     public void showFAQScreen() {
         Intent intent = intentFactory.viewFAQ(activity);
         activity.startActivity(intent);
+    }
+
+    public void showSettingsScreen() {
+        Intent intent = intentFactory.startSettingsActivity(activity);
+        activity.startActivityForResult(intent, REQUEST_SETTINGS);
+    }
+
+    public void setController(@Nullable HomeController controller) {
+        this.controller = controller;
+    }
+
+    @Override
+    public void onResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_SETTINGS) {
+            onSettingsResult(resultCode);
+        }
+    }
+
+    private void onSettingsResult(int resultCode) {
+        if (controller == null) return;
+
+        switch (resultCode) {
+            case RESULT_BUG_REPORT:
+                controller.onSendBugReport();
+                break;
+        }
     }
 }

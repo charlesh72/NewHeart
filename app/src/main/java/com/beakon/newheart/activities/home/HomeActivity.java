@@ -47,9 +47,11 @@ public class HomeActivity extends BaseActivity {
 
         HomeRootView rootView = component.getRootView();
         HomeScreen screen = component.getScreen();
+        HomeController controller = component.getController();
 
         setScreen(screen);
         screen.setMenu(component.getMenu());
+        screen.setController(controller);
 
     }
 }

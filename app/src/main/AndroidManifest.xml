@@ -77,11 +77,18 @@
                 android:value=".activities.habits.list.ListHabitsActivity" />
         </activity>
         <activity
-            android:name=".activities.settings.SettingsActivity"
+            android:name=".activities.habits.settings.HabitsSettingsActivity"
             android:label="@string/settings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.habits.list.ListHabitsActivity" />
+        </activity>
+        <activity
+            android:name=".activities.home.settings.SettingsActivity"
+            android:label="@string/settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.home.HomeActivity" />
         </activity>
         <activity
             android:name=".activities.intro.IntroActivity"
