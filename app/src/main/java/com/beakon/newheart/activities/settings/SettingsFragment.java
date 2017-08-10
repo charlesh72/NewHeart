@@ -17,7 +17,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.activities.habits.settings;
+package com.beakon.newheart.activities.settings;
 
 import android.app.backup.*;
 import android.content.*;
@@ -28,7 +28,7 @@ import com.beakon.newheart.R;
 import com.beakon.newheart.activities.habits.list.*;
 import com.beakon.newheart.utils.*;
 
-public class HabitsSettingsFragment extends PreferenceFragmentCompat
+public class SettingsFragment extends PreferenceFragmentCompat
     implements SharedPreferences.OnSharedPreferenceChangeListener
 {
     private static int RINGTONE_REQUEST_CODE = 1;
@@ -52,7 +52,7 @@ public class HabitsSettingsFragment extends PreferenceFragmentCompat
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.habits_preferences);
+        addPreferencesFromResource(R.xml.preferences);
 
         setResultOnPreferenceClick("importData", ListHabitsScreen.RESULT_IMPORT_DATA);
         setResultOnPreferenceClick("exportCSV", ListHabitsScreen.RESULT_EXPORT_CSV);

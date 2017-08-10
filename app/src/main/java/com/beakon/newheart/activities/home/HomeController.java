@@ -39,42 +39,12 @@ public class HomeController {
     private final HomeScreen screen;
 
     @NonNull
-    private final Preferences prefs;
-
-    @NonNull
     private final BaseSystem system;
 
     @Inject
     public HomeController(@NonNull HomeScreen screen,
-                          @NonNull Preferences prefs,
                           @NonNull BaseSystem system) {
         this.screen = screen;
-        this.prefs = prefs;
         this.system = system;
-    }
-
-    public void onSendBugReport()
-    {
-        try
-        {
-            system.dumpBugReportToFile();
-        }
-        catch (IOException e)
-        {
-            // ignored
-        }
-
-        try
-        {
-            String log = system.getBugReport();
-            int to = R.string.bugReportTo;
-            int subject = R.string.bugReportSubject;
-            screen.showSendEmailScreen(to, subject, log);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            screen.showMessage(R.string.bug_report_failed);
-        }
     }
 }

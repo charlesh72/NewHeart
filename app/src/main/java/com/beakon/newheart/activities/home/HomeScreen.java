@@ -60,29 +60,8 @@ public class HomeScreen extends BaseScreen {
         activity.startActivity(intent);
     }
 
-    public void showSettingsScreen() {
-        Intent intent = intentFactory.startSettingsActivity(activity);
-        activity.startActivityForResult(intent, REQUEST_SETTINGS);
-    }
-
     public void setController(@Nullable HomeController controller) {
         this.controller = controller;
     }
 
-    @Override
-    public void onResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_SETTINGS) {
-            onSettingsResult(resultCode);
-        }
-    }
-
-    private void onSettingsResult(int resultCode) {
-        if (controller == null) return;
-
-        switch (resultCode) {
-            case RESULT_BUG_REPORT:
-                controller.onSendBugReport();
-                break;
-        }
-    }
 }

@@ -77,7 +77,7 @@
                 android:value=".activities.habits.list.ListHabitsActivity" />
         </activity>
         <activity
-            android:name=".activities.habits.settings.HabitsSettingsActivity"
+            android:name=".activities.settings.SettingsActivity"
             android:label="@string/settings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
