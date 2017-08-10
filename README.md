@@ -1,9 +1,7 @@
 # New Heart
 
-New Heart is a simple Android app that helps you create and maintain good habits,
-allowing you to achieve your long-term goals. Detailed graphs and statistics
-show you how your habits improved over time. It is completely ad-free and open
-source.
+New Heart is designed to track and report daily habits 
+and journal entries relating to scripture.
 
 ## Features
 
