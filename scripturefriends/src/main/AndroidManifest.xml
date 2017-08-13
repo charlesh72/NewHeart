@@ -5,6 +5,7 @@
     android:versionName="2.2">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -16,8 +17,7 @@
             android:name=".NewMainActivity"
             android:label="@string/app_name"
             android:launchMode="standard"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <!-- "Share" text from Gospel Library and add as scripture -->
         <activity
@@ -62,7 +62,7 @@
         </activity-alias>
 
         <!-- Shows instructions for adding from Gospel Library -->
-        <activity android:name=".AddScriptureInstructions"/>
+        <activity android:name=".AddScriptureInstructions" />
 
         <!-- Displays the text of a scripture -->
         <activity
@@ -84,13 +84,13 @@
         <activity
             android:name=".memorize.MemorizeActivity"
             android:label="@string/title_activity_memorize"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <!-- Test your knowledge of a scripture -->
         <activity
             android:name=".memorize.MemorizeTestActivity"
             android:label="@string/title_activity_memorize_test"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <!-- Scripture widget provider -->
         <receiver android:name=".widget.ScriptureAppWidget">
@@ -104,7 +104,8 @@
         </receiver>
 
         <!-- Scripture widget list data service -->
-        <service android:name=".widget.ScriptureAppWidget$ListPopulatorService"
+        <service
+            android:name=".widget.ScriptureAppWidget$ListPopulatorService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <!-- Scripture widget "context menu" -->
@@ -123,21 +124,21 @@
         <activity
             android:name=".ExportActivity"
             android:label="@string/title_activity_export"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <!-- About the app -->
         <activity
             android:name=".AboutActivity"
-            android:label="@string/about"></activity>
+            android:label="@string/about" />
 
         <!-- App settings -->
         <activity
             android:name=".settings.SettingsActivity"
             android:label="@string/settings"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.NOTIFICATION_PREFERENCES" />
             </intent-filter>
         </activity>
@@ -145,7 +146,8 @@
         <receiver
             android:name=".settings.ReminderReceiver"
             android:enabled="true"
-            android:exported="false"/>
+            android:exported="false" />
+
     </application>
 
 </manifest>

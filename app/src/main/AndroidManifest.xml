@@ -84,13 +84,6 @@
                 android:value=".activities.habits.list.ListHabitsActivity" />
         </activity>
         <activity
-            android:name=".activities.home.settings.SettingsActivity"
-            android:label="@string/settings">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.home.HomeActivity" />
-        </activity>
-        <activity
             android:name=".activities.intro.IntroActivity"
             android:label=""
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -267,6 +260,23 @@
         <activity android:name="com.danmercer.ponderizer.AddScriptureInstructions"
             tools:replace="android:theme"
             android:theme="@style/AppBaseTheme"/>
+
+        <activity android:name="com.danmercer.ponderizer.AboutActivity"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
+        <activity android:name="com.danmercer.ponderizer.ExportActivity"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
+        <activity android:name="com.danmercer.ponderizer.settings.SettingsActivity"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
+        <activity android:name="com.danmercer.ponderizer.widget.WidgetPopupMenuActivity"
+            tools:replace="android:theme"
+            android:theme="@style/AppBaseTheme"/>
+
 
     </application>
 

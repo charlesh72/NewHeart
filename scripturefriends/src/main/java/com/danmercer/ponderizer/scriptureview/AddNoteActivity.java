@@ -16,15 +16,19 @@
 
 package com.danmercer.ponderizer.scriptureview;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -35,6 +39,10 @@ import com.danmercer.ponderizer.Scripture;
 
 import java.io.File;
 
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
+
+@RuntimePermissions
 public class AddNoteActivity extends AppCompatActivity {
     public static final int RESULT_DELETED = 4;
 
@@ -208,7 +216,10 @@ public class AddNoteActivity extends AppCompatActivity {
                 File noteFile = new File(getDir(Scripture.NOTES_DIR, Context.MODE_PRIVATE),
                         s.getFilename());
                 Note.writeNoteToFile(time, text, noteFile);
+
+                AddNoteActivityPermissionsDispatcher.shareEntryWithCheck(this, text, s);
             } else {
+                // TODO: 8/12/2017 Find a way to get the scripture reference to use shareEntry method
                 // Otherwise, send the note via Intent back to the ScriptureViewActivity that
                 // launched this activity
                 mLaunchIntent.putExtra(Note.EXTRA_NOTE_TEXT, text);
@@ -226,4 +237,24 @@ public class AddNoteActivity extends AppCompatActivity {
         }
     }
 
+    @NeedsPermission(Manifest.permission.SEND_SMS)
+    public void shareEntry(String text, Scripture s) {
+        // TODO: 8/12/2017 Doesn't send text when first asking for the permission.
+        // Add scripture reference to beginning of message
+        String ref = s.getReference();
+        text = ref.concat(text);
+
+        // TODO: 8/12/2017 Account for messages longer than 160 chars
+        // Send the text
+        SmsManager smsManager = SmsManager.getDefault();
+        // TODO: 8/12/2017 use phone number selected/entered by user
+//        smsManager.sendTextMessage("", null, text, null, null);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // NOTE: delegate the permission handling to generated method
+        AddNoteActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+    }
 }

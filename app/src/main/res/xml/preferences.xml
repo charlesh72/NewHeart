@@ -56,7 +56,7 @@
             android:entryValues="@array/snooze_interval_values"
             android:key="pref_snooze_interval"
             android:summary="%s"
-            android:title="@string/pref_snooze_interval_title"/>
+            android:title="@string/pref_snooze_interval_title" />
 
         <Preference
             android:key="reminderSound"

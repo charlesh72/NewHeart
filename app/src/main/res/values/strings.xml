@@ -156,9 +156,6 @@
     <string name="bug_report_failed">Failed to generate bug report.</string>
     <string name="generate_bug_report">Generate bug report</string>
     <string name="troubleshooting">Troubleshooting</string>
-    <string name="accountability_friends">Accountability Friends</string>
-    <string name="report_method">Report Method</string>
-    <string name="report_method_summary">Select which method should be used to report journal entry progress</string>
 
     <string name="help_translate">Help translate this app</string>
     <string name="night_mode">Night mode</string>
