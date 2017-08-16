@@ -1,1 +1,1 @@
-include ':app', ':scripturefriends'
+include ':app'

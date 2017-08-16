@@ -31,7 +31,7 @@ import com.beakon.newheart.activities.intro.*;
 import com.beakon.newheart.activities.settings.*;
 import com.beakon.newheart.models.*;
 
-import com.danmercer.ponderizer.NewMainActivity;
+import com.beakon.newheart.scripturefriends.NewMainActivity;
 
 import javax.inject.*;
 

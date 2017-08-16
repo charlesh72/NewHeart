@@ -23,6 +23,7 @@
     android:versionName="1.7.2">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
@@ -229,53 +230,139 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name="com.danmercer.ponderizer.NewMainActivity"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+        <activity
+            android:name="com.beakon.newheart.scripturefriends.NewMainActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard"
+            android:theme="@style/AppBaseTheme.NoActionBar" />
 
-        <activity android:name="com.danmercer.ponderizer.memorize.MemorizeActivity"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+        <!-- "Share" text from Gospel Library and add as scripture -->
+        <activity
+            android:name="com.beakon.newheart.scripturefriends.AddScriptureTextActivity"
+            android:label="Add Scripture to Ponderize"
+            android:theme="@style/AppBaseTheme.NoActionBar">
+            <intent-filter android:label="Ponderize Scripture">
+                <action android:name="android.intent.action.SEND" />
+            </intent-filter>
+        </activity>
 
-        <activity android:name="com.danmercer.ponderizer.memorize.MemorizeTestActivity"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+        <activity-alias
+            android:name=".AddScriptureTextActivityFromAnyApp"
+            android:enabled="false"
+            android:label="Add Scripture to Ponderize"
+            android:targetActivity="com.beakon.newheart.scripturefriends.AddScriptureTextActivity">
 
-        <activity android:name="com.danmercer.ponderizer.scriptureview.ScriptureViewActivity"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+            <!-- This activity-alias is disabled by default, but can be enabled from settings -->
+            <intent-filter android:label="Ponderize Scripture">
+                <action android:name="android.intent.action.SEND" />
 
-        <activity android:name="com.danmercer.ponderizer.scriptureview.AddNoteActivity"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+                <category android:name="android.intent.category.DEFAULT" />
 
-        <activity android:name="com.danmercer.ponderizer.AddScriptureReferenceActivity"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".AddScriptureTextOnlyGospelLibrary"
+            android:enabled="true"
+            android:label="Add Scripture to Ponderize"
+            android:targetActivity="com.beakon.newheart.scripturefriends.AddScriptureTextActivity">
 
-        <activity android:name="com.danmercer.ponderizer.AddScriptureTextActivity"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+            <!-- This activity-alias is enabled by default, but will be disabled when that^ one -->
+            <!-- is enabled -->
+            <intent-filter android:label="Ponderize Scripture">
+                <action android:name="android.intent.action.SEND" />
 
-        <activity android:name="com.danmercer.ponderizer.AddScriptureInstructions"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+                <category android:name="org.lds.ldssa" />
+                <!-- This ^ makes it only accept intents from LDS Gospel Library -->
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity-alias>
 
-        <activity android:name="com.danmercer.ponderizer.AboutActivity"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+        <!-- Shows instructions for adding from Gospel Library -->
+        <activity android:name="com.beakon.newheart.scripturefriends.AddScriptureInstructions" />
 
-        <activity android:name="com.danmercer.ponderizer.ExportActivity"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+        <!-- Displays the text of a scripture -->
+        <activity
+            android:name="com.beakon.newheart.scripturefriends.scriptureview.ScriptureViewActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.beakon.newheart.scripturefriends.NewMainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.beakon.newheart.scripturefriends.NewMainActivity" />
+        </activity>
 
-        <activity android:name="com.danmercer.ponderizer.settings.SettingsActivity"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+        <!-- Adds a note about a certain scripture -->
+        <activity
+            android:name="com.beakon.newheart.scripturefriends.scriptureview.AddNoteActivity"
+            android:label="@string/title_activity_add_note"
+            android:theme="@style/AppBaseTheme.NoActionBar" />
 
-        <activity android:name="com.danmercer.ponderizer.widget.WidgetPopupMenuActivity"
-            tools:replace="android:theme"
-            android:theme="@style/AppBaseTheme"/>
+        <!-- Practice memorizing a scripture -->
+        <activity
+            android:name="com.beakon.newheart.scripturefriends.memorize.MemorizeActivity"
+            android:label="@string/title_activity_memorize"
+            android:theme="@style/AppBaseTheme.NoActionBar" />
+
+        <!-- Test your knowledge of a scripture -->
+        <activity
+            android:name="com.beakon.newheart.scripturefriends.memorize.MemorizeTestActivity"
+            android:label="@string/title_activity_memorize_test"
+            android:theme="@style/AppBaseTheme.NoActionBar" />
+
+        <!-- Scripture widget provider -->
+        <receiver android:name="com.beakon.newheart.scripturefriends.widget.ScriptureAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/scripture_app_widget_info" />
+        </receiver>
+
+        <!-- Scripture widget list data service -->
+        <service
+            android:name="com.beakon.newheart.scripturefriends.widget.ScriptureAppWidget$ListPopulatorService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <!-- Scripture widget "context menu" -->
+        <activity
+            android:name="com.beakon.newheart.scripturefriends.widget.WidgetPopupMenuActivity"
+            android:theme="@style/Dialog" />
+
+        <!-- Scripture widget configuration activity -->
+        <activity android:name="com.beakon.newheart.scripturefriends.widget.ScriptureAppWidgetConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <!-- Export scriptures and notes -->
+        <activity
+            android:name="com.beakon.newheart.scripturefriends.ExportActivity"
+            android:label="@string/title_activity_export"
+            android:theme="@style/AppBaseTheme.NoActionBar" />
+
+        <!-- About the app -->
+
+        <!-- App settings -->
+        <activity
+            android:name="com.beakon.newheart.scripturefriends.settings.ScriptureSettingsActivity"
+            android:label="@string/settings"
+            android:theme="@style/AppBaseTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.NOTIFICATION_PREFERENCES" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="com.beakon.newheart.scripturefriends.settings.ReminderReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity android:name="com.beakon.newheart.scripturefriends.AccountabilityFriendsActivity"></activity>
 
 
     </application>
