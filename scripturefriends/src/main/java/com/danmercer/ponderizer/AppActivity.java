@@ -75,6 +75,9 @@ public abstract class AppActivity extends AppCompatActivity {
             Intent help = new Intent(Intent.ACTION_VIEW, url);
             startActivity(help);
             return true;
+        } else if (i == R.id.accountability_friends) {
+            Intent intent = new Intent(this, AccountabilityFriendsActivity.class);
+            startActivity(intent);
         }
 //        else if (i == R.id.action_feedback) {
 //            launchFeedbackDialog();

@@ -248,7 +248,7 @@ public class AddNoteActivity extends AppCompatActivity {
         // Send the text
         SmsManager smsManager = SmsManager.getDefault();
         // TODO: 8/12/2017 use phone number selected/entered by user
-//        smsManager.sendTextMessage("", null, text, null, null);
+        smsManager.sendTextMessage("6235339727", null, text, null, null);
     }
 
     @Override

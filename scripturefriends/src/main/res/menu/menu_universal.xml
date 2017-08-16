@@ -11,6 +11,11 @@
         android:orderInCategory="101"
         android:title="@string/help"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/accountability_friends"
+        android:orderInCategory="97"
+        android:title="Accountability Friends"
+        app:showAsAction="never"/>
     <!-- TODO Change to newheart information -->
     <!--<item-->
         <!--android:id="@+id/action_feedback"-->

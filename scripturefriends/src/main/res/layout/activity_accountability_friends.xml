@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (C) 2017 Charles Hancock
   ~
@@ -15,19 +16,19 @@
   ~ with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.danmercer.ponderizer.AccountabilityFriendsActivity">
 
-    <item android:id="@+id/action_insert_sm"
-        android:title="@string/sm_dialog_title"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/actionAdd"
-        android:icon="?iconAdd"
-        android:title="@string/add_scripture"
-        app:showAsAction="always"/>
-
-</menu>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+</LinearLayout>
