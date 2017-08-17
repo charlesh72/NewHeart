@@ -23,6 +23,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
@@ -35,6 +36,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beakon.newheart.R;
+import com.beakon.newheart.scripturefriends.AccountabilityFriendsActivity;
 import com.beakon.newheart.scripturefriends.Scripture;
 
 import java.io.File;
@@ -247,8 +249,13 @@ public class AddNoteActivity extends AppCompatActivity {
         // TODO: 8/12/2017 Account for messages longer than 160 chars
         // Send the text
         SmsManager smsManager = SmsManager.getDefault();
-        // TODO: 8/12/2017 use phone number selected/entered by user
-        smsManager.sendTextMessage("6235339727", null, text, null, null);
+
+        // Retrieve saved phone number. Check length or do not attempt to send a message
+        SharedPreferences accPrefs = getSharedPreferences("AccountabilityFriends", Context.MODE_PRIVATE);
+        String phone = accPrefs.getString(AccountabilityFriendsActivity.PHONE_KEY, "");
+        if (phone.length() > 1) {
+            smsManager.sendTextMessage(phone, null, text, null, null);
+        }
     }
 
     @Override
