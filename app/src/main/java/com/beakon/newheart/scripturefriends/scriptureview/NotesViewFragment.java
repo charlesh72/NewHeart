@@ -50,10 +50,13 @@ public class NotesViewFragment extends Fragment {
 
     private static final String ARGSKEY_NOTES_FILENAME = "NotesViewFragment.notesFilename";
 
+    private static final String ARGSKEY_SCRIPTURE_REFERENCE = "NotesViewFragment.scriptureReference";
+
     public static NotesViewFragment createNew(Scripture scripture) {
         NotesViewFragment f = new NotesViewFragment();
         Bundle args = new Bundle();
         args.putString(ARGSKEY_NOTES_FILENAME, scripture.getFilename());
+        args.putString(ARGSKEY_SCRIPTURE_REFERENCE, scripture.getReference());
         f.setArguments(args);
         return f;
     }
@@ -64,6 +67,7 @@ public class NotesViewFragment extends Fragment {
     private ArrayAdapter<Note> mAdapter;
     private ListAdapter mEmptyAdapter;
     private Note mNoteBeingEdited;
+    private String mRef;
 
     public File getFile() {
         return mFile;
@@ -91,6 +95,8 @@ public class NotesViewFragment extends Fragment {
         mEmptyAdapter = new ArrayAdapter<String>(getContext(), R.layout.list_item,
                 R.id.item_text, new String[]{emptyText});
         refreshNoteList();
+
+        mRef = getArguments().getString(ARGSKEY_SCRIPTURE_REFERENCE);
 
         return v;
     }
@@ -167,12 +173,14 @@ public class NotesViewFragment extends Fragment {
         mNoteBeingEdited = mNotes.get(pos);
         i.putExtra(Note.EXTRA_NOTE_TIME, mNoteBeingEdited.getTimestamp());
         i.putExtra(Note.EXTRA_NOTE_TEXT, mNoteBeingEdited.getText());
+        i.putExtra(Scripture.EXTRA_SCRIPTURE_REFERENCE, mRef);
         startActivityForResult(i, REQUEST_EDIT_NOTE);
     }
 
     public void launchAddNoteActivity() {
         // Launch an activity to add a new note
         Intent i = new Intent(getContext(), AddNoteActivity.class);
+        i.putExtra(Scripture.EXTRA_SCRIPTURE_REFERENCE, mRef);
         startActivityForResult(i, REQUEST_ADD_NOTE);
     }
 

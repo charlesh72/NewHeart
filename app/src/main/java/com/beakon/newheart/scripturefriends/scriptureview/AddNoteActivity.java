@@ -40,6 +40,7 @@ import com.beakon.newheart.scripturefriends.AccountabilityFriendsActivity;
 import com.beakon.newheart.scripturefriends.Scripture;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
@@ -219,13 +220,17 @@ public class AddNoteActivity extends AppCompatActivity {
                         s.getFilename());
                 Note.writeNoteToFile(time, text, noteFile);
 
-                AddNoteActivityPermissionsDispatcher.shareEntryWithCheck(this, text, s);
+                // Share the note entry
+                AddNoteActivityPermissionsDispatcher.shareEntryWithCheck(this, text, s.getReference());
             } else {
-                // TODO: 8/12/2017 Find a way to get the scripture reference to use shareEntry method
                 // Otherwise, send the note via Intent back to the ScriptureViewActivity that
                 // launched this activity
                 mLaunchIntent.putExtra(Note.EXTRA_NOTE_TEXT, text);
                 mLaunchIntent.putExtra(Note.EXTRA_NOTE_TIME, time);
+
+                // Get the scripture reference and share the entry
+                String ref = mLaunchIntent.getStringExtra(Scripture.EXTRA_SCRIPTURE_REFERENCE);
+                AddNoteActivityPermissionsDispatcher.shareEntryWithCheck(this, text, ref);
             }
 
             Toast.makeText(this, R.string.toast_note_saved, Toast.LENGTH_SHORT).show();
@@ -239,22 +244,36 @@ public class AddNoteActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Takes the note content and the scripture reference and shares it
+     * with the current saved accountability friend.
+     * @param text The contents of the note
+     * @param ref The reference to the scripture
+     */
     @NeedsPermission(Manifest.permission.SEND_SMS)
-    public void shareEntry(String text, Scripture s) {
+    public void shareEntry(String text, String ref) {
         // TODO: 8/12/2017 Doesn't send text when first asking for the permission.
         // Add scripture reference to beginning of message
-        String ref = s.getReference();
         text = ref.concat(text);
 
-        // TODO: 8/12/2017 Account for messages longer than 160 chars
         // Send the text
         SmsManager smsManager = SmsManager.getDefault();
 
+        int length = text.length();
+
+        // TODO: 8/17/2017 Check the settings to make sure "share" is enabled
         // Retrieve saved phone number. Check length or do not attempt to send a message
         SharedPreferences accPrefs = getSharedPreferences("AccountabilityFriends", Context.MODE_PRIVATE);
         String phone = accPrefs.getString(AccountabilityFriendsActivity.PHONE_KEY, "");
         if (phone.length() > 1) {
-            smsManager.sendTextMessage(phone, null, text, null, null);
+            // Check length of text, if greater than sms message limit then split it up.
+            if (length > 160) {
+                ArrayList<String> messagelist = smsManager.divideMessage(text);
+
+                smsManager.sendMultipartTextMessage(phone, null, messagelist, null, null);
+            } else {
+                smsManager.sendTextMessage(phone, null, text, null, null);
+            }
         }
     }
 

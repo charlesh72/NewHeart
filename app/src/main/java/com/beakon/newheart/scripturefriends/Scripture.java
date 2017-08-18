@@ -42,6 +42,7 @@ public class Scripture implements Parcelable {
 
     // The name of the directory for the notes files
     public static final String NOTES_DIR = "notes";
+    public static final String EXTRA_SCRIPTURE_REFERENCE = "Scripture.reference";
 
     /**
      * CREATOR used by the Android OS to reconstruct a Scripture object that has been stored in a
