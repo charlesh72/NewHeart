@@ -93,4 +93,10 @@
         android:orderInCategory="100"
         android:title="@string/about"
         app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/actionAddDefault"
+        android:orderInCategory="100"
+        android:title="@string/add_default_habits"
+        app:showAsAction="never"/>
 </menu>

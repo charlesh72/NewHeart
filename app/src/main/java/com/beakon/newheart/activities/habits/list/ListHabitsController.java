@@ -73,6 +73,8 @@ public class ListHabitsController
 
     private ExportDBTaskFactory exportDBFactory;
 
+    private AppComponent appComponent;
+
     @Inject
     public ListHabitsController(@NonNull BaseSystem system,
                                 @NonNull CommandRunner commandRunner,
@@ -86,7 +88,8 @@ public class ListHabitsController
                                 @NonNull
                                 ImportDataTaskFactory importTaskFactory,
                                 @NonNull ExportCSVTaskFactory exportCSVFactory,
-                                @NonNull ExportDBTaskFactory exportDBFactory)
+                                @NonNull ExportDBTaskFactory exportDBFactory,
+                                @NonNull AppComponent appComponent)
     {
         this.adapter = adapter;
         this.commandRunner = commandRunner;
@@ -100,6 +103,7 @@ public class ListHabitsController
         this.importTaskFactory = importTaskFactory;
         this.exportCSVFactory = exportCSVFactory;
         this.exportDBFactory = exportDBFactory;
+        this.appComponent = appComponent;
     }
 
     public void onExportCSV()
@@ -215,6 +219,44 @@ public class ListHabitsController
         prefs.setFirstRun(false);
         prefs.updateLastHint(-1, DateUtils.getStartOfToday());
         screen.showIntroScreen();
+        addDefaultHabits();
+    }
+
+    /**
+     * Adds the default habits into the list
+     */
+    public void addDefaultHabits() {
+        addDefaultHabit("Morning Prayer", Habit.ID_PRAYER_MORNING);
+        addDefaultHabit("Scripture Study", Habit.ID_SCRIPTURE_STUDY);
+        addDefaultHabit("Insights Shared", Habit.ID_INSIGHTS_SHARED);
+        addDefaultHabit("Service", Habit.ID_SERVICE);
+        addDefaultHabit("Gratitude Recorded", Habit.ID_GRATITUDE_RECORDED);
+        addDefaultHabit("Evening Prayer", Habit.ID_PRAYER_EVENING);
+        addDefaultHabit("Clean!", Habit.ID_CLEAN);
+    }
+
+    /**
+     * Adds individual habits to the habitlist
+     * @param name name of the default habit
+     * @param id id of the default habit
+     */
+    private void addDefaultHabit(String name, Long id)
+    {
+
+
+        ModelFactory modelFactory = appComponent.getModelFactory();
+        Habit habit = modelFactory.buildHabit();
+        habit.setFrequency(Frequency.DAILY);
+        habit.setColor(prefs.getDefaultHabitColor(habit.getColor()));
+        habit.setName(name);
+        habit.setId(id);
+
+        Command command = appComponent
+                .getCreateHabitCommandFactory()
+                .create(habitList, habit);
+
+        commandRunner.execute(command, null);
+
     }
 
     public interface OnFinishedListener

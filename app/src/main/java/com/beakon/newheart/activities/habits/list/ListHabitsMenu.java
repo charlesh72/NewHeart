@@ -128,6 +128,10 @@ public class ListHabitsMenu extends BaseMenu
                 adapter.setOrder(HabitList.Order.BY_SCORE);
                 return true;
 
+            case R.id.actionAddDefault:
+                screen.addDefaultHabits();
+                return true;
+
             default:
                 return false;
         }

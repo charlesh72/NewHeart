@@ -20,6 +20,8 @@
 package com.beakon.newheart.commands;
 
 import android.support.annotation.*;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.auto.factory.*;
 
@@ -54,9 +56,20 @@ public class CreateHabitCommand extends Command
     {
         Habit savedHabit = modelFactory.buildHabit();
         savedHabit.copyFrom(model);
-        savedHabit.setId(savedId);
 
-        habitList.add(savedHabit);
+        // Transfer the id if it is a default habit
+        if (savedHabit.isDefaultHabit()) {
+            savedHabit.setId(model.getId());
+        } else {
+            savedHabit.setId(savedId);
+        }
+        
+        // Only add the habit to the habit list if there is no ID conflict
+        if (habitList.getById(savedHabit.getId()) == null) {
+            habitList.add(savedHabit);
+        } else {
+            Log.d("CREATEHABITCOMMAND", "Habit: " + savedHabit.getId().toString() + " is already in the list");
+        }
         savedId = savedHabit.getId();
     }
 

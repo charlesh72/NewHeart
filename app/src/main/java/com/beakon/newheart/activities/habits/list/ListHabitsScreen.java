@@ -200,6 +200,13 @@ public class ListHabitsScreen extends BaseScreen
         this.controller = controller;
     }
 
+    /**
+     * Adds all of the default habits to the habit list
+     */
+    public void addDefaultHabits(){
+        controller.addDefaultHabits();
+    }
+
     public void showAboutScreen()
     {
         Intent intent = intentFactory.startAboutActivity(activity);

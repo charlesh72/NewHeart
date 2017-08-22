@@ -36,6 +36,17 @@ public class Habit
     public static final String HABIT_URI_FORMAT =
         "content://com.beakon.newheart/habit/%d";
 
+    // Reserved id values for default habits
+    public static final Long ID_SCRIPTURE_STUDY = 8261l;
+    public static final Long ID_PRAYER_EVENING = 8262l;
+    public static final Long ID_PRAYER_MORNING = 8263l;
+    public static final Long ID_SERVICE = 8264l;
+    public static final Long ID_CLEAN = 8265l;
+    public static final Long ID_INSIGHTS_SHARED = 8266l;
+    public static final Long ID_GRATITUDE_RECORDED = 8267l;
+
+    private boolean defaultHabit = false;
+
     @Nullable
     private Long id;
 
@@ -112,6 +123,7 @@ public class Habit
         this.archived = model.isArchived();
         this.frequency = model.frequency;
         this.reminder = model.reminder;
+        this.defaultHabit = model.isDefaultHabit();
         observable.notifyListeners();
     }
 
@@ -174,6 +186,20 @@ public class Habit
     public void setId(@Nullable Long id)
     {
         this.id = id;
+
+        if (id == null) {
+            return;
+        }
+        if (id.equals(ID_CLEAN) ||
+                id.equals(ID_PRAYER_EVENING) ||
+                id.equals(ID_PRAYER_MORNING) ||
+                id.equals(ID_SCRIPTURE_STUDY) ||
+                id.equals(ID_SERVICE) ||
+                id.equals(ID_CLEAN) ||
+                id.equals(ID_INSIGHTS_SHARED) ||
+                id.equals(ID_GRATITUDE_RECORDED)) {
+            defaultHabit = true;
+        }
     }
 
     @NonNull
@@ -261,6 +287,10 @@ public class Habit
     public void setArchived(boolean archived)
     {
         this.archived = archived;
+    }
+
+    public boolean isDefaultHabit() {
+        return defaultHabit;
     }
 
     @Override
