@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends.scriptureview;
+package com.beakon.newheart.scripturefriends.scriptureview.AddNote;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -35,9 +35,14 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.beakon.newheart.HabitsApplication;
 import com.beakon.newheart.R;
+import com.beakon.newheart.activities.ActivityModule;
+import com.beakon.newheart.activities.BaseActivity;
 import com.beakon.newheart.scripturefriends.AccountabilityFriendsActivity;
 import com.beakon.newheart.scripturefriends.Scripture;
+import com.beakon.newheart.scripturefriends.scriptureview.Note;
+import com.beakon.newheart.scripturefriends.scriptureview.ScriptureIntent;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -46,13 +51,15 @@ import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 
 @RuntimePermissions
-public class AddNoteActivity extends AppCompatActivity {
+public class AddNoteActivity extends BaseActivity {
     public static final int RESULT_DELETED = 4;
 
     private TextView mNoteEntry;
     private Intent mLaunchIntent;
     private boolean mExistingNote = false;
     private boolean mEdited = false;
+    private AddNoteComponent component;
+    private AddNoteController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +87,15 @@ public class AddNoteActivity extends AppCompatActivity {
             // No note to view, so let the user add a new note
             mEdited = true;
         }
+
+        HabitsApplication app = (HabitsApplication) getApplicationContext();
+
+        component = DaggerAddNoteComponent
+                .builder()
+                .appComponent(app.getComponent())
+                .build();
+
+        controller = component.getController();
     }
 
     private void promptToConfirmEditing() {
@@ -262,10 +278,12 @@ public class AddNoteActivity extends AppCompatActivity {
         int length = text.length();
 
         // TODO: 8/17/2017 Check the settings to make sure "share" is enabled
-        // Retrieve saved phone number. Check length or do not attempt to send a message
+        // Retrieve saved phone number.
         SharedPreferences accPrefs = getSharedPreferences("AccountabilityFriends", Context.MODE_PRIVATE);
         String phone = accPrefs.getString(AccountabilityFriendsActivity.PHONE_KEY, "");
+        // TODO: 8/23/2017 Use a better check for a valid phone number
         if (phone.length() > 1) {
+            controller.toggleTodaysShareGoal();
             // Check length of text, if greater than sms message limit then split it up.
             if (length > 160) {
                 ArrayList<String> messagelist = smsManager.divideMessage(text);

@@ -293,7 +293,7 @@
 
         <!-- Adds a note about a certain scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturefriends.scriptureview.AddNoteActivity"
+            android:name="com.beakon.newheart.scripturefriends.scriptureview.AddNote.AddNoteActivity"
             android:label="@string/title_activity_add_note"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 

@@ -240,6 +240,12 @@ public class Habit
         this.reminder = reminder;
     }
 
+    /**
+     * Returns the repetitions for this habit
+     * <p>
+     * This method is used for controlling the success repetitions of this habit
+     * @return The repetitions for this habit
+     */
     @NonNull
     public RepetitionList getRepetitions()
     {

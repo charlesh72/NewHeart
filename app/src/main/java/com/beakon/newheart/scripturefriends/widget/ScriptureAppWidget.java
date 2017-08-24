@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
@@ -33,7 +32,7 @@ import com.beakon.newheart.R;
 import com.beakon.newheart.scripturefriends.NewMainActivity;
 import com.beakon.newheart.scripturefriends.Scripture;
 import com.beakon.newheart.scripturefriends.memorize.MemorizeActivity;
-import com.beakon.newheart.scripturefriends.scriptureview.AddNoteActivity;
+import com.beakon.newheart.scripturefriends.scriptureview.AddNote.AddNoteActivity;
 import com.beakon.newheart.scripturefriends.scriptureview.ScriptureIntent;
 import com.beakon.newheart.scripturefriends.scriptureview.ScriptureViewActivity;
 

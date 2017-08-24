@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.scripturefriends.Scripture;
+import com.beakon.newheart.scripturefriends.scriptureview.AddNote.AddNoteActivity;
 
 import java.io.File;
 import java.util.LinkedList;
