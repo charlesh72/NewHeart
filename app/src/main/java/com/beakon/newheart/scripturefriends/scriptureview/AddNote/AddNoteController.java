@@ -47,7 +47,7 @@ public class AddNoteController {
      */
     public void toggleTodaysShareGoal() {
         Habit habit = habitList.getById(Habit.ID_INSIGHTS_SHARED);
-        habit.getRepetitions().toggleTimestamp(DateUtils.getStartOfToday());
+        habit.getRepetitions().addTimestamp(DateUtils.getStartOfToday());
     }
 
 }

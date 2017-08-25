@@ -33,6 +33,7 @@ import android.view.MenuItem;
 
 import com.beakon.newheart.BuildConfig;
 import com.beakon.newheart.R;
+import com.beakon.newheart.activities.BaseActivity;
 import com.beakon.newheart.scripturefriends.settings.ReminderPreference;
 import com.beakon.newheart.scripturefriends.settings.ScriptureSettingsActivity;
 
@@ -47,7 +48,7 @@ import com.beakon.newheart.scripturefriends.settings.ScriptureSettingsActivity;
  *
  * Created by Dan on 11/16/2015.
  */
-public abstract class AppActivity extends AppCompatActivity {
+public abstract class AppActivity extends BaseActivity {
     private static final String KEY_VERSION = "APP_VERSION";
 
     @Override

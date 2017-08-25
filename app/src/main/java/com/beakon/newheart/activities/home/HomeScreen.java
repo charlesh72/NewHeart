@@ -35,11 +35,8 @@ import javax.inject.Inject;
 @ActivityScope
 public class HomeScreen extends BaseScreen {
 
-    public static final int RESULT_BUG_REPORT = 1;
-
-    public static final int REQUEST_SETTINGS = 2;
-
-    @Nullable HomeController controller;
+    @Nullable
+    HomeController controller;
 
     @NonNull
     private final IntentFactory intentFactory;
@@ -63,5 +60,4 @@ public class HomeScreen extends BaseScreen {
     public void setController(@Nullable HomeController controller) {
         this.controller = controller;
     }
-
 }

@@ -389,4 +389,6 @@
     <color name="white_a4">#4fffffff</color>
     <color name="white_a2">#2fffffff</color>
     <color name="white_a0">#0fffffff</color>
+    <color name="primary_text_material_light">#deffffff</color>
+    <color name="secondary_text_material_light">#8affffff</color>
 </resources>

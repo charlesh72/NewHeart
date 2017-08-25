@@ -248,6 +248,7 @@ public class ListHabitsController
         Habit habit = modelFactory.buildHabit();
         habit.setFrequency(Frequency.DAILY);
         habit.setColor(prefs.getDefaultHabitColor(habit.getColor()));
+        habit.setDescription("");
         habit.setName(name);
         habit.setId(id);
 

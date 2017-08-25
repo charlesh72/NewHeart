@@ -203,6 +203,35 @@ public abstract class RepetitionList
     }
 
     /**
+     * Adds a repetition at a certain timestamp.
+     * <p>
+     * If there exists a repetition on the list with the given timestamp, the
+     * method returns false. If there are no repetitions with the given timestamp,
+     * creates and adds one to the list, then returns true.
+     * @param timestamp the timestamp for the timestamp that should be added
+     * @return true if a new repetition was added based on the timestamp, false if otherwise
+     */
+    @NonNull
+    public boolean addTimestamp(long timestamp) {
+        boolean added = false;
+
+        timestamp = DateUtils.getStartOfDay(timestamp);
+        Repetition rep = getByTimestamp(timestamp);
+        if (rep == null) {
+            rep = new Repetition(timestamp);
+            add(rep);
+            added = true;
+
+            habit.getScores().invalidateNewerThan(timestamp);
+            habit.getCheckmarks().invalidateNewerThan(timestamp);
+            habit.getStreaks().invalidateNewerThan(timestamp);
+        }
+
+
+        return added;
+    }
+
+    /**
      * Returns the number of all repetitions
      *
      * @return number of all repetitions

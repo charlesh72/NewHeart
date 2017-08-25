@@ -22,6 +22,8 @@ import android.os.Bundle;
 import com.beakon.newheart.HabitsApplication;
 import com.beakon.newheart.activities.ActivityModule;
 import com.beakon.newheart.activities.BaseActivity;
+import com.beakon.newheart.activities.ThemeSwitcher;
+import com.beakon.newheart.preferences.Preferences;
 
 /**
  * Created by Charles on 7/25/2017.
@@ -32,6 +34,8 @@ import com.beakon.newheart.activities.BaseActivity;
 public class HomeActivity extends BaseActivity {
 
     private HomeComponent component;
+
+    private Preferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,5 +57,6 @@ public class HomeActivity extends BaseActivity {
         screen.setMenu(component.getMenu());
         screen.setController(controller);
 
+        prefs = app.getComponent().getPreferences();
     }
 }
