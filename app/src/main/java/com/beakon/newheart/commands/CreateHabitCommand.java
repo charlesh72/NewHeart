@@ -60,16 +60,20 @@ public class CreateHabitCommand extends Command
         // Transfer the id if it is a default habit
         if (savedHabit.isDefaultHabit()) {
             savedHabit.setId(model.getId());
+
+            // Only add the default habit to the habit list if there is no ID conflict
+            if (habitList.getById(savedHabit.getId()) == null) {
+                habitList.add(savedHabit);
+            } else {
+                Log.d("CREATEHABITCOMMAND", "Habit: " + savedHabit.getId().toString() + " is already in the list");
+            }
         } else {
+            // Always add if it's not default
             savedHabit.setId(savedId);
+            habitList.add(savedHabit);
         }
         
-        // Only add the habit to the habit list if there is no ID conflict
-        if (habitList.getById(savedHabit.getId()) == null) {
-            habitList.add(savedHabit);
-        } else {
-            Log.d("CREATEHABITCOMMAND", "Habit: " + savedHabit.getId().toString() + " is already in the list");
-        }
+
         savedId = savedHabit.getId();
     }
 

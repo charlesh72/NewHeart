@@ -188,6 +188,7 @@ public class Habit
         this.id = id;
 
         if (id == null) {
+            defaultHabit = false;
             return;
         }
         if (id.equals(ID_CLEAN) ||
@@ -199,6 +200,8 @@ public class Habit
                 id.equals(ID_INSIGHTS_SHARED) ||
                 id.equals(ID_GRATITUDE_RECORDED)) {
             defaultHabit = true;
+        } else {
+            defaultHabit = false;
         }
     }
 
