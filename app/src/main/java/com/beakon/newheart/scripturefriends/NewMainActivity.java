@@ -152,7 +152,8 @@ public class NewMainActivity extends AppActivity {
             return true;
         } else if (id == R.id.actionAdd) {
             // Launch activity with instructions for adding scriptures
-            Intent i = new Intent(NewMainActivity.this.getApplicationContext(), AddScriptureInstructions.class);
+            Intent i = new Intent(NewMainActivity.this.getApplicationContext(), AddScriptureTextActivity.class);
+            i.putExtra(Intent.EXTRA_TITLE, "Entry");
             startActivity(i);
         }
 

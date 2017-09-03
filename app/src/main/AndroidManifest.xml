@@ -281,6 +281,8 @@
         <!-- Shows instructions for adding from Gospel Library -->
         <activity android:name="com.beakon.newheart.scripturefriends.AddScriptureInstructions" />
 
+        <activity android:name=".scripturefriends.AddScriptureReferenceActivity" />
+
         <!-- Displays the text of a scripture -->
         <activity
             android:name="com.beakon.newheart.scripturefriends.scriptureview.ScriptureViewActivity"

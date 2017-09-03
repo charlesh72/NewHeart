@@ -172,7 +172,7 @@ public abstract class RepetitionList
     public abstract void remove(@NonNull Repetition repetition);
 
     /**
-     * Adds or remove a repetition at a certain timestamp.
+     * Adds or remove a repetition at today's timestamp.
      * <p>
      * If there exists a repetition on the list with the given timestamp, the
      * method removes this repetition from the list and returns it. If there are
@@ -184,9 +184,9 @@ public abstract class RepetitionList
      * @return the repetition that has been added or removed.
      */
     @NonNull
-    public Repetition toggleTimestamp(long timestamp)
+    public Repetition toggleTodaysTimestamp(long timestamp)
     {
-        timestamp = DateUtils.getStartOfDay(timestamp);
+        timestamp = DateUtils.getStartOfToday();
         Repetition rep = getByTimestamp(timestamp);
 
         if (rep != null) remove(rep);

@@ -270,7 +270,7 @@ public class AddNoteActivity extends BaseActivity {
     public void shareEntry(String text, String ref) {
         // TODO: 8/12/2017 Doesn't send text when first asking for the permission.
         // Add scripture reference to beginning of message
-        text = ref.concat(text);
+        text = ref.concat(" " + text);
 
         // Send the text
         SmsManager smsManager = SmsManager.getDefault();

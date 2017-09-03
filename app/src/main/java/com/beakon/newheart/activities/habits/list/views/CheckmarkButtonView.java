@@ -90,7 +90,7 @@ public class CheckmarkButtonView extends View
 
     public void toggle()
     {
-        value = (value == CHECKED_EXPLICITLY ? UNCHECKED : CHECKED_EXPLICITLY);
+//        value = (value == CHECKED_EXPLICITLY ? UNCHECKED : CHECKED_EXPLICITLY);
         performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
         postInvalidate();
     }
