@@ -45,7 +45,7 @@
         android:divider="?windowBackgroundColor"
         android:dividerHeight="1dp"
         android:listSelector="@android:color/transparent"
-        android:layout_below="@id/header"/>
+        android:layout_below="@id/header" />
 
     <LinearLayout
         android:id="@+id/llEmpty"
@@ -82,6 +82,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"/>
+
+    <com.beakon.newheart.activities.habits.list.views.ListDailyScore
+        android:id="@+id/listDailyScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <View
         android:id="@+id/toolbarShadow"
