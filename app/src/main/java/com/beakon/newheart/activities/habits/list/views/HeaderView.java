@@ -29,8 +29,13 @@ import android.util.*;
 import com.beakon.newheart.*;
 import com.beakon.newheart.activities.common.views.*;
 import com.beakon.newheart.activities.habits.list.*;
+import com.beakon.newheart.events.DailyScoreChangedEvent;
 import com.beakon.newheart.preferences.*;
 import com.beakon.newheart.utils.*;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.*;
 
@@ -45,6 +50,8 @@ public class HeaderView extends ScrollableChart
 
     @Nullable
     private MidnightTimer midnightTimer;
+
+    private int dailyScore;
 
     private final TextPaint paint;
 
@@ -72,6 +79,7 @@ public class HeaderView extends ScrollableChart
             midnightTimer = activity.getListHabitsComponent().getMidnightTimer();
         }
 
+
         Resources res = context.getResources();
         setScrollerBucketSize((int) res.getDimension(R.dimen.checkmarkWidth));
 
@@ -85,6 +93,8 @@ public class HeaderView extends ScrollableChart
         paint.setColor(sr.getColor(R.attr.mediumContrastTextColor));
 
         rect = new RectF();
+
+        dailyScore = 0;
     }
 
     @Override
@@ -97,6 +107,11 @@ public class HeaderView extends ScrollableChart
     public void onCheckmarkOrderChanged()
     {
         updateDirection();
+        postInvalidate();
+    }
+
+    public void setDailyScore(int dailyScore) {
+        this.dailyScore = dailyScore;
         postInvalidate();
     }
 
@@ -113,6 +128,7 @@ public class HeaderView extends ScrollableChart
         super.onAttachedToWindow();
         if (prefs != null) prefs.addListener(this);
         if (midnightTimer != null) midnightTimer.addListener(this);
+        EventBus.getDefault().register(this);
     }
 
     private void updateDirection()
@@ -129,6 +145,7 @@ public class HeaderView extends ScrollableChart
         if (midnightTimer != null) midnightTimer.removeListener(this);
         if (prefs != null) prefs.removeListener(this);
         super.onDetachedFromWindow();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -152,6 +169,8 @@ public class HeaderView extends ScrollableChart
         float height = res.getDimension(R.dimen.checkmarkHeight);
         boolean reverse = shouldReverseCheckmarks();
         boolean isRtl = InterfaceUtils.isLayoutRtl(this);
+
+        canvas.drawText("" + dailyScore, height/2, width/4, paint);
 
         day.add(GregorianCalendar.DAY_OF_MONTH, -getDataOffset());
         float em = paint.measureText("m");
@@ -184,4 +203,11 @@ public class HeaderView extends ScrollableChart
         if (prefs == null) return false;
         return prefs.shouldReverseCheckmarks();
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onDailyScoreChangedEvent(DailyScoreChangedEvent event){
+        dailyScore = event.dailyScore;
+        postInvalidate();
+    }
+
 }

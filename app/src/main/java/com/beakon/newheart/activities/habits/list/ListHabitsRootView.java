@@ -36,6 +36,8 @@ import com.beakon.newheart.models.*;
 import com.beakon.newheart.tasks.*;
 import com.beakon.newheart.utils.*;
 
+import org.greenrobot.eventbus.EventBus;
+
 import javax.inject.*;
 
 import butterknife.*;

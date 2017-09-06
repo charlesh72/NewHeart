@@ -83,11 +83,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"/>
 
-    <com.beakon.newheart.activities.habits.list.views.ListDailyScore
-        android:id="@+id/listDailyScore"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <View
         android:id="@+id/toolbarShadow"
         android:layout_below="@id/toolbar"

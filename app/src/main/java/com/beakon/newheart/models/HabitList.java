@@ -194,6 +194,17 @@ public abstract class HabitList implements Iterable<Habit>
         update(Collections.singletonList(habit));
     }
 
+    public int getDailyScore(long timestamp){
+        int score = 0;
+        timestamp = DateUtils.getStartOfDay(timestamp);
+        for (Habit h: this) {
+            if (h.getRepetitions().containsTimestamp(timestamp)) {
+                score++;
+            }
+        }
+        return score;
+    }
+
     /**
      * Writes the list of habits to the given writer, in CSV format. There is
      * one line for each habit, containing the fields name, description,
