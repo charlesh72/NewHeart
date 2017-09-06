@@ -29,7 +29,7 @@ import android.util.*;
 import com.beakon.newheart.*;
 import com.beakon.newheart.activities.common.views.*;
 import com.beakon.newheart.activities.habits.list.*;
-import com.beakon.newheart.events.DailyScoreChangedEvent;
+import com.beakon.newheart.events.DailyScoreUpdateEvent;
 import com.beakon.newheart.preferences.*;
 import com.beakon.newheart.utils.*;
 
@@ -107,11 +107,6 @@ public class HeaderView extends ScrollableChart
     public void onCheckmarkOrderChanged()
     {
         updateDirection();
-        postInvalidate();
-    }
-
-    public void setDailyScore(int dailyScore) {
-        this.dailyScore = dailyScore;
         postInvalidate();
     }
 
@@ -205,7 +200,7 @@ public class HeaderView extends ScrollableChart
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onDailyScoreChangedEvent(DailyScoreChangedEvent event){
+    public void onDailyScoreUpdateEvent(DailyScoreUpdateEvent event){
         dailyScore = event.dailyScore;
         postInvalidate();
     }

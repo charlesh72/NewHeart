@@ -26,7 +26,7 @@ import com.beakon.newheart.activities.*;
 import com.beakon.newheart.activities.habits.list.controllers.*;
 import com.beakon.newheart.activities.habits.list.model.*;
 import com.beakon.newheart.commands.*;
-import com.beakon.newheart.events.DailyScoreChangedEvent;
+import com.beakon.newheart.events.DailyScoreUpdateEvent;
 import com.beakon.newheart.models.*;
 import com.beakon.newheart.preferences.*;
 import com.beakon.newheart.tasks.*;
@@ -208,6 +208,12 @@ public class ListHabitsController
     {
         prefs.incrementLaunchCount();
         if (prefs.isFirstRun()) onFirstRun();
+        commandRunner.addListener(new CommandRunner.Listener(){
+            @Override
+            public void onCommandExecuted(@NonNull Command command, @Nullable Long refreshKey) {
+                updateDailyScore();
+            }
+        });
     }
 
     @Override
@@ -215,7 +221,10 @@ public class ListHabitsController
     {
         commandRunner.execute(new ToggleRepetitionCommand(habit, timestamp),
             habit.getId());
-        EventBus.getDefault().post(new DailyScoreChangedEvent(habitList.getDailyScore(DateUtils.getStartOfToday())));
+    }
+
+    public void updateDailyScore() {
+        EventBus.getDefault().post(new DailyScoreUpdateEvent(habitList.getDailyScore(DateUtils.getStartOfToday())));
     }
 
     private void onFirstRun()

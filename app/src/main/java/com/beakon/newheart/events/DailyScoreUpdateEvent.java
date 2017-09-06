@@ -22,11 +22,11 @@ package com.beakon.newheart.events;
  * Event called whenever the daily habit score changes
  */
 
-public class DailyScoreChangedEvent {
+public class DailyScoreUpdateEvent {
 
     public final int dailyScore;
 
-    public DailyScoreChangedEvent(int dailyScore) {
+    public DailyScoreUpdateEvent(int dailyScore) {
         this.dailyScore = dailyScore;
     }
 }
