@@ -224,7 +224,7 @@ public class ListHabitsController
     }
 
     public void updateDailyScore() {
-        EventBus.getDefault().post(new DailyScoreUpdateEvent(habitList.getDailyScore(DateUtils.getStartOfToday())));
+        EventBus.getDefault().postSticky(new DailyScoreUpdateEvent(habitList.getDailyScore(DateUtils.getStartOfToday())));
     }
 
     private void onFirstRun()

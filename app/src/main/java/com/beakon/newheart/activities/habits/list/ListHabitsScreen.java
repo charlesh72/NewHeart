@@ -119,6 +119,7 @@ public class ListHabitsScreen extends BaseScreen
     public void onAttached()
     {
         commandRunner.addListener(this);
+        controller.updateDailyScore();
     }
 
     @Override

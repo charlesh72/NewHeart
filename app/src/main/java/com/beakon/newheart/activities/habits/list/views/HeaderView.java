@@ -199,7 +199,7 @@ public class HeaderView extends ScrollableChart
         return prefs.shouldReverseCheckmarks();
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onDailyScoreUpdateEvent(DailyScoreUpdateEvent event){
         dailyScore = event.dailyScore;
         postInvalidate();
