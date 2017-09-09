@@ -26,7 +26,6 @@ import com.beakon.newheart.activities.*;
 import com.beakon.newheart.activities.habits.list.controllers.*;
 import com.beakon.newheart.activities.habits.list.model.*;
 import com.beakon.newheart.commands.*;
-import com.beakon.newheart.events.DailyScoreUpdateEvent;
 import com.beakon.newheart.models.*;
 import com.beakon.newheart.preferences.*;
 import com.beakon.newheart.tasks.*;
@@ -78,6 +77,8 @@ public class ListHabitsController
 
     private AppComponent appComponent;
 
+    private ListHabitsRootView rootView;
+
     @Inject
     public ListHabitsController(@NonNull BaseSystem system,
                                 @NonNull CommandRunner commandRunner,
@@ -92,7 +93,8 @@ public class ListHabitsController
                                 ImportDataTaskFactory importTaskFactory,
                                 @NonNull ExportCSVTaskFactory exportCSVFactory,
                                 @NonNull ExportDBTaskFactory exportDBFactory,
-                                @NonNull AppComponent appComponent)
+                                @NonNull AppComponent appComponent,
+                                @NonNull ListHabitsRootView rootView)
     {
         this.adapter = adapter;
         this.commandRunner = commandRunner;
@@ -107,6 +109,7 @@ public class ListHabitsController
         this.exportCSVFactory = exportCSVFactory;
         this.exportDBFactory = exportDBFactory;
         this.appComponent = appComponent;
+        this.rootView = rootView;
     }
 
     public void onExportCSV()
@@ -223,8 +226,13 @@ public class ListHabitsController
             habit.getId());
     }
 
+    /**
+     * Uses today's timestamp to set the daily score value in the header
+     */
     public void updateDailyScore() {
-        EventBus.getDefault().postSticky(new DailyScoreUpdateEvent(habitList.getDailyScore(DateUtils.getStartOfToday())));
+        long today = DateUtils.getStartOfToday();
+        int dailyScore = habitList.getDailyScore(today);
+        rootView.header.setDailyScore(dailyScore);
     }
 
     private void onFirstRun()

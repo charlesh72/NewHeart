@@ -19,7 +19,6 @@
 
 package com.beakon.newheart.commands;
 
-import com.beakon.newheart.events.DailyScoreUpdateEvent;
 import com.beakon.newheart.models.*;
 import com.beakon.newheart.utils.DateUtils;
 

@@ -29,7 +29,6 @@ import android.util.*;
 import com.beakon.newheart.*;
 import com.beakon.newheart.activities.common.views.*;
 import com.beakon.newheart.activities.habits.list.*;
-import com.beakon.newheart.events.DailyScoreUpdateEvent;
 import com.beakon.newheart.preferences.*;
 import com.beakon.newheart.utils.*;
 
@@ -123,7 +122,6 @@ public class HeaderView extends ScrollableChart
         super.onAttachedToWindow();
         if (prefs != null) prefs.addListener(this);
         if (midnightTimer != null) midnightTimer.addListener(this);
-        EventBus.getDefault().register(this);
     }
 
     private void updateDirection()
@@ -140,7 +138,6 @@ public class HeaderView extends ScrollableChart
         if (midnightTimer != null) midnightTimer.removeListener(this);
         if (prefs != null) prefs.removeListener(this);
         super.onDetachedFromWindow();
-        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -199,9 +196,9 @@ public class HeaderView extends ScrollableChart
         return prefs.shouldReverseCheckmarks();
     }
 
-    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void onDailyScoreUpdateEvent(DailyScoreUpdateEvent event){
-        dailyScore = event.dailyScore;
+
+    public void setDailyScore(int dailyScore) {
+        this.dailyScore = dailyScore;
         postInvalidate();
     }
 
