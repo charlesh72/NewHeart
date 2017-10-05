@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends.scriptureview.AddNote;
+package com.beakon.newheart.scripturestudy.scriptureview.AddNote;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -27,7 +27,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.view.Menu;
@@ -37,12 +36,11 @@ import android.widget.Toast;
 
 import com.beakon.newheart.HabitsApplication;
 import com.beakon.newheart.R;
-import com.beakon.newheart.activities.ActivityModule;
 import com.beakon.newheart.activities.BaseActivity;
-import com.beakon.newheart.scripturefriends.AccountabilityFriendsActivity;
-import com.beakon.newheart.scripturefriends.Scripture;
-import com.beakon.newheart.scripturefriends.scriptureview.Note;
-import com.beakon.newheart.scripturefriends.scriptureview.ScriptureIntent;
+import com.beakon.newheart.scripturestudy.AccountabilityFriendsActivity;
+import com.beakon.newheart.scripturestudy.Scripture;
+import com.beakon.newheart.scripturestudy.scriptureview.Note;
+import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
 
 import java.io.File;
 import java.util.ArrayList;

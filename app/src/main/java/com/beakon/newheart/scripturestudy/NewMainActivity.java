@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends;
+package com.beakon.newheart.scripturestudy;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -152,7 +152,7 @@ public class NewMainActivity extends AppActivity {
             return true;
         } else if (id == R.id.actionAdd) {
             // Launch activity with instructions for adding scriptures
-            Intent i = new Intent(NewMainActivity.this.getApplicationContext(), AddScriptureTextActivity.class);
+            Intent i = new Intent(NewMainActivity.this.getApplicationContext(), AddScriptureInstructions.class);
             i.putExtra(Intent.EXTRA_TITLE, "Entry");
             startActivity(i);
         }

@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends;
+package com.beakon.newheart.scripturestudy;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,6 +36,7 @@ public class AddScriptureTextActivity extends AppCompatActivity {
 
     private EditText titleTextView;
     private EditText bodyTextView;
+    private EditText notesTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class AddScriptureTextActivity extends AppCompatActivity {
         // Get text fields
         titleTextView = (EditText) findViewById(R.id.scripture_title);
         bodyTextView = (EditText) findViewById(R.id.scripture_text);
+        notesTextView = (EditText) findViewById(R.id.scripture_note);
 
         // Get the text that was shared with us from the start intent
         Intent startIntent = getIntent();

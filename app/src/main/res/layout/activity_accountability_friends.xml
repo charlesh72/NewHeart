@@ -22,7 +22,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.beakon.newheart.scripturefriends.AccountabilityFriendsActivity">
+    tools:context="com.beakon.newheart.scripturestudy.AccountabilityFriendsActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

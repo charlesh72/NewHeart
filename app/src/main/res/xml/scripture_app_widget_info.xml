@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:configure="com.beakon.newheart.scripturefriends.widget.ScriptureAppWidgetConfigureActivity"
+    android:configure="com.beakon.newheart.scripturestudy.widget.ScriptureAppWidgetConfigureActivity"
     android:initialKeyguardLayout="@layout/scripture_app_widget"
     android:initialLayout="@layout/scripture_app_widget"
     android:minHeight="110dp"

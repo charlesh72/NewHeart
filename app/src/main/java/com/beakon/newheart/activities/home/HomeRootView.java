@@ -71,10 +71,15 @@ public class HomeRootView extends BaseRootView {
         getContext().startActivity(intent);
     }
 
+    @OnClick(R.id.homeTVDailyScriptureStudy)
+    public void onClickDailyScriptureStudy(){
+        Intent intent = intents.startScriptureStudyActivity(getContext());
+        getContext().startActivity(intent);
+    }
+
     @OnClick(R.id.homeTVScriptureFriends)
     public void onClickScriptureFriends() {
-        Intent intent = intents.startScripturesActivity(getContext());
-        getContext().startActivity(intent);
+
     }
 
     @NonNull

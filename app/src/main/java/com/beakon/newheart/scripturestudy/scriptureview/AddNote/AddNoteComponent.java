@@ -15,22 +15,21 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends.scriptureview;
+package com.beakon.newheart.scripturestudy.scriptureview.AddNote;
 
-import android.content.Context;
-import android.content.Intent;
+import com.beakon.newheart.AppComponent;
+import com.beakon.newheart.activities.ActivityModule;
+import com.beakon.newheart.activities.ActivityScope;
 
-import com.beakon.newheart.scripturefriends.Scripture;
+import dagger.Component;
 
 /**
- * Created by Dan on 11/7/2015.
+ * Created by Charles on 8/23/2017.
  */
-public class ScriptureIntent extends Intent {
-    // Used when putting a Scripture into an intent as a parcelable extra
-    public static final String EXTRA_SCRIPTURE = "SCRIPTURE";
 
-    public ScriptureIntent(Context packageContext, Class<?> cls, Scripture s) {
-        super(packageContext, cls);
-        putExtra(EXTRA_SCRIPTURE, s);
-    }
+@ActivityScope
+@Component(modules = {ActivityModule.class},
+            dependencies = {AppComponent.class})
+public interface AddNoteComponent {
+    AddNoteController getController();
 }

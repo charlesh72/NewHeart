@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends.scriptureview;
+package com.beakon.newheart.scripturestudy.scriptureview;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,12 +31,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturefriends.AppActivity;
-import com.beakon.newheart.scripturefriends.ExportActivity;
-import com.beakon.newheart.scripturefriends.NewMainActivity;
-import com.beakon.newheart.scripturefriends.Scripture;
-import com.beakon.newheart.scripturefriends.memorize.MemorizeActivity;
-import com.beakon.newheart.scripturefriends.memorize.MemorizeTestActivity;
+import com.beakon.newheart.scripturestudy.AppActivity;
+import com.beakon.newheart.scripturestudy.ExportActivity;
+import com.beakon.newheart.scripturestudy.NewMainActivity;
+import com.beakon.newheart.scripturestudy.Scripture;
+import com.beakon.newheart.scripturestudy.memorize.MemorizeActivity;
+import com.beakon.newheart.scripturestudy.memorize.MemorizeTestActivity;
 
 public class ScriptureViewActivity extends AppActivity {
     public static final int NUM_OF_TABS = 2;

@@ -232,6 +232,7 @@
     <!-- ADD SCRIPTURE ACTIVITY -->
     <string name="scripture_title_hint">Title / Scripture Reference</string>
     <string name="scripture_text_hint">Verses of Scripture</string>
+    <string name="scripture_note_hint">Notes</string>
 
     <!-- SCRIPTURE VIEW ACTIVITY -->
     <string name="tab_title_scripture">Scripture</string>

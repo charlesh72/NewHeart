@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends;
+package com.beakon.newheart.scripturestudy;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -32,8 +32,8 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturefriends.scriptureview.Note;
-import com.beakon.newheart.scripturefriends.scriptureview.ScriptureIntent;
+import com.beakon.newheart.scripturestudy.scriptureview.Note;
+import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
 
 import java.util.LinkedList;
 

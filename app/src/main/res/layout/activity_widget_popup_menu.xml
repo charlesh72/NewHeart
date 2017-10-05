@@ -19,7 +19,7 @@
     android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:padding="8dp"
-    tools:context="com.beakon.newheart.scripturefriends.widget.WidgetPopupMenuActivity"
+    tools:context="com.beakon.newheart.scripturestudy.widget.WidgetPopupMenuActivity"
     android:orientation="vertical">
 
     <Button

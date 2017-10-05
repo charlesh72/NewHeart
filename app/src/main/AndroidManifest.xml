@@ -231,14 +231,14 @@
         </provider>
 
         <activity
-            android:name="com.beakon.newheart.scripturefriends.NewMainActivity"
+            android:name="com.beakon.newheart.scripturestudy.NewMainActivity"
             android:label="@string/app_name"
             android:launchMode="standard"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 
         <!-- "Share" text from Gospel Library and add as scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturefriends.AddScriptureTextActivity"
+            android:name="com.beakon.newheart.scripturestudy.AddScriptureTextActivity"
             android:label="Add Scripture to Ponderize"
             android:theme="@style/AppBaseTheme.NoActionBar">
             <intent-filter android:label="Ponderize Scripture">
@@ -250,7 +250,7 @@
             android:name=".AddScriptureTextActivityFromAnyApp"
             android:enabled="false"
             android:label="Add Scripture to Ponderize"
-            android:targetActivity="com.beakon.newheart.scripturefriends.AddScriptureTextActivity">
+            android:targetActivity="com.beakon.newheart.scripturestudy.AddScriptureTextActivity">
 
             <!-- This activity-alias is disabled by default, but can be enabled from settings -->
             <intent-filter android:label="Ponderize Scripture">
@@ -265,7 +265,7 @@
             android:name=".AddScriptureTextOnlyGospelLibrary"
             android:enabled="true"
             android:label="Add Scripture to Ponderize"
-            android:targetActivity="com.beakon.newheart.scripturefriends.AddScriptureTextActivity">
+            android:targetActivity="com.beakon.newheart.scripturestudy.AddScriptureTextActivity">
 
             <!-- This activity-alias is enabled by default, but will be disabled when that^ one -->
             <!-- is enabled -->
@@ -279,40 +279,40 @@
         </activity-alias>
 
         <!-- Shows instructions for adding from Gospel Library -->
-        <activity android:name="com.beakon.newheart.scripturefriends.AddScriptureInstructions" />
+        <activity android:name="com.beakon.newheart.scripturestudy.AddScriptureInstructions" />
 
-        <activity android:name=".scripturefriends.AddScriptureReferenceActivity" />
+        <activity android:name=".scripturestudy.AddScriptureReferenceActivity" />
 
         <!-- Displays the text of a scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturefriends.scriptureview.ScriptureViewActivity"
+            android:name="com.beakon.newheart.scripturestudy.scriptureview.ScriptureViewActivity"
             android:launchMode="singleTop"
-            android:parentActivityName="com.beakon.newheart.scripturefriends.NewMainActivity">
+            android:parentActivityName="com.beakon.newheart.scripturestudy.NewMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.beakon.newheart.scripturefriends.NewMainActivity" />
+                android:value="com.beakon.newheart.scripturestudy.NewMainActivity" />
         </activity>
 
         <!-- Adds a note about a certain scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturefriends.scriptureview.AddNote.AddNoteActivity"
+            android:name="com.beakon.newheart.scripturestudy.scriptureview.AddNote.AddNoteActivity"
             android:label="@string/title_activity_add_note"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 
         <!-- Practice memorizing a scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturefriends.memorize.MemorizeActivity"
+            android:name="com.beakon.newheart.scripturestudy.memorize.MemorizeActivity"
             android:label="@string/title_activity_memorize"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 
         <!-- Test your knowledge of a scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturefriends.memorize.MemorizeTestActivity"
+            android:name="com.beakon.newheart.scripturestudy.memorize.MemorizeTestActivity"
             android:label="@string/title_activity_memorize_test"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 
         <!-- Scripture widget provider -->
-        <receiver android:name="com.beakon.newheart.scripturefriends.widget.ScriptureAppWidget">
+        <receiver android:name="com.beakon.newheart.scripturestudy.widget.ScriptureAppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -324,16 +324,16 @@
 
         <!-- Scripture widget list data service -->
         <service
-            android:name="com.beakon.newheart.scripturefriends.widget.ScriptureAppWidget$ListPopulatorService"
+            android:name="com.beakon.newheart.scripturestudy.widget.ScriptureAppWidget$ListPopulatorService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <!-- Scripture widget "context menu" -->
         <activity
-            android:name="com.beakon.newheart.scripturefriends.widget.WidgetPopupMenuActivity"
+            android:name="com.beakon.newheart.scripturestudy.widget.WidgetPopupMenuActivity"
             android:theme="@style/Dialog" />
 
         <!-- Scripture widget configuration activity -->
-        <activity android:name="com.beakon.newheart.scripturefriends.widget.ScriptureAppWidgetConfigureActivity">
+        <activity android:name="com.beakon.newheart.scripturestudy.widget.ScriptureAppWidgetConfigureActivity">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
@@ -341,7 +341,7 @@
 
         <!-- Export scriptures and notes -->
         <activity
-            android:name="com.beakon.newheart.scripturefriends.ExportActivity"
+            android:name="com.beakon.newheart.scripturestudy.ExportActivity"
             android:label="@string/title_activity_export"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 
@@ -349,7 +349,7 @@
 
         <!-- App settings -->
         <activity
-            android:name="com.beakon.newheart.scripturefriends.settings.ScriptureSettingsActivity"
+            android:name="com.beakon.newheart.scripturestudy.settings.ScriptureSettingsActivity"
             android:label="@string/settings"
             android:theme="@style/AppBaseTheme.NoActionBar">
             <intent-filter>
@@ -360,11 +360,11 @@
         </activity>
 
         <receiver
-            android:name="com.beakon.newheart.scripturefriends.settings.ReminderReceiver"
+            android:name="com.beakon.newheart.scripturestudy.settings.ReminderReceiver"
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name="com.beakon.newheart.scripturefriends.AccountabilityFriendsActivity"></activity>
+        <activity android:name="com.beakon.newheart.scripturestudy.AccountabilityFriendsActivity"></activity>
 
 
     </application>

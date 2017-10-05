@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends.scriptureview;
+package com.beakon.newheart.scripturestudy.scriptureview;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,7 +26,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturefriends.Scripture;
+import com.beakon.newheart.scripturestudy.Scripture;
 
 /**
  * Created by Dan on 10/24/2015.

@@ -13,7 +13,7 @@
             android:key="@string/prefkey_weekly_reminder"
             android:summary="Remind me weekly to choose a scripture"
             android:title="Weekly reminder" />
-        <com.beakon.newheart.scripturefriends.settings.ReminderPreference
+        <com.beakon.newheart.scripturestudy.settings.ReminderPreference
             android:defaultValue="sunday/17:00"
             android:dependency="@string/prefkey_weekly_reminder"
             android:key="@string/prefkey_weekly_reminder_time"

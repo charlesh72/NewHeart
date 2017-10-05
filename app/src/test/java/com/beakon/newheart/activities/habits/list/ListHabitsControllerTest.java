@@ -61,6 +61,8 @@ public class ListHabitsControllerTest extends BaseUnitTest
 
     private AppComponent appComponent;
 
+    private ListHabitsRootView listHabitsRootView;
+
     @Override
     public void setUp()
     {
@@ -79,11 +81,12 @@ public class ListHabitsControllerTest extends BaseUnitTest
         exportCSVFactory = mock(ExportCSVTaskFactory.class);
         exportDBFactory = mock(ExportDBTaskFactory.class);
         appComponent = mock(AppComponent.class);
+        listHabitsRootView = mock(ListHabitsRootView.class);
 
         controller =
             spy(new ListHabitsController(system, commandRunner, habitList,
                 adapter, screen, prefs, reminderScheduler, taskRunner,
-                widgetUpdater, importTaskFactory, exportCSVFactory, exportDBFactory, appComponent));
+                widgetUpdater, importTaskFactory, exportCSVFactory, exportDBFactory, appComponent, listHabitsRootView));
     }
 
     @Test

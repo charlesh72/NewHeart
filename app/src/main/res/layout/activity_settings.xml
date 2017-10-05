@@ -23,7 +23,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.beakon.newheart.scripturefriends.settings.ScriptureSettingsActivity">
+    tools:context="com.beakon.newheart.scripturestudy.settings.ScriptureSettingsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.beakon.newheart.scripturefriends.memorize;
+package com.beakon.newheart.scripturestudy.memorize;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -32,9 +31,9 @@ import android.widget.TextView;
 
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturefriends.AppActivity;
-import com.beakon.newheart.scripturefriends.Scripture;
-import com.beakon.newheart.scripturefriends.scriptureview.ScriptureIntent;
+import com.beakon.newheart.scripturestudy.AppActivity;
+import com.beakon.newheart.scripturestudy.Scripture;
+import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

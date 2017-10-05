@@ -31,7 +31,7 @@ import com.beakon.newheart.activities.intro.*;
 import com.beakon.newheart.activities.settings.*;
 import com.beakon.newheart.models.*;
 
-import com.beakon.newheart.scripturefriends.NewMainActivity;
+import com.beakon.newheart.scripturestudy.NewMainActivity;
 
 import javax.inject.*;
 
@@ -86,7 +86,7 @@ public class IntentFactory
         return intent;
     }
 
-    public Intent startScripturesActivity(Context context) {
+    public Intent startScriptureStudyActivity(Context context) {
         Intent intent = new Intent(context, NewMainActivity.class);
         return intent;
     }

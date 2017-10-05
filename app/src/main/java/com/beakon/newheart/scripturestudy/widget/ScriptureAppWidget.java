@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.beakon.newheart.scripturefriends.widget;
+package com.beakon.newheart.scripturestudy.widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -29,12 +29,12 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturefriends.NewMainActivity;
-import com.beakon.newheart.scripturefriends.Scripture;
-import com.beakon.newheart.scripturefriends.memorize.MemorizeActivity;
-import com.beakon.newheart.scripturefriends.scriptureview.AddNote.AddNoteActivity;
-import com.beakon.newheart.scripturefriends.scriptureview.ScriptureIntent;
-import com.beakon.newheart.scripturefriends.scriptureview.ScriptureViewActivity;
+import com.beakon.newheart.scripturestudy.NewMainActivity;
+import com.beakon.newheart.scripturestudy.Scripture;
+import com.beakon.newheart.scripturestudy.memorize.MemorizeActivity;
+import com.beakon.newheart.scripturestudy.scriptureview.AddNote.AddNoteActivity;
+import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
+import com.beakon.newheart.scripturestudy.scriptureview.ScriptureViewActivity;
 
 
 /**

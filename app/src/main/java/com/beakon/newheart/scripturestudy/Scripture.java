@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends;
+package com.beakon.newheart.scripturestudy;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -25,7 +25,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturefriends.widget.ScriptureAppWidget;
+import com.beakon.newheart.scripturestudy.widget.ScriptureAppWidget;
 
 import java.io.BufferedReader;
 import java.io.EOFException;

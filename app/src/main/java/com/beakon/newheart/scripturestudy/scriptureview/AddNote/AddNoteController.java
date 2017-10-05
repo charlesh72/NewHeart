@@ -15,11 +15,10 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends.scriptureview.AddNote;
+package com.beakon.newheart.scripturestudy.scriptureview.AddNote;
 
 import android.support.annotation.NonNull;
 
-import com.beakon.newheart.activities.ActivityContext;
 import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.models.Habit;
 import com.beakon.newheart.models.HabitList;

@@ -22,7 +22,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context="com.beakon.newheart.scripturefriends.scriptureview.ScriptureViewActivity">
+    tools:context="com.beakon.newheart.scripturestudy.scriptureview.ScriptureViewActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

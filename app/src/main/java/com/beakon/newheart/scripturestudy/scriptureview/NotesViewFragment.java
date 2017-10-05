@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends.scriptureview;
+package com.beakon.newheart.scripturestudy.scriptureview;
 
 import android.app.Activity;
 import android.content.Context;
@@ -35,8 +35,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturefriends.Scripture;
-import com.beakon.newheart.scripturefriends.scriptureview.AddNote.AddNoteActivity;
+import com.beakon.newheart.scripturestudy.Scripture;
+import com.beakon.newheart.scripturestudy.scriptureview.AddNote.AddNoteActivity;
 
 import java.io.File;
 import java.util.LinkedList;

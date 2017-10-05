@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturefriends;
+package com.beakon.newheart.scripturestudy;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -26,7 +26,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,8 +33,8 @@ import android.view.MenuItem;
 import com.beakon.newheart.BuildConfig;
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.BaseActivity;
-import com.beakon.newheart.scripturefriends.settings.ReminderPreference;
-import com.beakon.newheart.scripturefriends.settings.ScriptureSettingsActivity;
+import com.beakon.newheart.scripturestudy.settings.ReminderPreference;
+import com.beakon.newheart.scripturestudy.settings.ScriptureSettingsActivity;
 
 
 /**

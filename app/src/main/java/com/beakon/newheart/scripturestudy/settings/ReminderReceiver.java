@@ -1,4 +1,4 @@
-package com.beakon.newheart.scripturefriends.settings;
+package com.beakon.newheart.scripturestudy.settings;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -13,7 +13,7 @@ import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturefriends.AddScriptureInstructions;
+import com.beakon.newheart.scripturestudy.AddScriptureInstructions;
 
 
 public class ReminderReceiver extends BroadcastReceiver {

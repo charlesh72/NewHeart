@@ -1,4 +1,4 @@
-package com.beakon.newheart.scripturefriends.settings;
+package com.beakon.newheart.scripturestudy.settings;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;

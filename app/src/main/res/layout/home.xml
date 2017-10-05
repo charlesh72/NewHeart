@@ -36,11 +36,20 @@
         android:textAlignment="center"/>
 
     <TextView
+        android:id="@+id/homeTVDailyScriptureStudy"
+        style="@style/Home.Item.Clickable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Daily Scripture Study"
+        android:textAlignment="center" />
+
+    <TextView
         android:id="@+id/homeTVScriptureFriends"
+        style="@style/Home.Item.Clickable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/scripture_friends"
-        style="@style/Home.Item.Clickable"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:visibility="gone" />
 
 </LinearLayout>

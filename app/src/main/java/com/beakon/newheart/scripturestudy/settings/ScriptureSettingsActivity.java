@@ -1,4 +1,4 @@
-package com.beakon.newheart.scripturefriends.settings;
+package com.beakon.newheart.scripturestudy.settings;
 
 import android.app.FragmentManager;
 import android.content.ComponentName;
@@ -71,7 +71,7 @@ public class ScriptureSettingsActivity extends AppCompatActivity {
                                     packageName + ".AddScriptureTextOnlyGospelLibrary");
                             final ComponentName cnameAnyApp = new ComponentName(packageName,
                                     packageName + ".AddScriptureTextActivityFromAnyApp");
-                            Log.d("ScriptureSettingsActivity", "Preference value: " + newValue);
+                            Log.d("ScriptureSettingsActiv", "Preference value: " + newValue);
 
                             // Flags to enable or disable components
                             final int stateDisabled = PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
@@ -80,11 +80,11 @@ public class ScriptureSettingsActivity extends AppCompatActivity {
                             if (newValue.equals(Boolean.TRUE)) { // Allow import from any app
                                 pm.setComponentEnabledSetting(cnameGLOnly, stateDisabled, flags);
                                 pm.setComponentEnabledSetting(cnameAnyApp, stateEnabled, flags);
-                                Log.d("ScriptureSettingsActivity", "Other-app import enabled");
+                                Log.d("ScriptureSettingsActiv", "Other-app import enabled");
                             } else {// Only allow import from Gospel Library
                                 pm.setComponentEnabledSetting(cnameGLOnly, stateEnabled, flags);
                                 pm.setComponentEnabledSetting(cnameAnyApp, stateDisabled, flags);
-                                Log.d("ScriptureSettingsActivity", "Other-app import disabled");
+                                Log.d("ScriptureSettingsActiv", "Other-app import disabled");
                             }
                             return true;
                         }

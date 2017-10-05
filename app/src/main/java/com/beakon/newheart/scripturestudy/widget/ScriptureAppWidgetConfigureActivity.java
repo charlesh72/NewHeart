@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.beakon.newheart.scripturefriends.widget;
+package com.beakon.newheart.scripturestudy.widget;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
@@ -27,9 +27,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturefriends.AddScriptureInstructions;
-import com.beakon.newheart.scripturefriends.NewMainActivity;
-import com.beakon.newheart.scripturefriends.Scripture;
+import com.beakon.newheart.scripturestudy.AddScriptureInstructions;
+import com.beakon.newheart.scripturestudy.NewMainActivity;
+import com.beakon.newheart.scripturestudy.Scripture;
 
 import java.util.LinkedList;
 
