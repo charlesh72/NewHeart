@@ -33,7 +33,7 @@ import android.view.MenuItem;
 import com.beakon.newheart.R;
 import com.beakon.newheart.scripturestudy.AppActivity;
 import com.beakon.newheart.scripturestudy.ExportActivity;
-import com.beakon.newheart.scripturestudy.NewMainActivity;
+import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
 import com.beakon.newheart.scripturestudy.Scripture;
 import com.beakon.newheart.scripturestudy.memorize.MemorizeActivity;
 import com.beakon.newheart.scripturestudy.memorize.MemorizeTestActivity;
@@ -188,10 +188,10 @@ public class ScriptureViewActivity extends AppActivity {
             return true;
         } else if (i == R.id.action_mark_completed) {// Mark the scripture as completed/incompleted - i.e. toggle the category
             if (!scripture.isCompleted()) {
-                scripture.changeCategory(this, NewMainActivity.Category.COMPLETED);
+                scripture.changeCategory(this, ScriptureListActivity.Category.COMPLETED);
                 item.setTitle(R.string.menu_mark_in_progress);
             } else {
-                scripture.changeCategory(this, NewMainActivity.Category.IN_PROGRESS);
+                scripture.changeCategory(this, ScriptureListActivity.Category.IN_PROGRESS);
                 item.setTitle(R.string.menu_mark_complete);
             }
             finish();

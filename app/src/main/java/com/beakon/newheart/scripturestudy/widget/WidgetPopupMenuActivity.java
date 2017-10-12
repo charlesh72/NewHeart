@@ -27,7 +27,7 @@ import android.widget.Button;
 import com.beakon.newheart.R;
 import com.beakon.newheart.scripturestudy.Scripture;
 import com.beakon.newheart.scripturestudy.memorize.MemorizeActivity;
-import com.beakon.newheart.scripturestudy.scriptureview.AddNote.AddNoteActivity;
+import com.beakon.newheart.scripturestudy.scriptureview.AddNoteActivity;
 import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
 import com.beakon.newheart.scripturestudy.scriptureview.ScriptureViewActivity;
 

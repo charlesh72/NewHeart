@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturestudy.scriptureview.AddNote;
+package com.beakon.newheart.scripturestudy;
 
 import com.beakon.newheart.AppComponent;
 import com.beakon.newheart.activities.ActivityModule;
@@ -30,6 +30,6 @@ import dagger.Component;
 @ActivityScope
 @Component(modules = {ActivityModule.class},
             dependencies = {AppComponent.class})
-public interface AddNoteComponent {
-    AddNoteController getController();
+public interface BaseShareComponent {
+    BaseShareController getController();
 }

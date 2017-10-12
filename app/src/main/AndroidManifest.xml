@@ -231,7 +231,7 @@
         </provider>
 
         <activity
-            android:name="com.beakon.newheart.scripturestudy.NewMainActivity"
+            android:name="com.beakon.newheart.scripturestudy.list.ScriptureListActivity"
             android:label="@string/app_name"
             android:launchMode="standard"
             android:theme="@style/AppBaseTheme.NoActionBar" />
@@ -287,15 +287,15 @@
         <activity
             android:name="com.beakon.newheart.scripturestudy.scriptureview.ScriptureViewActivity"
             android:launchMode="singleTop"
-            android:parentActivityName="com.beakon.newheart.scripturestudy.NewMainActivity">
+            android:parentActivityName="com.beakon.newheart.scripturestudy.list.ScriptureListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.beakon.newheart.scripturestudy.NewMainActivity" />
+                android:value="com.beakon.newheart.scripturestudy.list.ScriptureListActivity" />
         </activity>
 
         <!-- Adds a note about a certain scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturestudy.scriptureview.AddNote.AddNoteActivity"
+            android:name="com.beakon.newheart.scripturestudy.scriptureview.AddNoteActivity"
             android:label="@string/title_activity_add_note"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 

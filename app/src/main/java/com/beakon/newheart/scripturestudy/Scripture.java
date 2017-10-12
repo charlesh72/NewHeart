@@ -25,6 +25,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 import com.beakon.newheart.R;
+import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
 import com.beakon.newheart.scripturestudy.widget.ScriptureAppWidget;
 
 import java.io.BufferedReader;
@@ -53,7 +54,7 @@ public class Scripture implements Parcelable {
         public Scripture createFromParcel(Parcel source) {
             String reference = source.readString();
             String body = source.readString();
-            NewMainActivity.Category cat = (NewMainActivity.Category) source.readSerializable();
+            ScriptureListActivity.Category cat = (ScriptureListActivity.Category) source.readSerializable();
             return new Scripture(reference, body, cat);
         }
 
@@ -74,9 +75,9 @@ public class Scripture implements Parcelable {
     public final String reference;
     public final String filename;
     public final String body;
-    private NewMainActivity.Category mCategory;
+    private ScriptureListActivity.Category mCategory;
 
-    public static LinkedList<Scripture> loadScriptures(@NonNull Context c, NewMainActivity.Category category) {
+    public static LinkedList<Scripture> loadScriptures(@NonNull Context c, ScriptureListActivity.Category category) {
         File dir = c.getDir(category.name(), Context.MODE_PRIVATE);
 
         File[] files = dir.listFiles();
@@ -114,7 +115,7 @@ public class Scripture implements Parcelable {
     }
 
     public Scripture(@NonNull String reference, @NonNull String body,
-                     @NonNull NewMainActivity.Category cat) {
+                     @NonNull ScriptureListActivity.Category cat) {
         this.reference = reference.trim(); // Remove excess whitespace
         // Convert reference to a proper filename by
         // (1) replacing colons with dots,
@@ -196,12 +197,12 @@ public class Scripture implements Parcelable {
         return filename;
     }
 
-    public NewMainActivity.Category getCategory() {
+    public ScriptureListActivity.Category getCategory() {
         return mCategory;
     }
 
 
-    public void changeCategory(Context c, NewMainActivity.Category category) {
+    public void changeCategory(Context c, ScriptureListActivity.Category category) {
         if (category != mCategory) {
             // Delete file from old category directory
             File dir = getDir(c, mCategory);
@@ -215,7 +216,7 @@ public class Scripture implements Parcelable {
     }
 
     public boolean isCompleted() {
-        return mCategory == NewMainActivity.Category.COMPLETED;
+        return mCategory == ScriptureListActivity.Category.COMPLETED;
     }
 
     /**
@@ -257,7 +258,7 @@ public class Scripture implements Parcelable {
         return scripFile.exists();
     }
 
-    public static File getDir(Context context, NewMainActivity.Category category) {
+    public static File getDir(Context context, ScriptureListActivity.Category category) {
         return context.getDir(category.name(), 0);
     }
 

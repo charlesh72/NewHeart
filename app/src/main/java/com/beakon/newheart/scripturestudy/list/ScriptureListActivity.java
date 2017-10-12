@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturestudy;
+package com.beakon.newheart.scripturestudy.list;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -31,15 +31,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.beakon.newheart.R;
+import com.beakon.newheart.activities.BaseActivity;
+import com.beakon.newheart.scripturestudy.AddScriptureInstructions;
+import com.beakon.newheart.scripturestudy.Scripture;
+import com.beakon.newheart.scripturestudy.ScriptureMasteryHelper;
 
 import java.io.File;
 
-public class NewMainActivity extends AppActivity {
+public class ScriptureListActivity extends BaseActivity {
 
     public enum Category {
         IN_PROGRESS,
         COMPLETED
     }
+
+    private final static String TAG = "SLISTACTIVITY";
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -75,9 +81,9 @@ public class NewMainActivity extends AppActivity {
         if (oldDir.exists()) {
             File[] oldFiles = oldDir.listFiles();
             for (File f : oldFiles) {
-                Log.d("NewMain", "old = " + f.getAbsolutePath());
+                Log.d(TAG, "old = " + f.getAbsolutePath());
                 File newPath = new File(ipDir, f.getName());
-                Log.d("NewMain", "new = " + newPath.getAbsolutePath());
+                Log.d(TAG, "new = " + newPath.getAbsolutePath());
                 f.renameTo(newPath);
             }
         }
@@ -101,7 +107,7 @@ public class NewMainActivity extends AppActivity {
 //            @Override
 //            public void onClick(View view) {
 //                // Launch activity with instructions for adding scriptures
-//                Intent i = new Intent(NewMainActivity.this.getApplicationContext(), AddScriptureInstructions.class);
+//                Intent i = new Intent(ScriptureListActivity.this.getApplicationContext(), AddScriptureInstructions.class);
 //                startActivity(i);
 //            }
 //        });
@@ -120,7 +126,7 @@ public class NewMainActivity extends AppActivity {
 //            s.setAction(R.string.popup_contribute, new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
-//                    startActivity(new Intent(NewMainActivity.this, AboutActivity.class));
+//                    startActivity(new Intent(ScriptureListActivity.this, AboutActivity.class));
 //                }
 //            });
 //            s.show();
@@ -152,7 +158,7 @@ public class NewMainActivity extends AppActivity {
             return true;
         } else if (id == R.id.actionAdd) {
             // Launch activity with instructions for adding scriptures
-            Intent i = new Intent(NewMainActivity.this.getApplicationContext(), AddScriptureInstructions.class);
+            Intent i = new Intent(ScriptureListActivity.this.getApplicationContext(), AddScriptureInstructions.class);
             i.putExtra(Intent.EXTRA_TITLE, "Entry");
             startActivity(i);
         }

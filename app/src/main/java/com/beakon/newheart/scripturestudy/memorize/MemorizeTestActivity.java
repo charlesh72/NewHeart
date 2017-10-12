@@ -34,7 +34,7 @@ import android.widget.TextView;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.scripturestudy.AppActivity;
-import com.beakon.newheart.scripturestudy.NewMainActivity;
+import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
 import com.beakon.newheart.scripturestudy.Scripture;
 import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
 
@@ -177,7 +177,7 @@ public class MemorizeTestActivity extends AppActivity implements View.OnClickLis
     private void showResults() {
         final int percentageCorrect = (100 * (mWords.length - mMissedWordCount)) / mWords.length;
         boolean offerToMarkComplete = percentageCorrect >= 90
-                && mScripture.getCategory() != NewMainActivity.Category.COMPLETED;
+                && mScripture.getCategory() != ScriptureListActivity.Category.COMPLETED;
 
         // Create a dialog with the results
         AlertDialog.Builder db = new AlertDialog.Builder(this);
@@ -197,7 +197,7 @@ public class MemorizeTestActivity extends AppActivity implements View.OnClickLis
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     mScripture.changeCategory(MemorizeTestActivity.this,
-                            NewMainActivity.Category.COMPLETED);
+                            ScriptureListActivity.Category.COMPLETED);
                 }
             });
             db.setNegativeButton(R.string.no, null);

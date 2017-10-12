@@ -29,10 +29,10 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturestudy.NewMainActivity;
+import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
 import com.beakon.newheart.scripturestudy.Scripture;
 import com.beakon.newheart.scripturestudy.memorize.MemorizeActivity;
-import com.beakon.newheart.scripturestudy.scriptureview.AddNote.AddNoteActivity;
+import com.beakon.newheart.scripturestudy.scriptureview.AddNoteActivity;
 import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
 import com.beakon.newheart.scripturestudy.scriptureview.ScriptureViewActivity;
 
@@ -137,8 +137,8 @@ public class ScriptureAppWidget extends AppWidgetProvider {
         String reference = prefs.getString(PREF_KEY_REFERENCE + appWidgetId, null);
         String scriptureText = prefs.getString(PREF_KEY_TEXT + appWidgetId, null);
         String categoryName = prefs.getString(PREF_KEY_CATEGORY + appWidgetId,
-                NewMainActivity.Category.IN_PROGRESS.name());
-        NewMainActivity.Category cat = NewMainActivity.Category.valueOf(categoryName);
+                ScriptureListActivity.Category.IN_PROGRESS.name());
+        ScriptureListActivity.Category cat = ScriptureListActivity.Category.valueOf(categoryName);
 
         boolean hasScripture = reference != null && scriptureText != null;
         if (!hasScripture) {
@@ -211,7 +211,7 @@ public class ScriptureAppWidget extends AppWidgetProvider {
     }
 
     // Called by ScriptureAppWidgetConfigureActivity to save widget info to a SharedPreferences
-    public static void saveWidgetPrefs(Context context, int appWidgetId, String reference, String text, NewMainActivity.Category cat) {
+    public static void saveWidgetPrefs(Context context, int appWidgetId, String reference, String text, ScriptureListActivity.Category cat) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREFS_NAME, 0).edit();
         prefs.putString(PREF_KEY_REFERENCE + appWidgetId, reference);
         prefs.putString(PREF_KEY_TEXT + appWidgetId, text);

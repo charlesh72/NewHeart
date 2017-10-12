@@ -15,38 +15,32 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturestudy.scriptureview.AddNote;
+package com.beakon.newheart.scripturestudy.attributes;
 
 import android.support.annotation.NonNull;
 
 import com.beakon.newheart.activities.ActivityScope;
-import com.beakon.newheart.models.Habit;
-import com.beakon.newheart.models.HabitList;
-import com.beakon.newheart.utils.DateUtils;
+import com.beakon.newheart.activities.BaseSystem;
 
 import javax.inject.Inject;
 
 /**
- * Created by Charles on 8/23/2017.
+ * Created by Charles on 8/7/2017.
  */
 
 @ActivityScope
-public class AddNoteController {
+public class AttributesController {
 
     @NonNull
-    private final HabitList habitList;
+    private final AttributesScreen screen;
+
+    @NonNull
+    private final BaseSystem system;
 
     @Inject
-    public AddNoteController(@NonNull HabitList habitList) {
-        this.habitList = habitList;
+    public AttributesController(@NonNull AttributesScreen screen,
+                                @NonNull BaseSystem system) {
+        this.screen = screen;
+        this.system = system;
     }
-
-    /**
-     * Toggles todays repetition for the insights shared default habit
-     */
-    public void toggleTodaysShareGoal() {
-        Habit habit = habitList.getById(Habit.ID_INSIGHTS_SHARED);
-        habit.getRepetitions().addTimestamp(DateUtils.getStartOfToday());
-    }
-
 }

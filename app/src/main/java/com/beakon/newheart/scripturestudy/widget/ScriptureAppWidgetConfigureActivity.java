@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.scripturestudy.AddScriptureInstructions;
-import com.beakon.newheart.scripturestudy.NewMainActivity;
+import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
 import com.beakon.newheart.scripturestudy.Scripture;
 
 import java.util.LinkedList;
@@ -58,7 +58,7 @@ public class ScriptureAppWidgetConfigureActivity extends Activity implements Ada
         ListView mListView = (ListView) findViewById(R.id.scripture_list_view);
 
         // Initialize ListView
-        mScriptureList = Scripture.loadScriptures(this, NewMainActivity.Category.IN_PROGRESS);
+        mScriptureList = Scripture.loadScriptures(this, ScriptureListActivity.Category.IN_PROGRESS);
         if (!mScriptureList.isEmpty()) {
             ListView lv = (ListView) findViewById(R.id.scripture_list_view);
             lv.setAdapter(new ArrayAdapter<Scripture>(this, R.layout.list_item, R.id.item_text, mScriptureList));
@@ -92,7 +92,7 @@ public class ScriptureAppWidgetConfigureActivity extends Activity implements Ada
 
         String reference = scripture.getReference();
         String text = scripture.getBody();
-        NewMainActivity.Category cat = scripture.getCategory();
+        ScriptureListActivity.Category cat = scripture.getCategory();
 
         // Save widget data to preferences file
         ScriptureAppWidget.saveWidgetPrefs(this, mAppWidgetId, reference, text, cat);

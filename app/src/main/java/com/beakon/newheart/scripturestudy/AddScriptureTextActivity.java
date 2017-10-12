@@ -17,9 +17,9 @@
 
 package com.beakon.newheart.scripturestudy;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -28,27 +28,39 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.beakon.newheart.R;
+import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
+import com.beakon.newheart.scripturestudy.scriptureview.Note;
 
+import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AddScriptureTextActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    private EditText titleTextView;
-    private EditText bodyTextView;
-    private EditText notesTextView;
+public class AddScriptureTextActivity extends BaseShareActivity {
+
+    @BindView(R.id.scripture_title)
+    EditText titleTextView;
+
+    @BindView(R.id.scripture_text)
+    EditText bodyTextView;
+
+    @BindView(R.id.scripture_note)
+    EditText notesTextView;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_text);
+
+        ButterKnife.bind(this);
+
         // Set up ActionBar with support API
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Get text fields
-        titleTextView = (EditText) findViewById(R.id.scripture_title);
-        bodyTextView = (EditText) findViewById(R.id.scripture_text);
-        notesTextView = (EditText) findViewById(R.id.scripture_note);
 
         // Get the text that was shared with us from the start intent
         Intent startIntent = getIntent();
@@ -142,6 +154,7 @@ public class AddScriptureTextActivity extends AppCompatActivity {
             // Construct a new Scripture object using the text provided by the user.
             String reference = titleTextView.getText().toString();
             String body = bodyTextView.getText().toString();
+            String note = notesTextView.getText().toString();
 
             // Make sure the user entered something in both fields.
             if (reference.isEmpty()) {
@@ -157,8 +170,19 @@ public class AddScriptureTextActivity extends AppCompatActivity {
                 return false;
             }
 
-            new Scripture(reference, body, NewMainActivity.Category.IN_PROGRESS)
-                    .writeToFile(this);
+            //Create new Scripture object and save to file
+            Scripture s = new Scripture(reference, body, ScriptureListActivity.Category.IN_PROGRESS);
+            s.writeToFile(this);
+
+            //Create new Note object, associate with scripture and save to file
+            long time = System.currentTimeMillis();
+            File notefile = new File(getDir(Scripture.NOTES_DIR, Context.MODE_PRIVATE),
+                    s.getFilename());
+            Note.writeNoteToFile(time, note, notefile);
+            //Attempt to share the note with ACC friend(s)
+            share(note, s.getReference());
+
+            //Report to user
             Toast.makeText(this, "Added " + reference, Toast.LENGTH_LONG).show();
             setResult(RESULT_OK);
             finish();

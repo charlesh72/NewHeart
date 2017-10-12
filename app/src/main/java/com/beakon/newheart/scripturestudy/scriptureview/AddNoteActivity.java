@@ -15,49 +15,35 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturestudy.scriptureview.AddNote;
+package com.beakon.newheart.scripturestudy.scriptureview;
 
-import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.Toolbar;
-import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.beakon.newheart.HabitsApplication;
 import com.beakon.newheart.R;
-import com.beakon.newheart.activities.BaseActivity;
-import com.beakon.newheart.scripturestudy.AccountabilityFriendsActivity;
+import com.beakon.newheart.scripturestudy.BaseShareActivity;
 import com.beakon.newheart.scripturestudy.Scripture;
-import com.beakon.newheart.scripturestudy.scriptureview.Note;
-import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
 
 import java.io.File;
-import java.util.ArrayList;
 
-import permissions.dispatcher.NeedsPermission;
-import permissions.dispatcher.RuntimePermissions;
 
-@RuntimePermissions
-public class AddNoteActivity extends BaseActivity {
+public class AddNoteActivity extends BaseShareActivity {
     public static final int RESULT_DELETED = 4;
 
     private TextView mNoteEntry;
     private Intent mLaunchIntent;
     private boolean mExistingNote = false;
     private boolean mEdited = false;
-    private AddNoteComponent component;
-    private AddNoteController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,14 +72,7 @@ public class AddNoteActivity extends BaseActivity {
             mEdited = true;
         }
 
-        HabitsApplication app = (HabitsApplication) getApplicationContext();
 
-        component = DaggerAddNoteComponent
-                .builder()
-                .appComponent(app.getComponent())
-                .build();
-
-        controller = component.getController();
     }
 
     private void promptToConfirmEditing() {
@@ -235,7 +214,7 @@ public class AddNoteActivity extends BaseActivity {
                 Note.writeNoteToFile(time, text, noteFile);
 
                 // Share the note entry
-                AddNoteActivityPermissionsDispatcher.shareEntryWithCheck(this, text, s.getReference());
+                share(text, s.getReference());
             } else {
                 // Otherwise, send the note via Intent back to the ScriptureViewActivity that
                 // launched this activity
@@ -244,7 +223,7 @@ public class AddNoteActivity extends BaseActivity {
 
                 // Get the scripture reference and share the entry
                 String ref = mLaunchIntent.getStringExtra(Scripture.EXTRA_SCRIPTURE_REFERENCE);
-                AddNoteActivityPermissionsDispatcher.shareEntryWithCheck(this, text, ref);
+                share(text, ref);
             }
 
             Toast.makeText(this, R.string.toast_note_saved, Toast.LENGTH_SHORT).show();
@@ -258,45 +237,5 @@ public class AddNoteActivity extends BaseActivity {
         }
     }
 
-    /**
-     * Takes the note content and the scripture reference and shares it
-     * with the current saved accountability friend.
-     * @param text The contents of the note
-     * @param ref The reference to the scripture
-     */
-    @NeedsPermission(Manifest.permission.SEND_SMS)
-    public void shareEntry(String text, String ref) {
-        // TODO: 8/12/2017 Doesn't send text when first asking for the permission.
-        // Add scripture reference to beginning of message
-        text = ref.concat(" " + text);
 
-        // Send the text
-        SmsManager smsManager = SmsManager.getDefault();
-
-        int length = text.length();
-
-        // TODO: 8/17/2017 Check the settings to make sure "share" is enabled
-        // Retrieve saved phone number.
-        SharedPreferences accPrefs = getSharedPreferences("AccountabilityFriends", Context.MODE_PRIVATE);
-        String phone = accPrefs.getString(AccountabilityFriendsActivity.PHONE_KEY, "");
-        // TODO: 8/23/2017 Use a better check for a valid phone number
-        if (phone.length() > 1) {
-            controller.toggleTodaysShareGoal();
-            // Check length of text, if greater than sms message limit then split it up.
-            if (length > 160) {
-                ArrayList<String> messagelist = smsManager.divideMessage(text);
-
-                smsManager.sendMultipartTextMessage(phone, null, messagelist, null, null);
-            } else {
-                smsManager.sendTextMessage(phone, null, text, null, null);
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        // NOTE: delegate the permission handling to generated method
-        AddNoteActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
-    }
 }

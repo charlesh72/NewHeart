@@ -25,6 +25,7 @@ import android.content.res.Resources;
 import android.util.Log;
 
 import com.beakon.newheart.R;
+import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -97,9 +98,9 @@ public class ScriptureMasteryHelper {
                 }
             }
         }
-        NewMainActivity.Category[] categories = NewMainActivity.Category.values();
+        ScriptureListActivity.Category[] categories = ScriptureListActivity.Category.values();
         final ArrayList<File> filesToDelete = new ArrayList<>();
-        for (NewMainActivity.Category category : categories) {
+        for (ScriptureListActivity.Category category : categories) {
             File dir = Scripture.getDir(context, category);
             if (!dir.exists()) continue;
             File[] files = dir.listFiles();
@@ -138,7 +139,7 @@ public class ScriptureMasteryHelper {
                 for (int j = 0; j < refs.length; j++) {
                     String ref = refs[j];
                     String text = texts[j];
-                    new Scripture(ref, text, NewMainActivity.Category.IN_PROGRESS)
+                    new Scripture(ref, text, ScriptureListActivity.Category.IN_PROGRESS)
                             .writeToFile(c);
                 }
             }

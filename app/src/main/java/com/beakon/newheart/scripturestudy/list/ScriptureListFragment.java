@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturestudy;
+package com.beakon.newheart.scripturestudy.list;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,8 +31,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.beakon.newheart.R;
+import com.beakon.newheart.scripturestudy.AddScriptureInstructions;
+import com.beakon.newheart.scripturestudy.ExportActivity;
+import com.beakon.newheart.scripturestudy.Scripture;
 import com.beakon.newheart.scripturestudy.memorize.MemorizeActivity;
-import com.beakon.newheart.scripturestudy.scriptureview.AddNote.AddNoteActivity;
+import com.beakon.newheart.scripturestudy.scriptureview.AddNoteActivity;
 import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
 import com.beakon.newheart.scripturestudy.scriptureview.ScriptureViewActivity;
 
@@ -49,14 +52,14 @@ public class ScriptureListFragment extends Fragment {
     private LinkedList<Scripture> mScriptureList;
     private View mContentView;
     private ListView mListView;
-    private NewMainActivity.Category mCategory;
+    private ScriptureListActivity.Category mCategory;
     private int mContextMenuPos = -1;
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static ScriptureListFragment newInstance(NewMainActivity.Category category) {
+    public static ScriptureListFragment newInstance(ScriptureListActivity.Category category) {
         ScriptureListFragment fragment = new ScriptureListFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_CATEGORY, category);
@@ -70,7 +73,7 @@ public class ScriptureListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCategory = (NewMainActivity.Category) getArguments().getSerializable(ARG_CATEGORY);
+        mCategory = (ScriptureListActivity.Category) getArguments().getSerializable(ARG_CATEGORY);
     }
 
     @Override
@@ -97,7 +100,7 @@ public class ScriptureListFragment extends Fragment {
                 }
             });
             registerForContextMenu(mListView);
-        } else if (mCategory == NewMainActivity.Category.IN_PROGRESS){
+        } else if (mCategory == ScriptureListActivity.Category.IN_PROGRESS){
             // Set up the "Tap to Add a Scripture" filler list entry.
             mListView.setAdapter(new ArrayAdapter<String>(
                     getContext(),
@@ -190,13 +193,13 @@ public class ScriptureListFragment extends Fragment {
             return true;
         } else if (i == R.id.action_mark_completed) {// Mark the scripture as completed/incompleted - i.e. toggle the category
             if (!s.isCompleted()) {
-                s.changeCategory(getContext(), NewMainActivity.Category.COMPLETED);
+                s.changeCategory(getContext(), ScriptureListActivity.Category.COMPLETED);
                 item.setTitle(R.string.menu_mark_in_progress);
             } else {
-                s.changeCategory(getContext(), NewMainActivity.Category.IN_PROGRESS);
+                s.changeCategory(getContext(), ScriptureListActivity.Category.IN_PROGRESS);
                 item.setTitle(R.string.menu_mark_complete);
             }
-            ((NewMainActivity) getActivity()).refreshScriptureLists();
+            ((ScriptureListActivity) getActivity()).refreshScriptureLists();
             return true;
         } else if (i == R.id.action_export) {
             startActivity(new ScriptureIntent(getContext(), ExportActivity.class, s));
