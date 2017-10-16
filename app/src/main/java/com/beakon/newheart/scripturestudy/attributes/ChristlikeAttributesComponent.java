@@ -17,30 +17,24 @@
 
 package com.beakon.newheart.scripturestudy.attributes;
 
-import android.support.annotation.NonNull;
-
+import com.beakon.newheart.AppComponent;
+import com.beakon.newheart.activities.ActivityModule;
 import com.beakon.newheart.activities.ActivityScope;
-import com.beakon.newheart.activities.BaseSystem;
 
-import javax.inject.Inject;
+import dagger.Component;
 
 /**
- * Created by Charles on 8/7/2017.
+ * Created by Charles on 8/4/2017.
  */
 
 @ActivityScope
-public class AttributesController {
+@Component(modules = {ActivityModule.class},
+            dependencies = {AppComponent.class })
+public interface ChristlikeAttributesComponent {
 
-    @NonNull
-    private final AttributesScreen screen;
+    ChristlikeAttributesRootView getRootView();
 
-    @NonNull
-    private final BaseSystem system;
+    ChristlikeAttributesScreen getScreen();
 
-    @Inject
-    public AttributesController(@NonNull AttributesScreen screen,
-                                @NonNull BaseSystem system) {
-        this.screen = screen;
-        this.system = system;
-    }
+    ChristlikeAttributesController getController();
 }

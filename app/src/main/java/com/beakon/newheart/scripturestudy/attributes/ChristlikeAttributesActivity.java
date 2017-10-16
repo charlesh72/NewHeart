@@ -28,8 +28,8 @@ import com.beakon.newheart.preferences.Preferences;
  * Created by Charles on 10/11/2017.
  */
 
-public class AttributesActivity extends BaseActivity {
-    private AttributesComponent component;
+public class ChristlikeAttributesActivity extends BaseActivity {
+    private ChristlikeAttributesComponent component;
 
     private Preferences prefs;
 
@@ -45,9 +45,9 @@ public class AttributesActivity extends BaseActivity {
                 .activityModule(new ActivityModule(this))
                 .build();
 
-        AttributesRootView rootView = component.getRootView();
-        AttributesScreen screen = component.getScreen();
-        AttributesController controller = component.getController();
+        ChristlikeAttributesRootView rootView = component.getRootView();
+        ChristlikeAttributesScreen screen = component.getScreen();
+        ChristlikeAttributesController controller = component.getController();
 
         setScreen(screen);
         screen.setController(controller);

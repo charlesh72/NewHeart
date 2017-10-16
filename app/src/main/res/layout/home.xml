@@ -44,6 +44,14 @@
         android:textAlignment="center" />
 
     <TextView
+        android:id="@+id/homeTVAttributesQuiz"
+        style="@style/Home.Item.Clickable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Attributes Quiz"
+        android:textAlignment="center" />
+
+    <TextView
         android:id="@+id/homeTVScriptureFriends"
         style="@style/Home.Item.Clickable"
         android:layout_width="match_parent"

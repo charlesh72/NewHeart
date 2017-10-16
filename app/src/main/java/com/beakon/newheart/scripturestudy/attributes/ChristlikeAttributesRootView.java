@@ -37,7 +37,7 @@ import butterknife.ButterKnife;
  */
 
 @ActivityScope
-public class AttributesRootView extends BaseRootView {
+public class ChristlikeAttributesRootView extends BaseRootView {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -45,12 +45,12 @@ public class AttributesRootView extends BaseRootView {
     private final IntentFactory intents;
 
     @Inject
-    public AttributesRootView(@NonNull @ActivityContext Context context,
-                              @NonNull IntentFactory intents) {
+    public ChristlikeAttributesRootView(@NonNull @ActivityContext Context context,
+                                        @NonNull IntentFactory intents) {
         super(context);
         this.intents = intents;
 
-        addView(inflate(getContext(), R.layout.attributes, null));
+        addView(inflate(getContext(), R.layout.christlike_attributes_layout, null));
         ButterKnife.bind(this);
 
         initToolbar();

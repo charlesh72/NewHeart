@@ -33,18 +33,18 @@ import javax.inject.Inject;
  */
 
 @ActivityScope
-public class AttributesScreen extends BaseScreen {
+public class ChristlikeAttributesScreen extends BaseScreen {
 
     @Nullable
-    AttributesController controller;
+    ChristlikeAttributesController controller;
 
     @NonNull
     private final IntentFactory intentFactory;
 
     @Inject
-    public AttributesScreen(@NonNull BaseActivity activity,
-                            @NonNull AttributesRootView view,
-                            @NonNull IntentFactory intentFactory)
+    public ChristlikeAttributesScreen(@NonNull BaseActivity activity,
+                                      @NonNull ChristlikeAttributesRootView view,
+                                      @NonNull IntentFactory intentFactory)
     {
         super(activity);
         setRootView(view);
@@ -57,7 +57,7 @@ public class AttributesScreen extends BaseScreen {
         activity.startActivity(intent);
     }
 
-    public void setController(@Nullable AttributesController controller) {
+    public void setController(@Nullable ChristlikeAttributesController controller) {
         this.controller = controller;
     }
 }

@@ -45,8 +45,14 @@ public class HomeRootView extends BaseRootView {
     @BindView(R.id.homeTVHabits)
     TextView habitTV;
 
+    @BindView(R.id.homeTVDailyScriptureStudy)
+    TextView scriptureStudyTV;
+
     @BindView(R.id.homeTVScriptureFriends)
-    TextView scriptureTV;
+    TextView scriptureFriendsTV;
+
+    @BindView(R.id.homeTVAttributesQuiz)
+    TextView attributesTV;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -74,6 +80,12 @@ public class HomeRootView extends BaseRootView {
     @OnClick(R.id.homeTVDailyScriptureStudy)
     public void onClickDailyScriptureStudy(){
         Intent intent = intents.startScriptureStudyActivity(getContext());
+        getContext().startActivity(intent);
+    }
+
+    @OnClick(R.id.homeTVAttributesQuiz)
+    public void onClickAttributesQuiz() {
+        Intent intent = intents.startAttributesQuizActivity(getContext());
         getContext().startActivity(intent);
     }
 

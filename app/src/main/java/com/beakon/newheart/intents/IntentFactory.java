@@ -31,6 +31,7 @@ import com.beakon.newheart.activities.intro.*;
 import com.beakon.newheart.activities.settings.*;
 import com.beakon.newheart.models.*;
 
+import com.beakon.newheart.scripturestudy.attributes.ChristlikeAttributesActivity;
 import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
 
 import javax.inject.*;
@@ -88,6 +89,11 @@ public class IntentFactory
 
     public Intent startScriptureStudyActivity(Context context) {
         Intent intent = new Intent(context, ScriptureListActivity.class);
+        return intent;
+    }
+
+    public Intent startAttributesQuizActivity(Context conext) {
+        Intent intent = new Intent(conext, ChristlikeAttributesActivity.class);
         return intent;
     }
 
