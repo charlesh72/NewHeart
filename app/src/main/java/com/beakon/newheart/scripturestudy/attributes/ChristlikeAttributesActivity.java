@@ -39,7 +39,7 @@ public class ChristlikeAttributesActivity extends BaseActivity {
 
         HabitsApplication app = (HabitsApplication) getApplicationContext();
 
-        component = DaggerAttributesComponent
+        component = DaggerChristlikeAttributesComponent
                 .builder()
                 .appComponent(app.getComponent())
                 .activityModule(new ActivityModule(this))
@@ -52,7 +52,9 @@ public class ChristlikeAttributesActivity extends BaseActivity {
         setScreen(screen);
         screen.setController(controller);
 
+        controller.initializeQuizQuestions(this);
+
         // TODO: 10/11/2017 Wrong preferences, merge both preferences into one with multiple categories soon
-        prefs = app.getComponent().getPreferences();
+        //prefs = app.getComponent().getPreferences();
     }
 }

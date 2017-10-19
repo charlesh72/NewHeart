@@ -61,7 +61,7 @@
         <item>23. I find joy in others’ achievements. (Alma 17:2–4)</item>
     </string-array>
 
-    <string-array name="cl_attr_Virtue">
+    <string-array name="cl_attr_virtue">
         <item>24. I am clean and pure in heart. (Psalm 24:3–4)</item>
         <item>25. I have no desire to do evil but to do good. (Mosiah 5:2)</item>
         <item>26. I am dependable—I do what I say I will do. (Alma 53:20)</item>
@@ -70,7 +70,7 @@
         <item>29. I feel the influence of the Holy Ghost in my life. (D&amp;C 11:12–13)</item>
     </string-array>
 
-    <string-array name="cl_attr_Knowledge">
+    <string-array name="cl_attr_knowledge">
         <item>30. I feel confident in my understanding of gospel doctrines and principles. (Ether 3:19–20)</item>
         <item>31. I study the scriptures daily. (John 5:39)</item>
         <item>32. I earnestly seek to understand the truth and find answers to my questions. (D&amp;C 6:7)</item>
@@ -78,7 +78,7 @@
         <item>34. I love and cherish the doctrines and principles of the gospel. (2 Nephi 4:15)</item>
     </string-array>
 
-    <string-array name="cl_attr_Patience">
+    <string-array name="cl_attr_patience">
         <item>35. I wait patiently for the blessings and promises of the Lord to be fulfilled. (2 Nephi 10:17)</item>
         <item>36. I am able to wait for things without getting upset or frustrated. (Romans 8:25)</item>
         <item>37. I am patient and long-suffering with the challenges I face. (Alma 17:11)</item>
@@ -87,7 +87,7 @@
         <item>40. I face adversity and afflictions calmly and hopefully. (Alma 34:40–41)</item>
     </string-array>
 
-    <string-array name="cl_attr_Humility">
+    <string-array name="cl_attr_humility">
         <item>41. I am meek and lowly in heart. (Matthew 11:29)</item>
         <item>42. I rely on the Lord for help. (Alma 26:12)</item>
         <item>43. I am sincerely grateful for the blessings I have received from the Lord. (Alma 7:23)</item>
@@ -96,7 +96,7 @@
         <item>46. I strive to be submissive to the Lord’s will, whatever it may be. (Mosiah 24:15)</item>
     </string-array>
 
-    <string-array name="cl_attr_Diligence">
+    <string-array name="cl_attr_diligence">
         <item>47. I work effectively, even when I’m not under pressure or close supervision. (D&amp;C 58:26–27)</item>
         <item>48. I focus my efforts on the most important things. (Matthew 23:23)</item>
         <item>49. I have a personal prayer at least twice a day. (Alma 34:18–27)</item>
@@ -105,7 +105,7 @@
         <item>52. I find joy and satisfaction in my work. (Alma 36:24–25)</item>
     </string-array>
 
-    <string-array name="cl_attr_Obedience">
+    <string-array name="cl_attr_obedience">
         <item>53. When I pray, I ask for strength to resist temptation and to do what is right. (3 Nephi 18:15)</item>
         <item>54. I keep the commandments and remember the covenants I have made. (D&amp;C 97:8)</item>
         <item>55. I willingly follow the counsel of my leaders and parents.</item>

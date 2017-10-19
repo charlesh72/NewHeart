@@ -17,10 +17,16 @@
 
 package com.beakon.newheart.scripturestudy.attributes;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
+import com.beakon.newheart.R;
 import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseSystem;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -30,6 +36,11 @@ import javax.inject.Inject;
 
 @ActivityScope
 public class ChristlikeAttributesController {
+
+    private static int ATTRIBUTES_ID = R.array.christlike_attributes;
+    private static int[] QUESTION_IDS = {R.array.cl_attr_faith, R.array.cl_attr_hope, R.array.cl_attr_charity_love, R.array.cl_attr_virtue, R.array.cl_attr_knowledge, R.array.cl_attr_patience, R.array.cl_attr_humility, R.array.cl_attr_diligence, R.array.cl_attr_obedience};
+    private static int NUM_ATTRIBUTES = QUESTION_IDS.length;
+    private static final int NUM_QUESTIONS = 56;
 
     @NonNull
     private final ChristlikeAttributesScreen screen;
@@ -42,5 +53,24 @@ public class ChristlikeAttributesController {
                                           @NonNull BaseSystem system) {
         this.screen = screen;
         this.system = system;
+    }
+
+    public void initializeQuizQuestions(Context context) {
+        Resources res = context.getResources();
+        String[] clAttributes = res.getStringArray(ATTRIBUTES_ID);
+
+        ArrayList<ChristlikeQuizQuestion> arrayOfQs = new ArrayList<>();
+        for (int i = 0; i < NUM_ATTRIBUTES; i++) {
+            String[] questions = res.getStringArray(QUESTION_IDS[i]);
+
+            for (int j = 0; j < questions.length; j++) {
+                int attrCategory = j;
+                String question = questions[j];
+                ChristlikeQuizQuestion quizQuestion =
+                        new ChristlikeQuizQuestion(question, attrCategory);
+                arrayOfQs.add(quizQuestion);
+                Log.i("QUESTION:", "size:" + arrayOfQs.size() + ", q:" + question);
+            }
+        }
     }
 }

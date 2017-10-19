@@ -366,6 +366,9 @@
 
         <activity android:name="com.beakon.newheart.scripturestudy.AccountabilityFriendsActivity"></activity>
 
+        <activity android:name="com.beakon.newheart.scripturestudy.attributes.ChristlikeAttributesActivity"></activity>
+
+
 
     </application>
 

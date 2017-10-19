@@ -20,6 +20,7 @@ package com.beakon.newheart.scripturestudy.attributes;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
+import android.widget.ListView;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.ActivityContext;
@@ -42,6 +43,9 @@ public class ChristlikeAttributesRootView extends BaseRootView {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @BindView(R.id.christlikeLVquestionList)
+    ListView listView;
+
     private final IntentFactory intents;
 
     @Inject
@@ -50,7 +54,7 @@ public class ChristlikeAttributesRootView extends BaseRootView {
         super(context);
         this.intents = intents;
 
-        addView(inflate(getContext(), R.layout.christlike_attributes_layout, null));
+        addView(inflate(getContext(), R.layout.christlike_attributes, null));
         ButterKnife.bind(this);
 
         initToolbar();
