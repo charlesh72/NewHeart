@@ -28,6 +28,8 @@ import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseRootView;
 import com.beakon.newheart.intents.IntentFactory;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -58,6 +60,14 @@ public class ChristlikeAttributesRootView extends BaseRootView {
         ButterKnife.bind(this);
 
         initToolbar();
+    }
+
+    public void initListView(ArrayList<ChristlikeQuizQuestion> list) {
+        //Create the adapter to convert our array to views
+        QuizQuestionAdapter adapter = new QuizQuestionAdapter(this.getContext(), list);
+
+        //Attach the custom adapter to the ListView
+        listView.setAdapter(adapter);
     }
 
 

@@ -112,7 +112,7 @@ public class MemorizeTestActivity extends AppActivity implements View.OnClickLis
             b.setOnClickListener(this);
         }
 
-        // Set up the next question
+        // Set up the next questionText
         nextQuestion();
     }
 

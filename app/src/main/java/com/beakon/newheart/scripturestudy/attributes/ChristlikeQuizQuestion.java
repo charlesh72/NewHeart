@@ -17,8 +17,6 @@
 
 package com.beakon.newheart.scripturestudy.attributes;
 
-import com.beakon.newheart.R;
-
 /**
  * Created by Charles on 10/18/2017.
  */
@@ -35,12 +33,16 @@ public class ChristlikeQuizQuestion {
     public static final int ATTR_DILIGENCE = 7;
     public static final int ATTR_OBEDIENCE = 8;
 
-    public String question;
+    public String questionText;
+
+    public int checkedRadioButtonId;
 
     public int attributeCategory;
 
     public ChristlikeQuizQuestion(String question, int attributeCategory) {
-        this.question = question;
+        this.questionText = question;
         this.attributeCategory = attributeCategory;
+        // Set 0 as default (nothing checked)
+        checkedRadioButtonId = 0;
     }
 }

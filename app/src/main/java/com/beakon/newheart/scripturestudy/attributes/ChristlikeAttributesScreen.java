@@ -60,4 +60,9 @@ public class ChristlikeAttributesScreen extends BaseScreen {
     public void setController(@Nullable ChristlikeAttributesController controller) {
         this.controller = controller;
     }
+
+    public void showHomeScreen() {
+        Intent intent = intentFactory.startHomeActivity(activity);
+        activity.startActivity(intent);
+    }
 }

@@ -20,6 +20,7 @@ package com.beakon.newheart.scripturestudy.attributes;
 import com.beakon.newheart.AppComponent;
 import com.beakon.newheart.activities.ActivityModule;
 import com.beakon.newheart.activities.ActivityScope;
+import com.beakon.newheart.activities.BaseMenu;
 
 import dagger.Component;
 
@@ -37,4 +38,6 @@ public interface ChristlikeAttributesComponent {
     ChristlikeAttributesScreen getScreen();
 
     ChristlikeAttributesController getController();
+
+    ChristlikeAttributesMenu getMenu();
 }

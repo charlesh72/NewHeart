@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:title="Done"
+        android:title="@string/done"
         android:id="@+id/action_done"
         app:showAsAction="always|withText"
         android:icon="@drawable/ic_done_white_24dp"/>

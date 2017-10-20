@@ -50,6 +50,7 @@ public class ChristlikeAttributesActivity extends BaseActivity {
         ChristlikeAttributesController controller = component.getController();
 
         setScreen(screen);
+        screen.setMenu(component.getMenu());
         screen.setController(controller);
 
         controller.initializeQuizQuestions(this);

@@ -39,7 +39,7 @@ public class ChristlikeAttributesController {
 
     private static int ATTRIBUTES_ID = R.array.christlike_attributes;
     private static int[] QUESTION_IDS = {R.array.cl_attr_faith, R.array.cl_attr_hope, R.array.cl_attr_charity_love, R.array.cl_attr_virtue, R.array.cl_attr_knowledge, R.array.cl_attr_patience, R.array.cl_attr_humility, R.array.cl_attr_diligence, R.array.cl_attr_obedience};
-    private static int NUM_ATTRIBUTES = QUESTION_IDS.length;
+    public static int NUM_ATTRIBUTES = QUESTION_IDS.length;
     private static final int NUM_QUESTIONS = 56;
 
     @NonNull
@@ -48,11 +48,16 @@ public class ChristlikeAttributesController {
     @NonNull
     private final BaseSystem system;
 
+    @NonNull
+    private final ChristlikeAttributesRootView rootView;
+
     @Inject
     public ChristlikeAttributesController(@NonNull ChristlikeAttributesScreen screen,
-                                          @NonNull BaseSystem system) {
+                                          @NonNull BaseSystem system,
+                                          @NonNull ChristlikeAttributesRootView rootView) {
         this.screen = screen;
         this.system = system;
+        this.rootView = rootView;
     }
 
     public void initializeQuizQuestions(Context context) {
@@ -69,8 +74,12 @@ public class ChristlikeAttributesController {
                 ChristlikeQuizQuestion quizQuestion =
                         new ChristlikeQuizQuestion(question, attrCategory);
                 arrayOfQs.add(quizQuestion);
-                Log.i("QUESTION:", "size:" + arrayOfQs.size() + ", q:" + question);
             }
         }
+        rootView.initListView(arrayOfQs);
+    }
+
+    public void finishQuiz() {
+
     }
 }
