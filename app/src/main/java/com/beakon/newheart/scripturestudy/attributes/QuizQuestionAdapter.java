@@ -17,7 +17,6 @@
 
 package com.beakon.newheart.scripturestudy.attributes;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +30,7 @@ import com.beakon.newheart.R;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by Charles on 10/19/2017.
@@ -89,8 +89,13 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
     }
 
     public boolean quizComplete() {
-        // TODO: 10/19/2017 Check if all radio groups are checked
-        return false;
+        boolean isComplete = true;
+        for (ChristlikeQuizQuestion q : questions) {
+            if (q.checkedRadioButtonId == 0) {
+                isComplete = false;
+            }
+        }
+        return isComplete;
     }
 
     public int[] results() {
@@ -99,6 +104,10 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
         }
         int[] result = {0};
         return result;
+    }
+
+    public ArrayList<ChristlikeQuizQuestion> getQuestions() {
+        return questions;
     }
 
     static class ViewHolder {

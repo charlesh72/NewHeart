@@ -18,15 +18,20 @@
 package com.beakon.newheart.scripturestudy.attributes;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
+import android.util.ArraySet;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseSystem;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -42,12 +47,13 @@ public class ChristlikeAttributesController {
     public static int NUM_ATTRIBUTES = QUESTION_IDS.length;
     private static final int NUM_QUESTIONS = 56;
 
+    private static final String RESULTS_KEY = "results";
+
     @NonNull
     private final ChristlikeAttributesScreen screen;
 
     @NonNull
     private final BaseSystem system;
-
     @NonNull
     private final ChristlikeAttributesRootView rootView;
 
@@ -69,7 +75,7 @@ public class ChristlikeAttributesController {
             String[] questions = res.getStringArray(QUESTION_IDS[i]);
 
             for (int j = 0; j < questions.length; j++) {
-                int attrCategory = j;
+                int attrCategory = i;
                 String question = questions[j];
                 ChristlikeQuizQuestion quizQuestion =
                         new ChristlikeQuizQuestion(question, attrCategory);
@@ -80,6 +86,47 @@ public class ChristlikeAttributesController {
     }
 
     public void finishQuiz() {
+        QuizQuestionAdapter adapter = rootView.getAdapter();
+        // Show a message is the quiz is not complete
+        if (!adapter.quizComplete()) {
+            Toast.makeText(rootView.getContext(), "Unable to use results unless you complete the enitre quiz.", Toast.LENGTH_SHORT).show();
+        }
 
+        // Load up preference file we are using to store the quiz data
+        SharedPreferences quizPrefs = rootView.getContext().getSharedPreferences("QuizData", Context.MODE_PRIVATE);
+
+
+        Set<String> resultsSet = questionToSetConversion(adapter.getQuestions());
+
+        // Preference editor is needed to edit the data in the preference file
+        SharedPreferences.Editor editor = quizPrefs.edit();
+        editor.putStringSet(RESULTS_KEY, resultsSet);
+
+        // Finally bring us back to the home screen
+        screen.showHomeScreen();
+    }
+
+    /**
+     * Converts the arraylist of questions into a string set to be stored in a preference file
+     * @param questions the arraylist to be converted
+     * @return the string set
+     * */
+    private Set<String> questionToSetConversion(ArrayList<ChristlikeQuizQuestion> questions) {
+        Set<String> set = new LinkedHashSet<>(56);
+        for (ChristlikeQuizQuestion q: questions) {
+            set.add(q.toString());
+            Log.i("CLATTRCONTROLLER", q.toString());
+        }
+        return null;
+    }
+
+    /**
+     * Converts the string set into an arraylist of questions to be stored in a preference file
+     * @param set the string set to be converted
+     * @return the arraylist of questions
+     */
+    private ArrayList<ChristlikeQuizQuestion> setToQuestionConversion(Set<String> set) {
+        // TODO: 10/24/2017 Convert the Set<String> to an ArrayList<ChristlikeQuizQuestion>
+        return null;
     }
 }

@@ -48,6 +48,8 @@ public class ChristlikeAttributesRootView extends BaseRootView {
     @BindView(R.id.christlikeLVquestionList)
     ListView listView;
 
+    private QuizQuestionAdapter adapter;
+
     private final IntentFactory intents;
 
     @Inject
@@ -64,12 +66,15 @@ public class ChristlikeAttributesRootView extends BaseRootView {
 
     public void initListView(ArrayList<ChristlikeQuizQuestion> list) {
         //Create the adapter to convert our array to views
-        QuizQuestionAdapter adapter = new QuizQuestionAdapter(this.getContext(), list);
+        adapter = new QuizQuestionAdapter(this.getContext(), list);
 
         //Attach the custom adapter to the ListView
         listView.setAdapter(adapter);
     }
 
+    public QuizQuestionAdapter getAdapter() {
+        return adapter;
+    }
 
     @NonNull
     @Override

@@ -18,11 +18,11 @@
   ~ with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 <resources>
-    <string name="helpURL">https://github.com/charlesh72/NewHeart/wiki/Help</string>
+    <string name="helpURL">https://github.com/seklum/NewHeart/wiki/Help</string>
     <string name="playStoreURL">market://details?id=com.beakon.newheart</string>
     <string name="feedbackURL" formatted="false">mailto:charles.h7272+newheartdev@gmail.com?subject=Feedback%20about%20New%20Heart</string>
     <string name="bugReportURL" formatted="false">mailto:charles.h7272+newheartdev@gmail.com?subject=Bug%20Report%20-%20New%20Heart</string>
-    <string name="sourceCodeURL">https://github.com/charlesh72/NewHeart</string>
+    <string name="sourceCodeURL">https://github.com/seklum/NewHeart</string>
     <string name="translateURL">n/a</string>
     <string name="bugReportTo">charles.h7272+newheartdev@gmail.com</string>
     <string name="bugReportSubject">Bug Report - New Heart</string>

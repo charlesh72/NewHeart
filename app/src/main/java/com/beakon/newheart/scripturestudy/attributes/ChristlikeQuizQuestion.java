@@ -39,10 +39,31 @@ public class ChristlikeQuizQuestion {
 
     public int attributeCategory;
 
+    public ChristlikeQuizQuestion() {
+        questionText = "";
+        attributeCategory = -1;
+        checkedRadioButtonId = 0;
+    }
+
     public ChristlikeQuizQuestion(String question, int attributeCategory) {
         this.questionText = question;
         this.attributeCategory = attributeCategory;
         // Set 0 as default (nothing checked)
         checkedRadioButtonId = 0;
+    }
+
+    public void copyFromString(String data) {
+        attributeCategory = Integer.parseInt(data.substring(0,1));
+        checkedRadioButtonId = Integer.parseInt(data.substring(2,3));
+        questionText = data.substring(4);
+    }
+
+    public void setCheckedRadioButtonId(int checkedRadioButtonId) {
+        this.checkedRadioButtonId = checkedRadioButtonId;
+    }
+
+    public String toString() {
+        // TODO: 10/24/2017 Fix checkedRadioButtonId to use a int representation to represent the score
+        return attributeCategory + " " + checkedRadioButtonId + " " + questionText;
     }
 }
