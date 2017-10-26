@@ -53,7 +53,7 @@ public class ChristlikeAttributesActivity extends BaseActivity {
         screen.setMenu(component.getMenu());
         screen.setController(controller);
 
-        controller.initializeQuizQuestions(this);
+        controller.loadQuizQuestions(this);
 
         // TODO: 10/11/2017 Wrong preferences, merge both preferences into one with multiple categories soon
         //prefs = app.getComponent().getPreferences();

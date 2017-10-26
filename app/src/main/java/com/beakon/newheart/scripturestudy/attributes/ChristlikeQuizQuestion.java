@@ -17,6 +17,8 @@
 
 package com.beakon.newheart.scripturestudy.attributes;
 
+import com.beakon.newheart.R;
+
 /**
  * Created by Charles on 10/18/2017.
  */
@@ -35,35 +37,91 @@ public class ChristlikeQuizQuestion {
 
     public String questionText;
 
-    public int checkedRadioButtonId;
+    public int checkedRadioButtonPos;
 
     public int attributeCategory;
 
     public ChristlikeQuizQuestion() {
         questionText = "";
         attributeCategory = -1;
-        checkedRadioButtonId = 0;
+        checkedRadioButtonPos = -1;
+    }
+
+    /**
+     * COPY constructor that uses string as input
+     * @param stringData
+     */
+    public ChristlikeQuizQuestion(String stringData) {
+        copyFromString(stringData);
     }
 
     public ChristlikeQuizQuestion(String question, int attributeCategory) {
         this.questionText = question;
         this.attributeCategory = attributeCategory;
-        // Set 0 as default (nothing checked)
-        checkedRadioButtonId = 0;
+        // Set -1 as default (nothing checked)
+        checkedRadioButtonPos = -1;
     }
 
     public void copyFromString(String data) {
         attributeCategory = Integer.parseInt(data.substring(0,1));
-        checkedRadioButtonId = Integer.parseInt(data.substring(2,3));
+        checkedRadioButtonPos = Integer.parseInt(data.substring(2,3));
         questionText = data.substring(4);
     }
 
-    public void setCheckedRadioButtonId(int checkedRadioButtonId) {
-        this.checkedRadioButtonId = checkedRadioButtonId;
+    public String toString() {
+        return attributeCategory + " " + checkedRadioButtonPos + " " + questionText;
     }
 
-    public String toString() {
-        // TODO: 10/24/2017 Fix checkedRadioButtonId to use a int representation to represent the score
-        return attributeCategory + " " + checkedRadioButtonId + " " + questionText;
+
+    /**
+     * Uses the radio button ids to find the score for the question
+     * @param checkedRadioButtonId
+     */
+    public void setCheckedRadioButtonPos(int checkedRadioButtonId) {
+        switch (checkedRadioButtonId) {
+            case R.id.quizRB1:
+                checkedRadioButtonPos = 1;
+                break;
+            case R.id.quizRB2:
+                checkedRadioButtonPos = 2;
+                break;
+            case R.id.quizRB3:
+                checkedRadioButtonPos = 3;
+                break;
+            case R.id.quizRB4:
+                checkedRadioButtonPos = 4;
+                break;
+            case R.id.quizRB5:
+                checkedRadioButtonPos = 5;
+                break;
+            default:
+                checkedRadioButtonPos = -1;
+        }
+    }
+
+    /**
+     * Finds the ID of the radio button corresponding to the store pos
+     * @return
+     */
+    public int getCheckedRadioButtonId() {
+        int checkedId = -1;
+        switch (checkedRadioButtonPos) {
+            case 1:
+                checkedId = R.id.quizRB1;
+                break;
+            case 2:
+                checkedId = R.id.quizRB2;
+                break;
+            case 3:
+                checkedId = R.id.quizRB3;
+                break;
+            case 4:
+                checkedId = R.id.quizRB4;
+                break;
+            case 5:
+                checkedId = R.id.quizRB5;
+                break;
+        }
+        return checkedId;
     }
 }

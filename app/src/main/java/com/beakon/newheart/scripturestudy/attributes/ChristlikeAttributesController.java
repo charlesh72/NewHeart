@@ -30,6 +30,7 @@ import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseSystem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -85,12 +86,30 @@ public class ChristlikeAttributesController {
         rootView.initListView(arrayOfQs);
     }
 
+    public void loadQuizQuestions(Context context) {
+        Resources res = context.getResources();
+        String[] clAttributes = res.getStringArray(ATTRIBUTES_ID);
+
+        // Load up preference file we are using to store the quiz data
+        SharedPreferences quizPrefs = rootView.getContext().getSharedPreferences("QuizData", Context.MODE_PRIVATE);
+        Set<String> set = quizPrefs.getStringSet(RESULTS_KEY, null);
+
+        if (set != null) {
+            ArrayList<ChristlikeQuizQuestion> arrayOfQs = setToQuestionConversion(set);
+            rootView.initListView(arrayOfQs);
+        } else {
+            initializeQuizQuestions(context);
+        }
+    }
+
     public void finishQuiz() {
         QuizQuestionAdapter adapter = rootView.getAdapter();
         // Show a message is the quiz is not complete
         if (!adapter.quizComplete()) {
             Toast.makeText(rootView.getContext(), "Unable to use results unless you complete the enitre quiz.", Toast.LENGTH_SHORT).show();
         }
+
+        Log.i("CLATTRCONTROLLER", "Results:" + Arrays.toString(adapter.results()));
 
         // Load up preference file we are using to store the quiz data
         SharedPreferences quizPrefs = rootView.getContext().getSharedPreferences("QuizData", Context.MODE_PRIVATE);
@@ -126,7 +145,10 @@ public class ChristlikeAttributesController {
      * @return the arraylist of questions
      */
     private ArrayList<ChristlikeQuizQuestion> setToQuestionConversion(Set<String> set) {
-        // TODO: 10/24/2017 Convert the Set<String> to an ArrayList<ChristlikeQuizQuestion>
-        return null;
+        ArrayList<ChristlikeQuizQuestion> questions = new ArrayList<>();
+        for (String s: set) {
+            questions.add(new ChristlikeQuizQuestion(s));
+        }
+        return questions;
     }
 }

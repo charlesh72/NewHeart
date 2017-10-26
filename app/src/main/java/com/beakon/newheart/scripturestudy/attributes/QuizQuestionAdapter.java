@@ -28,9 +28,7 @@ import android.widget.TextView;
 
 import com.beakon.newheart.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Set;
 
 /**
  * Created by Charles on 10/19/2017.
@@ -62,9 +60,10 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
 
                     // **get which item this RadioGroup refers to**
-                    Integer pos = (Integer) group.getTag();
+                    int pos = (Integer) group.getTag();
+
                     Log.d("onCheckedChanged", "pos = " + pos + ", checkedId = " + checkedId);
-                    questions.get(pos).checkedRadioButtonId = checkedId;
+                    questions.get(pos).setCheckedRadioButtonPos(checkedId);
 
                 }
             });
@@ -77,8 +76,8 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
 
         // setup both views from the values stored in your questions list
         holder.rowTextView.setText(questions.get(position).questionText);
-        if (questions.get(position).checkedRadioButtonId != 0) {
-            holder.rowRadioGroup.check(questions.get(position).checkedRadioButtonId);
+        if (questions.get(position).getCheckedRadioButtonId() != -1) {
+            holder.rowRadioGroup.check(questions.get(position).getCheckedRadioButtonId());
         } else {
             holder.rowRadioGroup.clearCheck();
         }
@@ -91,18 +90,25 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
     public boolean quizComplete() {
         boolean isComplete = true;
         for (ChristlikeQuizQuestion q : questions) {
-            if (q.checkedRadioButtonId == 0) {
+            if (q.checkedRadioButtonPos == 0) {
                 isComplete = false;
             }
         }
         return isComplete;
     }
 
+    /**
+     * Calculates and returns the results from the completed quiz
+     * @return an array with length 9 corresponding to the attributes
+     * in {@link ChristlikeQuizQuestion}
+     */
     public int[] results() {
+        int[] result = {0,0,0,0,0,0,0,0,0};
         if (quizComplete()){
-            // TODO: 10/19/2017 add up scores by Attribute
+            for (ChristlikeQuizQuestion q: questions) {
+                result[q.attributeCategory] += q.checkedRadioButtonPos;
+            }
         }
-        int[] result = {0};
         return result;
     }
 
