@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.ArraySet;
 import android.util.Log;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ import com.beakon.newheart.activities.BaseSystem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -48,6 +50,7 @@ public class ChristlikeAttributesController {
     public static int NUM_ATTRIBUTES = QUESTION_IDS.length;
     private static final int NUM_QUESTIONS = 56;
 
+    private static final String PREFS_KEY = "QuizData";
     private static final String RESULTS_KEY = "results";
 
     @NonNull
@@ -78,8 +81,10 @@ public class ChristlikeAttributesController {
             for (int j = 0; j < questions.length; j++) {
                 int attrCategory = i;
                 String question = questions[j];
+                int id = i + j + 1;
                 ChristlikeQuizQuestion quizQuestion =
-                        new ChristlikeQuizQuestion(question, attrCategory);
+                        new ChristlikeQuizQuestion(id, question, attrCategory);
+                quizQuestion.save();
                 arrayOfQs.add(quizQuestion);
             }
         }
@@ -87,68 +92,30 @@ public class ChristlikeAttributesController {
     }
 
     public void loadQuizQuestions(Context context) {
-        Resources res = context.getResources();
-        String[] clAttributes = res.getStringArray(ATTRIBUTES_ID);
-
-        // Load up preference file we are using to store the quiz data
-        SharedPreferences quizPrefs = rootView.getContext().getSharedPreferences("QuizData", Context.MODE_PRIVATE);
-        Set<String> set = quizPrefs.getStringSet(RESULTS_KEY, null);
-
-        if (set != null) {
-            ArrayList<ChristlikeQuizQuestion> arrayOfQs = setToQuestionConversion(set);
+        try {
+            List<ChristlikeQuizQuestion> arrayOfQs = ChristlikeQuizQuestion.getAll();
             rootView.initListView(arrayOfQs);
-        } else {
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            // If the getAll() fails due to NullPointerException,
+            // initialize the questions with no radio button selected
             initializeQuizQuestions(context);
         }
     }
 
     public void finishQuiz() {
         QuizQuestionAdapter adapter = rootView.getAdapter();
-        // Show a message is the quiz is not complete
+        // Show a message if the quiz is not complete
         if (!adapter.quizComplete()) {
             Toast.makeText(rootView.getContext(), "Unable to use results unless you complete the enitre quiz.", Toast.LENGTH_SHORT).show();
+        } else { //If it is complete save the question data and the results
+            adapter.saveAll();
+            // Finally bring us back to the home screen
+            screen.showHomeScreen();
         }
 
-        Log.i("CLATTRCONTROLLER", "Results:" + Arrays.toString(adapter.results()));
-
-        // Load up preference file we are using to store the quiz data
-        SharedPreferences quizPrefs = rootView.getContext().getSharedPreferences("QuizData", Context.MODE_PRIVATE);
+        Log.i("CLATTRCONTROLLER", "Results:" + Arrays.toString(ChristlikeQuizQuestion.results(adapter.questions)));
 
 
-        Set<String> resultsSet = questionToSetConversion(adapter.getQuestions());
-
-        // Preference editor is needed to edit the data in the preference file
-        SharedPreferences.Editor editor = quizPrefs.edit();
-        editor.putStringSet(RESULTS_KEY, resultsSet);
-
-        // Finally bring us back to the home screen
-        screen.showHomeScreen();
-    }
-
-    /**
-     * Converts the arraylist of questions into a string set to be stored in a preference file
-     * @param questions the arraylist to be converted
-     * @return the string set
-     * */
-    private Set<String> questionToSetConversion(ArrayList<ChristlikeQuizQuestion> questions) {
-        Set<String> set = new LinkedHashSet<>(56);
-        for (ChristlikeQuizQuestion q: questions) {
-            set.add(q.toString());
-            Log.i("CLATTRCONTROLLER", q.toString());
-        }
-        return null;
-    }
-
-    /**
-     * Converts the string set into an arraylist of questions to be stored in a preference file
-     * @param set the string set to be converted
-     * @return the arraylist of questions
-     */
-    private ArrayList<ChristlikeQuizQuestion> setToQuestionConversion(Set<String> set) {
-        ArrayList<ChristlikeQuizQuestion> questions = new ArrayList<>();
-        for (String s: set) {
-            questions.add(new ChristlikeQuizQuestion(s));
-        }
-        return questions;
     }
 }

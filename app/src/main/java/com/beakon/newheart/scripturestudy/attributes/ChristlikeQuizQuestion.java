@@ -17,13 +17,21 @@
 
 package com.beakon.newheart.scripturestudy.attributes;
 
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 import com.beakon.newheart.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Charles on 10/18/2017.
  */
 
-public class ChristlikeQuizQuestion {
+@Table(name = "ChristlikeQuizQuestions")
+public class ChristlikeQuizQuestion extends Model{
 
     public static final int ATTR_FAITH = 0;
     public static final int ATTR_HOPE = 1;
@@ -35,41 +43,25 @@ public class ChristlikeQuizQuestion {
     public static final int ATTR_DILIGENCE = 7;
     public static final int ATTR_OBEDIENCE = 8;
 
+    @Column(name = "q_id", unique = true, onUniqueConflict = Column.ConflictAction.REPLACE)
+    public int id;
+
+    @Column(name = "Question_Text")
     public String questionText;
 
+    @Column(name = "Checked_Radio_Button_Pos")
     public int checkedRadioButtonPos;
 
+    @Column(name = "Attribute_Category")
     public int attributeCategory;
 
-    public ChristlikeQuizQuestion() {
-        questionText = "";
-        attributeCategory = -1;
-        checkedRadioButtonPos = -1;
-    }
 
-    /**
-     * COPY constructor that uses string as input
-     * @param stringData
-     */
-    public ChristlikeQuizQuestion(String stringData) {
-        copyFromString(stringData);
-    }
-
-    public ChristlikeQuizQuestion(String question, int attributeCategory) {
+    public ChristlikeQuizQuestion(int id, String question, int attributeCategory) {
         this.questionText = question;
+        this.id = id;
         this.attributeCategory = attributeCategory;
-        // Set -1 as default (nothing checked)
-        checkedRadioButtonPos = -1;
-    }
-
-    public void copyFromString(String data) {
-        attributeCategory = Integer.parseInt(data.substring(0,1));
-        checkedRadioButtonPos = Integer.parseInt(data.substring(2,3));
-        questionText = data.substring(4);
-    }
-
-    public String toString() {
-        return attributeCategory + " " + checkedRadioButtonPos + " " + questionText;
+        // Set 0 as default (nothing checked)
+        checkedRadioButtonPos = 0;
     }
 
 
@@ -123,5 +115,26 @@ public class ChristlikeQuizQuestion {
                 break;
         }
         return checkedId;
+    }
+
+    /**
+     * Calculates and returns the results from the completed quiz
+     * @return an array with length 9 corresponding to the attributes
+     * in {@link ChristlikeQuizQuestion}
+     */
+    public static int[] results(List<ChristlikeQuizQuestion> questions) {
+        int[] result = {0,0,0,0,0,0,0,0,0};
+        for (ChristlikeQuizQuestion q: questions) {
+            result[q.attributeCategory] += q.checkedRadioButtonPos;
+        }
+        return result;
+    }
+
+    public static List<ChristlikeQuizQuestion> getAll() {
+        // This is how you execute a query
+        return new Select()
+                .from(ChristlikeQuizQuestion.class)
+                .orderBy("q_id ASC")
+                .execute();
     }
 }

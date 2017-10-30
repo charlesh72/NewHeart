@@ -43,6 +43,15 @@
         <meta-data
             android:name="com.google.android.backup.api_key"
             android:value="AEdPqrEAAAAI6aeWncbnMNo8E5GWeZ44dlc5cQ7tCROwFhOtiw" />
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="NewHeart.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+        <meta-data
+        android:name="AA_MODELS"
+        android:value="com.beakon.newheart.scripturestudy.attributes.ChristlikeQuizQuestion" />
 
         <activity
             android:name=".activities.habits.list.ListHabitsActivity"

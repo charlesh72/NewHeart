@@ -29,6 +29,7 @@ import com.beakon.newheart.activities.BaseRootView;
 import com.beakon.newheart.intents.IntentFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -64,7 +65,7 @@ public class ChristlikeAttributesRootView extends BaseRootView {
         initToolbar();
     }
 
-    public void initListView(ArrayList<ChristlikeQuizQuestion> list) {
+    public void initListView(List<ChristlikeQuizQuestion> list) {
         //Create the adapter to convert our array to views
         adapter = new QuizQuestionAdapter(this.getContext(), list);
 

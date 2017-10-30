@@ -29,6 +29,7 @@ import android.widget.TextView;
 import com.beakon.newheart.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Charles on 10/19/2017.
@@ -37,9 +38,9 @@ import java.util.ArrayList;
 public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
 
     int layoutResourceId;
-    ArrayList<ChristlikeQuizQuestion> questions;
+    List<ChristlikeQuizQuestion> questions;
 
-    public QuizQuestionAdapter(Context context, ArrayList<ChristlikeQuizQuestion> questions) {
+    public QuizQuestionAdapter(Context context, List<ChristlikeQuizQuestion> questions) {
         super(context, 0, questions);
         layoutResourceId = R.layout.christlike_quiz_question;
         this.questions = questions;
@@ -97,23 +98,14 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
         return isComplete;
     }
 
-    /**
-     * Calculates and returns the results from the completed quiz
-     * @return an array with length 9 corresponding to the attributes
-     * in {@link ChristlikeQuizQuestion}
-     */
-    public int[] results() {
-        int[] result = {0,0,0,0,0,0,0,0,0};
-        if (quizComplete()){
-            for (ChristlikeQuizQuestion q: questions) {
-                result[q.attributeCategory] += q.checkedRadioButtonPos;
-            }
-        }
-        return result;
+    public List<ChristlikeQuizQuestion> getQuestions() {
+        return questions;
     }
 
-    public ArrayList<ChristlikeQuizQuestion> getQuestions() {
-        return questions;
+    public void saveAll() {
+        for (ChristlikeQuizQuestion q : questions) {
+            q.save();
+        }
     }
 
     static class ViewHolder {
