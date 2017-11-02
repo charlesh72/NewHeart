@@ -82,6 +82,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.github.hotchemi:permissionsdispatcher:2.4.0'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
     apt 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
     testCompile 'junit:junit:4.12'
     testCompile 'org.hamcrest:hamcrest-library:1.3'

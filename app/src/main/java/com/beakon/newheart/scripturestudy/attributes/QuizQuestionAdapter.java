@@ -59,20 +59,18 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
             holder = new ViewHolder(row);
             row.setTag(holder);
             // Set a listener to update the data in your questions list when the RadioGroup is clicked
-            holder.rowRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                public void onCheckedChanged(RadioGroup group, int checkedId) {
+            holder.rowRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
 
-                    // **get which item this RadioGroup refers to**
-                    int pos = (Integer) group.getTag();
+                // **get which item this RadioGroup refers to**
+                int pos = (Integer) group.getTag();
 
-                    Log.d("onCheckedChanged", "pos = " + pos + ", checkedId = " + checkedId);
+                Log.d("onCheckedChanged", "pos = " + pos + ", checkedId = " + checkedId);
 
-                    // Saves the selection live as at happens
-                    Realm realm = Realm.getDefaultInstance();
-                    realm.beginTransaction();
-                    questions.get(pos).setCheckedRadioButtonPos(checkedId);
-                    realm.commitTransaction();
-                }
+                // Saves the selection live as at happens
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                questions.get(pos).setCheckedRadioButtonPos(checkedId);
+                realm.commitTransaction();
             });
         } else {
             holder = (ViewHolder) row.getTag();

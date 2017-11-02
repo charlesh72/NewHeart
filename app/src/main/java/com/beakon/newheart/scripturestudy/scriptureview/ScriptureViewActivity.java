@@ -31,14 +31,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturestudy.AppActivity;
+import com.beakon.newheart.scripturestudy.ScriptureStudyBaseActivity;
 import com.beakon.newheart.scripturestudy.ExportActivity;
 import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
 import com.beakon.newheart.scripturestudy.Scripture;
 import com.beakon.newheart.scripturestudy.memorize.MemorizeActivity;
 import com.beakon.newheart.scripturestudy.memorize.MemorizeTestActivity;
 
-public class ScriptureViewActivity extends AppActivity {
+public class ScriptureViewActivity extends ScriptureStudyBaseActivity {
     public static final int NUM_OF_TABS = 2;
     public static final int IDX_SCRIPTURE_TAB = 0;
     public static final int IDX_NOTES_TAB = 1;

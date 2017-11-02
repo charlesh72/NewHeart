@@ -31,14 +31,14 @@ import android.widget.TextView;
 
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturestudy.AppActivity;
+import com.beakon.newheart.scripturestudy.ScriptureStudyBaseActivity;
 import com.beakon.newheart.scripturestudy.Scripture;
 import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MemorizeActivity extends AppActivity {
+public class MemorizeActivity extends ScriptureStudyBaseActivity {
     private Scripture mScripture;
     private boolean mFirstLetterVisible;
     private String mText;

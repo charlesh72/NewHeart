@@ -35,10 +35,11 @@ import com.beakon.newheart.activities.BaseActivity;
 import com.beakon.newheart.scripturestudy.AddScriptureInstructions;
 import com.beakon.newheart.scripturestudy.Scripture;
 import com.beakon.newheart.scripturestudy.ScriptureMasteryHelper;
+import com.beakon.newheart.scripturestudy.ScriptureStudyBaseActivity;
 
 import java.io.File;
 
-public class ScriptureListActivity extends BaseActivity {
+public class ScriptureListActivity extends ScriptureStudyBaseActivity {
 
     public enum Category {
         IN_PROGRESS,
@@ -66,7 +67,6 @@ public class ScriptureListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // TODO: 8/4/2017 Set up dagger dependency injection for menus at least
 
         setContentView(R.layout.activity_new_main);
 
@@ -149,12 +149,7 @@ public class ScriptureListActivity extends BaseActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_insert_sm) {
-            ScriptureMasteryHelper.showDialog(this, new Runnable() {
-                @Override
-                public void run() {
-                    refreshScriptureLists();
-                }
-            });
+            ScriptureMasteryHelper.showDialog(this, () -> refreshScriptureLists());
             return true;
         } else if (id == R.id.actionAdd) {
             // Launch activity with instructions for adding scriptures

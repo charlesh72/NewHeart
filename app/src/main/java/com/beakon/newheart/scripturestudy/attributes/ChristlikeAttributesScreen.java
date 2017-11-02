@@ -64,5 +64,6 @@ public class ChristlikeAttributesScreen extends BaseScreen {
     public void showHomeScreen() {
         Intent intent = intentFactory.startHomeActivity(activity);
         activity.startActivity(intent);
+        activity.finish();
     }
 }

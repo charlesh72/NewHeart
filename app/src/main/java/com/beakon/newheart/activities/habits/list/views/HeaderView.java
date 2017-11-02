@@ -53,6 +53,7 @@ public class HeaderView extends ScrollableChart
     private int dailyScore;
 
     private final TextPaint paint;
+    private final TextPaint scorePaint;
 
     private RectF rect;
 
@@ -90,6 +91,10 @@ public class HeaderView extends ScrollableChart
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setTypeface(Typeface.DEFAULT_BOLD);
         paint.setColor(sr.getColor(R.attr.mediumContrastTextColor));
+
+        scorePaint = new TextPaint(paint);
+        scorePaint.setTextSize(getResources().getDimension(R.dimen.regularTextSize));
+        scorePaint.setColor(Color.BLACK);
 
         rect = new RectF();
 
@@ -162,7 +167,9 @@ public class HeaderView extends ScrollableChart
         boolean reverse = shouldReverseCheckmarks();
         boolean isRtl = InterfaceUtils.isLayoutRtl(this);
 
-        canvas.drawText("" + dailyScore, height/2, width/4, paint);
+        int xScorePos = canvas.getWidth() / 4;
+        int yScorePos = (int) ((canvas.getHeight() / 2) - (scorePaint.descent() + scorePaint.ascent()) / 2);
+        canvas.drawText("Score: " + dailyScore, xScorePos, yScorePos, scorePaint);
 
         day.add(GregorianCalendar.DAY_OF_MONTH, -getDataOffset());
         float em = paint.measureText("m");

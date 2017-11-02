@@ -33,7 +33,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.scripturestudy.AppActivity;
+import com.beakon.newheart.scripturestudy.ScriptureStudyBaseActivity;
 import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
 import com.beakon.newheart.scripturestudy.Scripture;
 import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
@@ -42,7 +42,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class MemorizeTestActivity extends AppActivity implements View.OnClickListener {
+public class MemorizeTestActivity extends ScriptureStudyBaseActivity implements View.OnClickListener {
 
     public static final String WORD_SPLIT_REGEX = "[\\d\\s]+";
     public static final int COLOR_CORRECT = 0xFF11BB44;

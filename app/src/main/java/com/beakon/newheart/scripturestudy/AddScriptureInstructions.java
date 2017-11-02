@@ -29,7 +29,7 @@ import android.widget.ImageView;
 
 import com.beakon.newheart.R;
 
-public class AddScriptureInstructions extends AppActivity {
+public class AddScriptureInstructions extends ScriptureStudyBaseActivity {
 
     public static final String GOSPEL_LIBRARY_PACKAGE_NAME = "org.lds.ldssa";
 

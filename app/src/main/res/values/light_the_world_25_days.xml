@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2017 Charles Hancock
+  ~
+  ~ NewHeart is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by the
+  ~ Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ NewHeart is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+  ~ more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License along
+  ~ with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string-array name="Title">
+        <item>Jesus Lifted Others’ Burdens and So Can You</item>
+        <item>Jesus Honored His Parents and So Can You</item>
+        <item>Jesus Helped Others to See and So Can You</item>
+        <item>Jesus Worshipped His Father and So Can You</item>
+        <item>Jesus Healed the Sick and So Can You</item>
+        <item>Jesus Read the Scriptures and So Can You</item>
+        <item>Jesus Fed the Hungry and So Can You</item>
+        <item>Jesus Prayed for Others and So Can You</item>
+        <item>Jesus Visited the Lonely and So Can You</item>
+        <item>Jesus Helped People to Walk and So Can You</item>
+        <item>Jesus Ministered To Children and So Can You</item>
+        <item>Jesus Taught Others and So Can You</item>
+        <item>Jesus Showed Humility and So Can You</item>
+        <item>Jesus Taught Us To Clothe the Naked and So Can You</item>
+        <item>Jesus Worshipped Through Song and So Can You</item>
+        <item>Jesus Showed Compassion And So Can You</item>
+        <item>Jesus Cared for His Mother and So Can You</item>
+        <item>Jesus Honored the Sabbath and So Can You</item>
+        <item>Jesus Calmed the Storm and So Can You</item>
+        <item>Jesus Saw Potential in Others and So Can You</item>
+        <item>Jesus Forgave Others and So Can You</item>
+        <item>Jesus Showed Gratitude and So Can You</item>
+        <item>Jesus was a Peacemaker And You Can Be One</item>
+        <item>Jesus Cared For His Loved Ones and So Can You</item>
+        <item>Jesus’s Disciples Followed Him and So Can We</item>
+    </string-array>
+    
+    <string-array name="acts_of_service">
+        <item></item>
+        <item></item>
+        <item></item>
+
+        <item>Call (not text) your parents.</item>
+        <item>Write a handwritten note to your parents or in-laws.</item>
+        <item>Learn about an ancestor and share their story. For help, try FamilySearch.org.</item>
+
+        <item>Find an eyeglasses collection box and donate an old pair. </item>
+        <item>Point out a virtue in someone they don’t see in themselves.</item>
+        <item>Promote a vision charity on social media. You could even use the eyeglasses emoji.</item>
+
+        <item>Attend a church service in your area—you’re always invited to one of ours.</item>
+        <item>Make a goal to offer a kneeling prayer to Heavenly Father every day in December.</item>
+        <item>Help clean up or maintain a church building. </item>
+
+        <item>Sign up to be an organ donor.</item>
+        <item>Give blood at your local blood bank.</item>
+        <item>Resolve to pray daily for your loved ones who are sick or suffering.</item>
+
+        <item>Set your alarm 15 minutes early for scripture study.</item>
+        <item>Post your favorite scripture on social media.</item>
+        <item>Text a scripture to someone who may need a boost.</item>
+
+        <item>Donate non-perishable items to a local food bank.</item>
+        <item>Invite a neighbor on a tight budget to dinner.</item>
+        <item>Learn about satisfying spiritual hunger (start with John 6:35).</item>
+
+        <item>Think about a friend that’s going through some rough challenges. Say a prayer for them.</item>
+        <item>Ask God how you can be an answer to someone else’s prayer.</item>
+        <item>When was the last time you prayed with your family? How about right now?</item>
+
+        <item>Visit a nursing home. Studies show 60% never get visitors during their stay. </item>
+        <item>Invite a widow or widower to dinner. </item>
+        <item>Identify someone that will be alone for Christmas. Invite them to attend a church service with you on Christmas Day. </item>
+
+        <item>Donate your old crutches, wheelchairs, or walkers to a group that refurbishes them. </item>
+        <item>Plan an activity for a handicapped friend that’s catered to his/her capabilities. </item>
+        <item>Offer to help an elderly person run errands.</item>
+
+        <item>Ask your children what they think you should pray about as a family. </item>
+        <item>As a Christmas gift, purchase a picture of Jesus Christ for your child’s room. Teach your child of the Savior’s love for them.</item>
+        <item>Make plans to take each of your children on a 1-on-1 activity.</item>
+
+        <item>Share your favorite teaching or story of Jesus on social media. </item>
+        <item>Pass down something you learned from your parents or grandparents.</item>
+        <item>Watch an online tutorial to learn a new skill that can benefit others.</item>
+
+        <item>Share an experience with loved ones about a time you had to rely on God’s help.</item>
+        <item>No matter your age, ask a parent how to deal with a current challenge in your life.</item>
+        <item>Think of a time you were wrong about someone. Share it with a loved one.</item>
+
+        <item>Collect winter clothing (old or new) for your local homeless shelter.</item>
+        <item>Learn about how we should love those in need from a wise king. (Mosiah 4:14–27)</item>
+        <item>Recently bought some new clothes? Donate some old ones to a charity or thrift store.</item>
+
+        <item>Invite a friend to attend a Christmas Day worship service to sing hymns and worship God.</item>
+        <item>Share your favorite performance of a Christmas hymn on social media. </item>
+        <item>Listen to Christmas hymns for an entire day.</item>
+
+        <item>Participate in a local sub-for-Santa for a family that could use some holiday cheer.</item>
+        <item>Try leaving only encouraging comments on social media. </item>
+        <item>Pray for an opportunity today to show someone compassion.</item>
+
+        <item>Call your mother right now. </item>
+        <item>Make a list of all the things your mother has done for you. Send it to her.</item>
+        <item>Identify a motherly figure in your life and take her flowers. </item>
+
+        <item>Turn off your phone for a few hours today. </item>
+        <item>Attend a religious service in your area.</item>
+        <item>Visit a family member.</item>
+
+        <item>Learn ways you can help people around the world through charitable giving.</item>
+        <item>Review emergency response plans for people living in your area.</item>
+        <item>Give your family or loved ones the gift of a 72-hour kit for emergencies.</item>
+
+        <item>Be a mentor/tutor to someone.</item>
+        <item>Take a child to work with you and let them do a small part of your job.</item>
+        <item>Cheer someone on! Attend an event (athletic, cultural, etc.) to support someone you know.</item>
+
+        <item>Is there a family member you haven’t talked to lately? Call them.</item>
+        <item>Make a list of your grudges. Then make plans to let them go.</item>
+        <item>Be kind instead of right for an entire day.</item>
+
+        <item>Give a simple gift to your mail carrier to raise spirits during their busiest season.</item>
+        <item>Offer a prayer of pure gratitude. No requests. Just thanks</item>
+        <item>Write a thank you letter to someone who has positively impacted your life.</item>
+
+        <item>Do you owe anyone an apology? Resolve to take action.</item>
+        <item>Make a donation to help refugees from war-torn regions.</item>
+        <item>Say nice things behind people’s backs today.</item>
+
+        <item>Plan a special Christmas Eve program with your family and friends.</item>
+        <item>Leave an anonymous gift for a family member.</item>
+        <item>Take a moment to enter all of your friends’ birthdays into your mobile device.</item>
+
+        <item>Turn some of the 25 Days ideas from this month into New Year’s resolutions.</item>
+        <item>Find a picture of Jesus Christ that inspires you and place it in your home where it can serve as a reminder.</item>
+        <item>Have some time off? Devote one day to selfless service for those you love.</item>
+    </string-array>
+</resources>

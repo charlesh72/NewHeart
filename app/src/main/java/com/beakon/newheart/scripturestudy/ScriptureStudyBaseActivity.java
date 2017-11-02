@@ -47,7 +47,7 @@ import com.beakon.newheart.scripturestudy.settings.ScriptureSettingsActivity;
  *
  * Created by Dan on 11/16/2015.
  */
-public abstract class AppActivity extends BaseActivity {
+public abstract class ScriptureStudyBaseActivity extends BaseActivity {
     private static final String KEY_VERSION = "APP_VERSION";
 
     @Override

@@ -111,17 +111,14 @@ public class AddNoteActivity extends BaseShareActivity {
     private void promptToConfirmResult(final int resultCode, @StringRes int promptId) {
         AlertDialog.Builder db = new AlertDialog.Builder(AddNoteActivity.this);
         DialogInterface.OnClickListener listener =
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case Dialog.BUTTON_POSITIVE:
-                                setResult(resultCode);
-                                finish(); // Finish without saving
-                                return;
-                            default:
-                                return;
-                        }
+                (dialog, which) -> {
+                    switch (which) {
+                        case Dialog.BUTTON_POSITIVE:
+                            setResult(resultCode);
+                            finish(); // Finish without saving
+                            return;
+                        default:
+                            return;
                     }
                 };
         db.setMessage(promptId);

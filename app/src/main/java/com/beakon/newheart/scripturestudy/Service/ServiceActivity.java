@@ -15,22 +15,22 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturestudy.attributes;
+package com.beakon.newheart.scripturestudy.Service;
 
 import android.os.Bundle;
 
 import com.beakon.newheart.HabitsApplication;
-import com.beakon.newheart.activities.ActivityModule;
 import com.beakon.newheart.activities.BaseActivity;
-import com.beakon.newheart.preferences.Preferences;
+import com.beakon.newheart.activities.BaseScreen;
 
 /**
  * Created by Charles on 10/11/2017.
  */
 
-public class ChristlikeAttributesActivity extends BaseActivity {
+public class ServiceActivity extends BaseActivity {
 
-    private ChristlikeAttributesComponent component;
+    private ServiceComponent component;
+    private ServiceController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,21 +38,14 @@ public class ChristlikeAttributesActivity extends BaseActivity {
 
         HabitsApplication app = (HabitsApplication) getApplicationContext();
 
-        component = DaggerChristlikeAttributesComponent
+        component = DaggerServiceComponent
                 .builder()
                 .appComponent(app.getComponent())
-                .activityModule(new ActivityModule(this))
                 .build();
 
-        ChristlikeAttributesRootView rootView = component.getRootView();
-        ChristlikeAttributesScreen screen = component.getScreen();
-        ChristlikeAttributesController controller = component.getController();
+        controller = component.getController();
 
-        setScreen(screen);
-        screen.setMenu(component.getMenu());
-        screen.setController(controller);
-
-        controller.loadQuizQuestions(this);
-
+        controller.loadActsOfService(this);
     }
+
 }
