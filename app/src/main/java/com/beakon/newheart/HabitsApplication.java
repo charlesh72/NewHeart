@@ -33,6 +33,8 @@ import com.beakon.newheart.widgets.*;
 
 import java.io.*;
 
+import io.realm.Realm;
+
 /**
  * The Android application for Loop Habit Tracker.
  */
@@ -98,6 +100,9 @@ public class HabitsApplication extends Application
             db.renameTo(new File(db.getAbsolutePath() + ".invalid"));
             DatabaseUtils.initializeActiveAndroid(context);
         }
+
+        // Initialize Realm
+        Realm.init(context);
 
         widgetUpdater = component.getWidgetUpdater();
         widgetUpdater.startListening();

@@ -31,6 +31,8 @@ import com.beakon.newheart.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
+
 /**
  * Created by Charles on 10/19/2017.
  */
@@ -64,8 +66,12 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
                     int pos = (Integer) group.getTag();
 
                     Log.d("onCheckedChanged", "pos = " + pos + ", checkedId = " + checkedId);
-                    questions.get(pos).setCheckedRadioButtonPos(checkedId);
 
+                    // Saves the selection live as at happens
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+                    questions.get(pos).setCheckedRadioButtonPos(checkedId);
+                    realm.commitTransaction();
                 }
             });
         } else {
@@ -76,7 +82,7 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
         holder.rowRadioGroup.setTag(position);
 
         // setup both views from the values stored in your questions list
-        holder.rowTextView.setText(questions.get(position).questionText);
+        holder.rowTextView.setText(questions.get(position).getQuestionText());
         if (questions.get(position).getCheckedRadioButtonId() != -1) {
             holder.rowRadioGroup.check(questions.get(position).getCheckedRadioButtonId());
         } else {
@@ -91,7 +97,7 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
     public boolean quizComplete() {
         boolean isComplete = true;
         for (ChristlikeQuizQuestion q : questions) {
-            if (q.checkedRadioButtonPos == 0) {
+            if (q.getCheckedRadioButtonPos() == -1) {
                 isComplete = false;
             }
         }
@@ -100,12 +106,6 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
 
     public List<ChristlikeQuizQuestion> getQuestions() {
         return questions;
-    }
-
-    public void saveAll() {
-        for (ChristlikeQuizQuestion q : questions) {
-            q.save();
-        }
     }
 
     static class ViewHolder {

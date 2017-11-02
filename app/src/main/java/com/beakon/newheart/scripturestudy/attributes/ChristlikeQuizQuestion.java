@@ -17,21 +17,18 @@
 
 package com.beakon.newheart.scripturestudy.attributes;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Select;
 import com.beakon.newheart.R;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Charles on 10/18/2017.
  */
 
-@Table(name = "ChristlikeQuizQuestions")
-public class ChristlikeQuizQuestion extends Model{
+public class ChristlikeQuizQuestion extends RealmObject{
 
     public static final int ATTR_FAITH = 0;
     public static final int ATTR_HOPE = 1;
@@ -43,18 +40,20 @@ public class ChristlikeQuizQuestion extends Model{
     public static final int ATTR_DILIGENCE = 7;
     public static final int ATTR_OBEDIENCE = 8;
 
-    @Column(name = "q_id", unique = true, onUniqueConflict = Column.ConflictAction.REPLACE)
+    @PrimaryKey
     public int id;
 
-    @Column(name = "Question_Text")
-    public String questionText;
+    private String questionText;
 
-    @Column(name = "Checked_Radio_Button_Pos")
-    public int checkedRadioButtonPos;
+    private int checkedRadioButtonPos;
 
-    @Column(name = "Attribute_Category")
-    public int attributeCategory;
+    private int attributeCategory;
 
+    public ChristlikeQuizQuestion() {
+        questionText = "empty";
+        checkedRadioButtonPos = -1;
+        attributeCategory = -1;
+    }
 
     public ChristlikeQuizQuestion(int id, String question, int attributeCategory) {
         this.questionText = question;
@@ -117,6 +116,10 @@ public class ChristlikeQuizQuestion extends Model{
         return checkedId;
     }
 
+    public int getCheckedRadioButtonPos() {
+        return checkedRadioButtonPos;
+    }
+
     /**
      * Calculates and returns the results from the completed quiz
      * @return an array with length 9 corresponding to the attributes
@@ -130,11 +133,7 @@ public class ChristlikeQuizQuestion extends Model{
         return result;
     }
 
-    public static List<ChristlikeQuizQuestion> getAll() {
-        // This is how you execute a query
-        return new Select()
-                .from(ChristlikeQuizQuestion.class)
-                .orderBy("q_id ASC")
-                .execute();
+    public String getQuestionText() {
+        return questionText;
     }
 }

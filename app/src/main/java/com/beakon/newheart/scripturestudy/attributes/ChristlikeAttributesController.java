@@ -38,6 +38,9 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
+
 /**
  * Created by Charles on 8/7/2017.
  */
@@ -61,6 +64,8 @@ public class ChristlikeAttributesController {
     @NonNull
     private final ChristlikeAttributesRootView rootView;
 
+    Realm realm;
+
     @Inject
     public ChristlikeAttributesController(@NonNull ChristlikeAttributesScreen screen,
                                           @NonNull BaseSystem system,
@@ -68,6 +73,7 @@ public class ChristlikeAttributesController {
         this.screen = screen;
         this.system = system;
         this.rootView = rootView;
+        realm = Realm.getDefaultInstance();
     }
 
     public void initializeQuizQuestions(Context context) {
@@ -81,25 +87,29 @@ public class ChristlikeAttributesController {
             for (int j = 0; j < questions.length; j++) {
                 int attrCategory = i;
                 String question = questions[j];
-                int id = i + j + 1;
+                int id = arrayOfQs.size();
                 ChristlikeQuizQuestion quizQuestion =
                         new ChristlikeQuizQuestion(id, question, attrCategory);
-                quizQuestion.save();
                 arrayOfQs.add(quizQuestion);
             }
         }
-        rootView.initListView(arrayOfQs);
+        realm.beginTransaction();
+        final List<ChristlikeQuizQuestion> managedArray = realm.copyToRealmOrUpdate(arrayOfQs);
+        realm.commitTransaction();
+        rootView.initListView(managedArray);
     }
 
     public void loadQuizQuestions(Context context) {
-        try {
-            List<ChristlikeQuizQuestion> arrayOfQs = ChristlikeQuizQuestion.getAll();
-            rootView.initListView(arrayOfQs);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-            // If the getAll() fails due to NullPointerException,
-            // initialize the questions with no radio button selected
+        RealmResults<ChristlikeQuizQuestion> questions = realm.where(ChristlikeQuizQuestion.class).findAll();
+        if (questions.size() != NUM_QUESTIONS) {
             initializeQuizQuestions(context);
+        } else {
+            List<ChristlikeQuizQuestion> arrayOfQs = new ArrayList<>(NUM_QUESTIONS);
+            questions = questions.sort("id");
+            for (int i = 0; i < NUM_QUESTIONS; i++) {
+                arrayOfQs.add(questions.get(i));
+            }
+            rootView.initListView(arrayOfQs);
         }
     }
 
@@ -108,8 +118,7 @@ public class ChristlikeAttributesController {
         // Show a message if the quiz is not complete
         if (!adapter.quizComplete()) {
             Toast.makeText(rootView.getContext(), "Unable to use results unless you complete the enitre quiz.", Toast.LENGTH_SHORT).show();
-        } else { //If it is complete save the question data and the results
-            adapter.saveAll();
+        } else {
             // Finally bring us back to the home screen
             screen.showHomeScreen();
         }
