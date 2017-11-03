@@ -32,6 +32,7 @@ import com.beakon.newheart.activities.intro.*;
 import com.beakon.newheart.activities.settings.*;
 import com.beakon.newheart.models.*;
 
+import com.beakon.newheart.activities.service.ServiceActivity;
 import com.beakon.newheart.scripturestudy.attributes.ChristlikeAttributesActivity;
 import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
 
@@ -98,8 +99,13 @@ public class IntentFactory
         return intent;
     }
 
-    public Intent startAttributesQuizActivity(Context conext) {
-        Intent intent = new Intent(conext, ChristlikeAttributesActivity.class);
+    public Intent startAttributesQuizActivity(Context context) {
+        Intent intent = new Intent(context, ChristlikeAttributesActivity.class);
+        return intent;
+    }
+
+    public Intent startServiceActivity(Context context) {
+        Intent intent = new Intent(context, ServiceActivity.class);
         return intent;
     }
 

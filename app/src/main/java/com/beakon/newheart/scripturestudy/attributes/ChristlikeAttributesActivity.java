@@ -52,7 +52,7 @@ public class ChristlikeAttributesActivity extends BaseActivity {
         screen.setMenu(component.getMenu());
         screen.setController(controller);
 
-        controller.loadQuizQuestions(this);
+        controller.loadQuizQuestions();
 
     }
 }

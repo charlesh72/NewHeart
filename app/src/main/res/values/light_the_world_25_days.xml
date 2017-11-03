@@ -17,7 +17,7 @@
   -->
 
 <resources>
-    <string-array name="Title">
+    <string-array name="light_the_world_titles">
         <item>Jesus Lifted Others’ Burdens and So Can You</item>
         <item>Jesus Honored His Parents and So Can You</item>
         <item>Jesus Helped Others to See and So Can You</item>
@@ -45,22 +45,22 @@
         <item>Jesus’s Disciples Followed Him and So Can We</item>
     </string-array>
     
-    <string-array name="acts_of_service">
-        <item></item>
-        <item></item>
-        <item></item>
+    <string-array name="light_the_world_acts">
+        <item>Worldwide</item>
+        <item>day of</item>
+        <item>service</item>
 
         <item>Call (not text) your parents.</item>
         <item>Write a handwritten note to your parents or in-laws.</item>
         <item>Learn about an ancestor and share their story. For help, try FamilySearch.org.</item>
 
-        <item>Find an eyeglasses collection box and donate an old pair. </item>
+        <item>Find an eyeglasses collection box and donate an old pair.</item>
         <item>Point out a virtue in someone they don’t see in themselves.</item>
         <item>Promote a vision charity on social media. You could even use the eyeglasses emoji.</item>
 
         <item>Attend a church service in your area—you’re always invited to one of ours.</item>
         <item>Make a goal to offer a kneeling prayer to Heavenly Father every day in December.</item>
-        <item>Help clean up or maintain a church building. </item>
+        <item>Help clean up or maintain a church building.</item>
 
         <item>Sign up to be an organ donor.</item>
         <item>Give blood at your local blood bank.</item>
@@ -78,19 +78,19 @@
         <item>Ask God how you can be an answer to someone else’s prayer.</item>
         <item>When was the last time you prayed with your family? How about right now?</item>
 
-        <item>Visit a nursing home. Studies show 60% never get visitors during their stay. </item>
-        <item>Invite a widow or widower to dinner. </item>
-        <item>Identify someone that will be alone for Christmas. Invite them to attend a church service with you on Christmas Day. </item>
+        <item>Visit a nursing home. Studies show 60% never get visitors during their stay.</item>
+        <item>Invite a widow or widower to dinner.</item>
+        <item>Identify someone that will be alone for Christmas. Invite them to attend a church service with you on Christmas Day.</item>
 
-        <item>Donate your old crutches, wheelchairs, or walkers to a group that refurbishes them. </item>
-        <item>Plan an activity for a handicapped friend that’s catered to his/her capabilities. </item>
+        <item>Donate your old crutches, wheelchairs, or walkers to a group that refurbishes them.</item>
+        <item>Plan an activity for a handicapped friend that’s catered to his/her capabilities.</item>
         <item>Offer to help an elderly person run errands.</item>
 
-        <item>Ask your children what they think you should pray about as a family. </item>
+        <item>Ask your children what they think you should pray about as a family.</item>
         <item>As a Christmas gift, purchase a picture of Jesus Christ for your child’s room. Teach your child of the Savior’s love for them.</item>
         <item>Make plans to take each of your children on a 1-on-1 activity.</item>
 
-        <item>Share your favorite teaching or story of Jesus on social media. </item>
+        <item>Share your favorite teaching or story of Jesus on social media.</item>
         <item>Pass down something you learned from your parents or grandparents.</item>
         <item>Watch an online tutorial to learn a new skill that can benefit others.</item>
 
@@ -103,18 +103,18 @@
         <item>Recently bought some new clothes? Donate some old ones to a charity or thrift store.</item>
 
         <item>Invite a friend to attend a Christmas Day worship service to sing hymns and worship God.</item>
-        <item>Share your favorite performance of a Christmas hymn on social media. </item>
+        <item>Share your favorite performance of a Christmas hymn on social media.</item>
         <item>Listen to Christmas hymns for an entire day.</item>
 
         <item>Participate in a local sub-for-Santa for a family that could use some holiday cheer.</item>
-        <item>Try leaving only encouraging comments on social media. </item>
+        <item>Try leaving only encouraging comments on social media.</item>
         <item>Pray for an opportunity today to show someone compassion.</item>
 
-        <item>Call your mother right now. </item>
+        <item>Call your mother right now.</item>
         <item>Make a list of all the things your mother has done for you. Send it to her.</item>
-        <item>Identify a motherly figure in your life and take her flowers. </item>
+        <item>Identify a motherly figure in your life and take her flowers.</item>
 
-        <item>Turn off your phone for a few hours today. </item>
+        <item>Turn off your phone for a few hours today.</item>
         <item>Attend a religious service in your area.</item>
         <item>Visit a family member.</item>
 
@@ -131,7 +131,7 @@
         <item>Be kind instead of right for an entire day.</item>
 
         <item>Give a simple gift to your mail carrier to raise spirits during their busiest season.</item>
-        <item>Offer a prayer of pure gratitude. No requests. Just thanks</item>
+        <item>Offer a prayer of pure gratitude. No requests. Just thanks.</item>
         <item>Write a thank you letter to someone who has positively impacted your life.</item>
 
         <item>Do you owe anyone an apology? Resolve to take action.</item>

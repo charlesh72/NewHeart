@@ -26,6 +26,7 @@ import android.util.ArraySet;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.beakon.newheart.HabitsApplication;
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseSystem;
@@ -76,8 +77,8 @@ public class ChristlikeAttributesController {
         realm = Realm.getDefaultInstance();
     }
 
-    public void initializeQuizQuestions(Context context) {
-        Resources res = context.getResources();
+    public void initializeQuizQuestions() {
+        Resources res = HabitsApplication.context.getResources();
         String[] clAttributes = res.getStringArray(ATTRIBUTES_ID);
 
         ArrayList<ChristlikeQuizQuestion> arrayOfQs = new ArrayList<>();
@@ -99,10 +100,10 @@ public class ChristlikeAttributesController {
         rootView.initListView(managedArray);
     }
 
-    public void loadQuizQuestions(Context context) {
+    public void loadQuizQuestions() {
         RealmResults<ChristlikeQuizQuestion> questions = realm.where(ChristlikeQuizQuestion.class).findAll();
         if (questions.size() != NUM_QUESTIONS) {
-            initializeQuizQuestions(context);
+            initializeQuizQuestions();
         } else {
             List<ChristlikeQuizQuestion> arrayOfQs = new ArrayList<>(NUM_QUESTIONS);
             questions = questions.sort("id");

@@ -15,7 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturestudy.Service;
+package com.beakon.newheart.activities.service;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -26,6 +26,8 @@ import com.beakon.newheart.models.HabitList;
 import com.beakon.newheart.utils.DateUtils;
 
 import javax.inject.Inject;
+
+import io.realm.RealmResults;
 
 /**
  * Created by Charles on 8/23/2017.
@@ -56,6 +58,12 @@ public class ServiceController {
     }
 
     public void loadActsOfService(Context context) {
+        RealmResults<ActOfServiceDay> data = ActOfServiceDay.getActsList();
 
+        if (data.size() != 25) {
+            ActOfServiceDay.createActsList();
+            data = ActOfServiceDay.getActsList();
+        }
+        rootView.initRecyclerView(data);
     }
 }

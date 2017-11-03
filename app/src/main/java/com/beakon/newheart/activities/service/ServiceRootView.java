@@ -15,10 +15,12 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturestudy.Service;
+package com.beakon.newheart.activities.service;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.beakon.newheart.R;
@@ -29,6 +31,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.RealmResults;
 
 /**
  * Created by Charles on 11/1/2017.
@@ -39,6 +42,9 @@ class ServiceRootView extends BaseRootView{
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @BindView(R.id.serviceRVActs)
+    RecyclerView rvActsOfService;
+
     @Inject
     public ServiceRootView(@NonNull @ActivityContext Context context) {
         super(context);
@@ -47,6 +53,17 @@ class ServiceRootView extends BaseRootView{
         ButterKnife.bind(this);
 
         initToolbar();
+    }
+
+    public void initRecyclerView(RealmResults<ActOfServiceDay> list) {
+        // Initialize our adapter
+        ActOfServiceAdapter adapter = new ActOfServiceAdapter(this.getContext(), list);
+        // Attach the adapter to the recycler view
+        rvActsOfService.setAdapter(adapter);
+        // Set layout manager to position the items
+        LinearLayoutManager llm = new LinearLayoutManager(this.getContext());
+        rvActsOfService.setLayoutManager(llm);
+        rvActsOfService.getAdapter();
     }
 
     @NonNull

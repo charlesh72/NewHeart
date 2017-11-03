@@ -15,13 +15,13 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturestudy.Service;
+package com.beakon.newheart.activities.service;
 
 import android.os.Bundle;
 
 import com.beakon.newheart.HabitsApplication;
+import com.beakon.newheart.activities.ActivityModule;
 import com.beakon.newheart.activities.BaseActivity;
-import com.beakon.newheart.activities.BaseScreen;
 
 /**
  * Created by Charles on 10/11/2017.
@@ -41,9 +41,14 @@ public class ServiceActivity extends BaseActivity {
         component = DaggerServiceComponent
                 .builder()
                 .appComponent(app.getComponent())
+                .activityModule(new ActivityModule(this))
                 .build();
 
         controller = component.getController();
+        ServiceScreen screen = component.getScreen();
+
+        setScreen(screen);
+        screen.setController(controller);
 
         controller.loadActsOfService(this);
     }

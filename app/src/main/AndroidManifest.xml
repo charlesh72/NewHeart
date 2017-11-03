@@ -364,10 +364,11 @@
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name="com.beakon.newheart.scripturestudy.AccountabilityFriendsActivity"></activity>
+        <activity android:name="com.beakon.newheart.scripturestudy.AccountabilityFriendsActivity"/>
 
-        <activity android:name="com.beakon.newheart.scripturestudy.attributes.ChristlikeAttributesActivity"></activity>
+        <activity android:name="com.beakon.newheart.scripturestudy.attributes.ChristlikeAttributesActivity"/>
 
+        <activity android:name=".activities.service.ServiceActivity"/>
 
 
     </application>

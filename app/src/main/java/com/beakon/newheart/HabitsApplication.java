@@ -34,13 +34,14 @@ import com.beakon.newheart.widgets.*;
 import java.io.*;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 /**
  * The Android application for Loop Habit Tracker.
  */
 public class HabitsApplication extends Application
 {
-    private Context context;
+    public static Context context;
 
     private static AppComponent component;
 
@@ -101,8 +102,7 @@ public class HabitsApplication extends Application
             DatabaseUtils.initializeActiveAndroid(context);
         }
 
-        // Initialize Realm
-        Realm.init(context);
+        initializeRealm();
 
         widgetUpdater = component.getWidgetUpdater();
         widgetUpdater.startListening();
@@ -122,6 +122,17 @@ public class HabitsApplication extends Application
             reminderScheduler.scheduleAll();
             widgetUpdater.updateWidgets();
         });
+    }
+
+    private void initializeRealm() {
+        // Initialize Realm
+        Realm.init(context);
+
+        RealmConfiguration config = new RealmConfiguration.Builder()
+                .deleteRealmIfMigrationNeeded()
+                .build();
+
+        Realm.setDefaultConfiguration(config);
     }
 
     @Override

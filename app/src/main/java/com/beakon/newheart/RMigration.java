@@ -15,22 +15,18 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturestudy.Service;
+package com.beakon.newheart;
 
-import com.beakon.newheart.AppComponent;
-import com.beakon.newheart.activities.ActivityModule;
-import com.beakon.newheart.activities.ActivityScope;
-
-import dagger.Component;
+import io.realm.DynamicRealm;
+import io.realm.RealmMigration;
 
 /**
- * Created by Charles on 8/23/2017.
+ * Created by Charles on 11/2/2017.
  */
 
-@ActivityScope
-@Component(modules = {ActivityModule.class},
-            dependencies = {AppComponent.class})
-public interface ServiceComponent {
-    ServiceController getController();
-    ServiceRootView getRootView();
+public class RMigration implements RealmMigration {
+    @Override
+    public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
+        // TODO: 11/2/2017 Set up migrations when needed
+    }
 }

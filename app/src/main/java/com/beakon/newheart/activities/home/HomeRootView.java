@@ -29,6 +29,8 @@ import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseRootView;
 import com.beakon.newheart.intents.IntentFactory;
 
+import org.w3c.dom.Text;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -53,6 +55,9 @@ public class HomeRootView extends BaseRootView {
 
     @BindView(R.id.homeTVAttributesQuiz)
     TextView attributesTV;
+
+    @BindView(R.id.homeTVService)
+    TextView serviceTV;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -86,6 +91,12 @@ public class HomeRootView extends BaseRootView {
     @OnClick(R.id.homeTVAttributesQuiz)
     public void onClickAttributesQuiz() {
         Intent intent = intents.startAttributesQuizActivity(getContext());
+        getContext().startActivity(intent);
+    }
+
+    @OnClick(R.id.homeTVService)
+    public void onClickActsOfService() {
+        Intent intent = intents.startServiceActivity(getContext());
         getContext().startActivity(intent);
     }
 

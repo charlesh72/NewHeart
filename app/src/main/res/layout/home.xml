@@ -60,4 +60,12 @@
         android:textAlignment="center"
         android:visibility="gone" />
 
+    <TextView
+        android:id="@+id/homeTVService"
+        style="@style/Home.Item.Clickable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/acts_of_service"
+        android:textAlignment="center" />
+
 </LinearLayout>
