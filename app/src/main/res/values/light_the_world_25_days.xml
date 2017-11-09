@@ -147,5 +147,162 @@
         <item>Have some time off? Devote one day to selfless service for those you love.</item>
     </string-array>
 
+    <string-array name="light_the_world_ref_2017">
+        <item>MATHEW 10:8</item>
+        <item>MATHEW 25:35</item>
+        <item>MATHEW 12:12</item>
+        <item>MATHEW 22:39</item>
+        <item>MATHEW 15:4</item>
+        <item>MATHEW 7:1</item>
+        <item>MARK 10:14</item>
+        <item>MATHEW 5:44</item>
+        <item>MATHEW 25:36</item>
+        <item>JOHN 5:39</item>
+        <item>MATHEW 25:35</item>
+        <item>MATHEW 5:4</item>
+        <item>MATHEW 7:12</item>
+        <item>MATHEW 6:21</item>
+        <item>MATHEW 5:7</item>
+        <item>MATHEW 25:36</item>
+        <item>3 NEPHI 18:22 </item>
+        <item>MATHEW 6:14</item>
+        <item>MATHEW 5:12</item>
+        <item>LUKE 12:15</item>
+        <item>MATHEW 25:35</item>
+        <item>3 NEPHI 27:21</item>
+        <item>MATHEW 25:36</item>
+        <item>3 NEPHI 18:15</item>
+        <item>MATHEW 5:16</item>
+    </string-array>
 
+    <string-array name="light_the_world_title_2017">
+        <item>“Freely ye have received, freely give.”</item>
+        <item>“I was thirsty, and ye gave me drink”</item>
+        <item>“Wherefore it is lawful to do well on the sabbath days.”</item>
+        <item>“Thou shalt love thy neighbour as thyself.”</item>
+        <item>“Honour thy father and mother”</item>
+        <item>“Judge not, that ye be not judged.”</item>
+        <item>“Suffer the little children to come unto me”</item>
+        <item>“Love your enemies, bless them that curse you, do good to them that hate you, and pray for them which despitefully use you”</item>
+        <item>“I was sick, and ye visited me”</item>
+        <item>“Search the scriptures; for in them ye think ye have eternal life”</item>
+        <item>“I was a stranger, and ye took me in”</item>
+        <item>“Blessed are they that mourn”</item>
+        <item>“All things whatsoever ye would that men should do to you, do ye even so to them”</item>
+        <item>“For where your treasure is, there will your heart be also.” </item>
+        <item>“Blessed are the merciful”</item>
+        <item>“[I was] naked, and ye clothed me.”</item>
+        <item>“Ye shall meet together oft”</item>
+        <item>“Forgive men their trespasses”</item>
+        <item>“Rejoice, and be exceeding glad.”</item>
+        <item>“A man’s life consisteth not in the abundance of the things which he possesseth.”</item>
+        <item>“For I was an hungred, and ye gave me meat”</item>
+        <item>“That which ye have seen me do even that shall ye do.”</item>
+        <item>“I was in prison, and ye came unto me.”</item>
+        <item>“Ye must watch and pray always”</item>
+        <item>“Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven.”</item>
+    </string-array>
+
+    <string-array name="light_the_world_acts_2017">
+        <item>What can you sacrifice today to make someone else’s life better? Put down the electronics and spend some quality time with family or a friend.</item>
+        <item>Would someone less fortunate appreciate what you have? Make an anonymous donation to someone who’s struggling to make ends meet.</item>
+        <item>How can you show your gratitude to someone who has positively affected you? Send them a thoughtful thank you card acknowledging the ways they’ve helped you.</item>
+
+        <item>Did you know that access to clean water has the single greatest impact on global poverty? Consider donating to a cause that aids in providing safe water to individuals or communities.</item>
+        <item>Want to make a difference on a local level? Donate a case of bottled water to your local shelter.</item>
+        <item>Is there someone you know who is spiritually thirsty? Share your testimony of Christ, the water of everlasting life.</item>
+
+        <item>How can you use your talents on a day of rest? Donate the skills you use at work to bless someone’s life on your day off.</item>
+        <item>Is there a family member you could do better keeping in touch with? Get your family together somehow, whether it’s hosting dinner or an online video chat. Include someone that may sometimes be forgotten.</item>
+        <item>How can you make better use of your time on Sundays? Identify something from a church sermon that you can do to help someone in need today.</item>
+
+        <item>How well do you know your next door neighbor? Take a moment to have a meaningful conversation with them.</item>
+        <item>Do families in your community give out neighbor gifts during the Christmas holiday? See if your neighbors would be willing to forego them this year and put the money toward a meaningful cause.</item>
+        <item>Who in your neighborhood is forgotten during Christmas? Pay them a visit with some homemade goodies.</item>
+
+        <item>When was that last time you actually talked to your parents? Give them a call (not a text) and tell them how much you love them.</item>
+        <item>How well do you know your family’s history? Learn about an ancestor and share their story. Family Search can help you get started. (https://familysearch.org/)</item>
+        <item>Need some meaningful advice around something you’re dealing with? Ask your parents, you’ll be surprised by their wisdom.</item>
+
+        <item>Do you owe anyone an apology? Resolve to take action.</item>
+        <item>Are you having trouble understanding someone else’s perspective? Take time to listen and understand a different point of view.</item>
+        <item>Do you find yourself thinking negative things about others? Say nice things behind people’s backs.</item>
+
+        <item>When was the last time you made a child smile? Donate a toy to a children’s hospital, or make a contribution to a children’s charity</item>
+        <item>Does your family understand the meaning of Christmas? Teach a child about Jesus Christ and His infinite love for them.</item>
+        <item>How could you make a child’s day? Make plans and take time to help them feel special.</item>
+
+        <item>When was the last time you weren’t at your best? Reach out to apologize to someone you may have offended.</item>
+        <item>Do you have a co-worker that’s difficult to get along with? Focus on being kind instead of right for an entire week.</item>
+        <item>Is someone getting bullied at your school or work? Stand up for your peers in front of a bully.</item>
+
+        <item>Did you know there’s a shortage of all types of blood around the winter holidays? Give blood at your local blood bank today.</item>
+        <item>Did you know 60% of those in nursing homes will never have a visitor during their stay? Go visit one today and provide some much needed care.</item>
+        <item>Could someone in your family use some spiritual medicine? Resolve to pray daily for your loved ones who are sick or suffering.</item>
+
+        <item>Do you have a favorite scripture? Share it with friends and family on social media.</item>
+        <item>Want to start the day off right with your family? Make a commitment to read the scriptures together for 15 minutes every day this week. You’ll be surprised the difference it makes.</item>
+        <item>Do you know someone who could benefit from a specific passage of scripture? Text it to them and tell them why you thought of them.</item>
+
+        <item>Which one of your co-workers do you know the least? Invite them to lunch to get to know them better.</item>
+        <item>Has a stranger ever done something nice for you? Determine a way to pay it forward.</item>
+        <item>How can you help refugees in your area? Visit IWasAStranger.lds.org to get involved.</item>
+
+        <item>Do you know someone that’s recently lost a loved one? Offer to provide comfort and a listening ear.</item>
+        <item>Do you have a friend who is out of work? Help them polish their resume and connect them with people you know could utilize their skills.</item>
+        <item>How can you help someone struggling with poor health? Nothing says “get better soon,” than homemade soup, bread, and a good book.</item>
+
+        <item>Have you seen someone get bullied on social media? Reach out to them today and send some positive vibes their direction.</item>
+        <item>What’s something that could really brighten your day? Do that for someone else.</item>
+        <item>Have you ever said something you wish you could take back? It’s never to late to admit your mistake and say you’re sorry.</item>
+
+        <item>Are you spending time on the things you value most? Clear some space on your calendar to invest in some one-on-one with someone you love.</item>
+        <item>Do you have enough money for your needs? Donate to a loved one’s future college fund, or a charity that represents something you care about.</item>
+        <item>What’s your favorite meal? Sacrifice the cost of your favorite dish to help feed the hungry.</item>
+
+        <item>Does someone owe you a debt? Figure out a meaningful way to ease their burden.</item>
+        <item>Do you have a colleague buried in too much work? Ask them how you can help.</item>
+        <item>Know a family struggling to make ends meet? Come up with a plan to make their Christmas special and then execute it.</item>
+
+        <item>Recently purchased some new clothes? Donate some old ones to a charity or thrift store.</item>
+        <item>Have you ever felt really cold in winter conditions? Buy a new winter coat and give it to someone in need.</item>
+        <item>Are you planning on buying new clothes online to give as Christmas presents this year? Consider purchasing through AmazonSmile where 0.5% of your item’s price goes directly to your charity of choice. (http://smile.amazon.com/)</item>
+
+        <item>When was the last time you attended a church service? Come worship with us (https://www.mormon.org/worship)</item>
+        <item>Has it been awhile since you’ve been together as a family? Schedule a time this week to spend real quality time together (without electronic devices)</item>
+        <item>What can you do to bring your neighborhood together? Organize a social gathering to bring everyone a little closer this holiday season.</item>
+
+        <item>Does someone really get on your nerves? Write down all of that person’s positive qualities, and then try to imagine how God sees them.</item>
+        <item>Is there a family member or friend that’s offended you? Give them a call and resolve your differences.</item>
+        <item>Do you have unresolved differences with someone? Don’t let anger or regret fester. Take action to work it out.</item>
+
+        <item>Who do you know that could use some joy in their life? Send them a personalized care package in the mail.</item>
+        <item>Have you ever stopped to think about your blessings? Reach out to someone who has blessed your life and thank them for their example.</item>
+        <item>When was the last time you celebrated someone else’s accomplishments? Find somebody who doesn’t receive thanks that often and make their day amazing.</item>
+
+        <item>What’s something you love, but could live without? Give something you cherish to someone who would appreciate it.</item>
+        <item>Who has made your life more meaningful? Plan something to do together and make a new memory.</item>
+        <item>Are there distractions in your life that may stand in the way of following Christ? Give up something material through the holidays. Tell someone who will hold you accountable and invite them to join you.</item>
+
+        <item>Have you ever been really hungry? Donate your favorite non-perishable items to a food bank in your area.</item>
+        <item>What’s your favorite home-cooked meal? Prepare it and take it to a neighbor in need, or better yet invite them to your home for dinner.</item>
+        <item>Do you know anyone that’s spiritually hungry? Share a spiritually uplifting message with them.</item>
+
+        <item>What is your favorite teaching of Jesus Christ? Write it in a note or card and pass it along to someone.</item>
+        <item>What characteristic of Jesus Christ do you admire most? Focus on emulating it this week.</item>
+        <item>Who is the most Christ-like person you know? Send them a note of appreciation expressing your gratitude for their example.</item>
+
+        <item>Do you know someone that’s been affected by addiction? Reach out to them and offer your support and love.</item>
+        <item>Do you have an incarcerated family member or friend? Pay them a visit and provide some encouragement.</item>
+        <item>Have you seen how depression can trap a loved one? Reach out and go for a walk with them.</item>
+
+        <item>Has something small or big worked out for you today? Recognize God’s blessings by giving thanks.</item>
+        <item>Not getting answers to your prayers? Ask God to help you be an answer to someone else’s prayer.</item>
+        <item>How many people do you know that could really use a heartfelt prayer? Say a prayer in which you never mention your own needs, but instead pray solely for them.</item>
+
+        <item>What’s one way Jesus Christ has been an example in your life? Share that teaching or principle on social media.</item>
+        <item>How can Christmas stay with you throughout the year? Make some plans or goals to continue to serve throughout 2018.</item>
+        <item>Who in your life exemplifies the principle of letting your light shine? Thank them for their example.</item>
+
+    </string-array>
 </resources>
