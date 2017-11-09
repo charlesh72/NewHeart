@@ -50,7 +50,6 @@ public class ServiceActivity extends BaseActivity {
         setScreen(screen);
         screen.setController(controller);
 
-        controller.loadActsOfService(this);
     }
 
 }

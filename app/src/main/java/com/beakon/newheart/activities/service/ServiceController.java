@@ -25,6 +25,8 @@ import com.beakon.newheart.models.Habit;
 import com.beakon.newheart.models.HabitList;
 import com.beakon.newheart.utils.DateUtils;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import io.realm.RealmResults;
@@ -55,15 +57,5 @@ public class ServiceController {
     public void toggleTodaysServiceGoal() {
         Habit habit = habitList.getById(Habit.ID_SERVICE);
         habit.getRepetitions().addTimestamp(DateUtils.getStartOfToday());
-    }
-
-    public void loadActsOfService(Context context) {
-        RealmResults<ActOfServiceDay> data = ActOfServiceDay.getActsList();
-
-        if (data.size() != 25) {
-            ActOfServiceDay.createActsList();
-            data = ActOfServiceDay.getActsList();
-        }
-        rootView.initRecyclerView(data);
     }
 }

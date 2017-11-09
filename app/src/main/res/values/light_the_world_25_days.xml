@@ -17,7 +17,7 @@
   -->
 
 <resources>
-    <string-array name="light_the_world_titles">
+    <string-array name="light_the_world_titles_2016">
         <item>Jesus Lifted Others’ Burdens and So Can You</item>
         <item>Jesus Honored His Parents and So Can You</item>
         <item>Jesus Helped Others to See and So Can You</item>
@@ -45,7 +45,7 @@
         <item>Jesus’s Disciples Followed Him and So Can We</item>
     </string-array>
     
-    <string-array name="light_the_world_acts">
+    <string-array name="light_the_world_acts_2016">
         <item>Worldwide</item>
         <item>day of</item>
         <item>service</item>
@@ -146,4 +146,6 @@
         <item>Find a picture of Jesus Christ that inspires you and place it in your home where it can serve as a reminder.</item>
         <item>Have some time off? Devote one day to selfless service for those you love.</item>
     </string-array>
+
+
 </resources>

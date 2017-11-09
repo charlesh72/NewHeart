@@ -27,11 +27,7 @@ import android.widget.TextView;
 
 import com.beakon.newheart.R;
 
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import io.realm.RealmResults;
+import java.util.ArrayList;
 
 /**
  * Created by Charles on 11/2/2017.
@@ -40,10 +36,10 @@ import io.realm.RealmResults;
 public class ActOfServiceAdapter extends
         RecyclerView.Adapter<ActOfServiceAdapter.ViewHolder> {
 
-    private List<ActOfServiceDay> lightDays;
+    private ArrayList<ActOfServiceDay> lightDays;
     public Context context;
 
-    public ActOfServiceAdapter(Context context, RealmResults<ActOfServiceDay> lightDays) {
+    public ActOfServiceAdapter(Context context, ArrayList<ActOfServiceDay> lightDays) {
         this.context = context;
         this.lightDays = lightDays;
     }
@@ -53,7 +49,7 @@ public class ActOfServiceAdapter extends
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View serviceActView = inflater.inflate(R.layout.item_light_day, parent, false);
+        View serviceActView = inflater.inflate(R.layout.item_light_day_2016, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(serviceActView);
@@ -64,17 +60,26 @@ public class ActOfServiceAdapter extends
     public void onBindViewHolder(ActOfServiceAdapter.ViewHolder holder, int position) {
         ActOfServiceDay serviceDay = lightDays.get(position);
 
-        holder.day.setText(serviceDay.day);
-        holder.title.setText(serviceDay.title);
+        holder.day.setText(String.valueOf(serviceDay.getDay()));
+        holder.title.setText(serviceDay.getTitle());
 
-        holder.act1.setText(serviceDay.act1);
-        holder.act1.setChecked(serviceDay.cBox1);
+        holder.act1.setText(serviceDay.getAct(1));
+        holder.act1.setChecked(serviceDay.getCBox(1));
+        holder.act1.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // TODO: 11/9/2017 Update if a box is checked
+        });
 
-        holder.act2.setText(serviceDay.act2);
-        holder.act2.setChecked(serviceDay.cBox2);
+        holder.act2.setText(serviceDay.getAct(2));
+        holder.act2.setChecked(serviceDay.getCBox(2));
+        holder.act2.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // TODO: 11/9/2017 Update if a box is checked
+        });
 
-        holder.act3.setText(serviceDay.act3);
-        holder.act3.setChecked(serviceDay.cBox3);
+        holder.act3.setText(serviceDay.getAct(3));
+        holder.act3.setChecked(serviceDay.getCBox(3));
+        holder.act3.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // TODO: 11/9/2017 Update if a box is checked
+        });
     }
 
     @Override
@@ -84,31 +89,25 @@ public class ActOfServiceAdapter extends
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.lightDayTVDay)
         public TextView day;
 
-        @BindView(R.id.lightDayTVTitle)
         public TextView title;
 
-        @BindView(R.id.lightDayCBact1)
         public CheckBox act1;
 
-        @BindView(R.id.lightDayCBact2)
         public CheckBox act2;
 
-        @BindView(R.id.lightDayCBact3)
         public CheckBox act3;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-//            day = (TextView) itemView.findViewById(R.id.lightDayTVDay);
-//            title = (TextView) itemView.findViewById(R.id.lightDayTVTitle);
-//            act1 = (CheckBox) itemView.findViewById(R.id.lightDayCBact1);
-//            act2 = (CheckBox) itemView.findViewById(R.id.lightDayCBact2);
-//            act3 = (CheckBox) itemView.findViewById(R.id.lightDayCBact3);
+            day = (TextView) itemView.findViewById(R.id.lightDayTVDay);
+            title = (TextView) itemView.findViewById(R.id.lightDayTVTitle);
+            act1 = (CheckBox) itemView.findViewById(R.id.lightDayCBact1);
+            act2 = (CheckBox) itemView.findViewById(R.id.lightDayCBact2);
+            act3 = (CheckBox) itemView.findViewById(R.id.lightDayCBact3);
 
-            ButterKnife.bind(itemView);
         }
     }
 }

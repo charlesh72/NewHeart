@@ -22,6 +22,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Button;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.ActivityContext;
@@ -31,19 +32,21 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.RealmResults;
+import io.realm.Realm;
 
 /**
  * Created by Charles on 11/1/2017.
  */
 
-class ServiceRootView extends BaseRootView{
+class ServiceRootView extends BaseRootView {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @BindView(R.id.serviceRVActs)
     RecyclerView rvActsOfService;
+
+    ActOfServiceAdapter adapter;
 
     @Inject
     public ServiceRootView(@NonNull @ActivityContext Context context) {
@@ -53,17 +56,17 @@ class ServiceRootView extends BaseRootView{
         ButterKnife.bind(this);
 
         initToolbar();
+
+        initRecyclerView();
     }
 
-    public void initRecyclerView(RealmResults<ActOfServiceDay> list) {
+    public void initRecyclerView() {
         // Initialize our adapter
-        ActOfServiceAdapter adapter = new ActOfServiceAdapter(this.getContext(), list);
+        adapter = new ActOfServiceAdapter(getContext(), ActOfServiceDay2016.getActsList());
+        // Set layout manager to position the items
+        rvActsOfService.setLayoutManager(new LinearLayoutManager(getContext()));
         // Attach the adapter to the recycler view
         rvActsOfService.setAdapter(adapter);
-        // Set layout manager to position the items
-        LinearLayoutManager llm = new LinearLayoutManager(this.getContext());
-        rvActsOfService.setLayoutManager(llm);
-        rvActsOfService.getAdapter();
     }
 
     @NonNull
