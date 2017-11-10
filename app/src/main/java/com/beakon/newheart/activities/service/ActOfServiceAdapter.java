@@ -34,7 +34,10 @@ import java.util.ArrayList;
  */
 
 public class ActOfServiceAdapter extends
-        RecyclerView.Adapter<ActOfServiceAdapter.ViewHolder> {
+        RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private final int ACT2016 = 0;
+    private final int ACT2017 = 1;
 
     private ArrayList<ActOfServiceDay> lightDays;
     public Context context;
@@ -45,23 +48,66 @@ public class ActOfServiceAdapter extends
     }
 
     @Override
-    public ActOfServiceAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
 
+        RecyclerView.ViewHolder viewHolder;
+
         // Inflate the custom layout
-        View serviceActView = inflater.inflate(R.layout.item_light_day_2016, parent, false);
+        switch (viewType) {
+            case ACT2016:
+                View actView16 = inflater.inflate(R.layout.item_light_day_2016, parent, false);
+                viewHolder = new ViewHolder2016(actView16);
+                break;
+            case ACT2017:
+                View actView17 = inflater.inflate(R.layout.item_light_day_2017, parent, false);
+                viewHolder = new ViewHolder2017(actView17);
+                break;
+            default:
+                View actViewDefault = inflater.inflate(R.layout.item_light_day_2017, parent, false);
+                viewHolder = new ViewHolderLightDay(actViewDefault);
+                break;
+        }
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(serviceActView);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(ActOfServiceAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        switch (holder.getItemViewType()) {
+            case ACT2016:
+                ViewHolder2016 vh2016 = (ViewHolder2016) holder;
+                configureViewHolder2016(vh2016, position);
+                break;
+            case ACT2017:
+                ViewHolder2017 vh2017 = (ViewHolder2017) holder;
+                configureViewHolder2017(vh2017, position);
+                break;
+            default:
+                break;
+        }
+
+
+    }
+
+    private void configureViewHolder2016(ViewHolder2016 holder, int position) {
+        configueViewHolderLightDay(holder, position);
+    }
+
+    private void configureViewHolder2017(ViewHolder2017 holder, int position) {
+        configueViewHolderLightDay(holder, position);
+
+        ActOfServiceDay2017 serviceDay = (ActOfServiceDay2017) lightDays.get(position);
+        holder.ref.setText(serviceDay.getRef());
+    }
+
+    private void configueViewHolderLightDay(ViewHolderLightDay holder, int position) {
         ActOfServiceDay serviceDay = lightDays.get(position);
 
         holder.day.setText(String.valueOf(serviceDay.getDay()));
         holder.title.setText(serviceDay.getTitle());
+
 
         holder.act1.setText(serviceDay.getAct(1));
         holder.act1.setChecked(serviceDay.getCBox(1));
@@ -87,7 +133,17 @@ public class ActOfServiceAdapter extends
         return lightDays.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public int getItemViewType(int position) {
+        if (lightDays.get(position) instanceof ActOfServiceDay2016) {
+            return ACT2016;
+        } else if (lightDays.get(position) instanceof ActOfServiceDay2017) {
+            return ACT2017;
+        }
+        return -1;
+    }
+
+    public class ViewHolderLightDay extends RecyclerView.ViewHolder {
 
         public TextView day;
 
@@ -99,7 +155,7 @@ public class ActOfServiceAdapter extends
 
         public CheckBox act3;
 
-        public ViewHolder(View itemView) {
+        public ViewHolderLightDay(View itemView) {
             super(itemView);
 
             day = (TextView) itemView.findViewById(R.id.lightDayTVDay);
@@ -108,6 +164,25 @@ public class ActOfServiceAdapter extends
             act2 = (CheckBox) itemView.findViewById(R.id.lightDayCBact2);
             act3 = (CheckBox) itemView.findViewById(R.id.lightDayCBact3);
 
+        }
+    }
+
+    public class ViewHolder2016 extends ViewHolderLightDay {
+
+        public ViewHolder2016(View itemView) {
+            super(itemView);
+        }
+    }
+
+    public class ViewHolder2017 extends ViewHolderLightDay {
+
+        public TextView ref;
+
+
+        public ViewHolder2017(View itemView) {
+            super(itemView);
+
+            ref = (TextView) itemView.findViewById(R.id.lightDayTVRef);
         }
     }
 }

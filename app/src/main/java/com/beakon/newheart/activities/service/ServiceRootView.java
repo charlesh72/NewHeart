@@ -19,6 +19,7 @@ package com.beakon.newheart.activities.service;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -62,7 +63,7 @@ class ServiceRootView extends BaseRootView {
 
     public void initRecyclerView() {
         // Initialize our adapter
-        adapter = new ActOfServiceAdapter(getContext(), ActOfServiceDay2016.getActsList());
+        adapter = new ActOfServiceAdapter(getContext(), ActOfServiceDay2017.getActsList());
         // Set layout manager to position the items
         rvActsOfService.setLayoutManager(new LinearLayoutManager(getContext()));
         // Attach the adapter to the recycler view
