@@ -30,4 +30,6 @@ interface ActOfServiceDay {
     String getAct(int actNum);
 
     boolean getCBox(int cBoxNum);
+
+    void setCBox(int cBoxNum, boolean checked);
 }

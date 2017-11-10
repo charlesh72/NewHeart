@@ -28,6 +28,9 @@ import android.widget.TextView;
 import com.beakon.newheart.R;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import io.realm.Realm;
 
 /**
  * Created by Charles on 11/2/2017.
@@ -39,10 +42,10 @@ public class ActOfServiceAdapter extends
     private final int ACT2016 = 0;
     private final int ACT2017 = 1;
 
-    private ArrayList<ActOfServiceDay> lightDays;
+    private List<ActOfServiceDay> lightDays;
     public Context context;
 
-    public ActOfServiceAdapter(Context context, ArrayList<ActOfServiceDay> lightDays) {
+    public ActOfServiceAdapter(Context context, List<ActOfServiceDay> lightDays) {
         this.context = context;
         this.lightDays = lightDays;
     }
@@ -100,6 +103,26 @@ public class ActOfServiceAdapter extends
 
         ActOfServiceDay2017 serviceDay = (ActOfServiceDay2017) lightDays.get(position);
         holder.ref.setText(serviceDay.getRef());
+
+        holder.act1.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            serviceDay.setCBox(1, isChecked);
+            realm.commitTransaction();
+        });
+        holder.act2.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            serviceDay.setCBox(2, isChecked);
+            realm.commitTransaction();
+        });
+
+        holder.act3.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            serviceDay.setCBox(3, isChecked);
+            realm.commitTransaction();
+        });
     }
 
     private void configueViewHolderLightDay(ViewHolderLightDay holder, int position) {
@@ -111,21 +134,14 @@ public class ActOfServiceAdapter extends
 
         holder.act1.setText(serviceDay.getAct(1));
         holder.act1.setChecked(serviceDay.getCBox(1));
-        holder.act1.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // TODO: 11/9/2017 Update if a box is checked
-        });
+
 
         holder.act2.setText(serviceDay.getAct(2));
         holder.act2.setChecked(serviceDay.getCBox(2));
-        holder.act2.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // TODO: 11/9/2017 Update if a box is checked
-        });
+
 
         holder.act3.setText(serviceDay.getAct(3));
         holder.act3.setChecked(serviceDay.getCBox(3));
-        holder.act3.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // TODO: 11/9/2017 Update if a box is checked
-        });
     }
 
     @Override

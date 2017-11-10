@@ -24,6 +24,7 @@ import com.beakon.newheart.R;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
@@ -70,13 +71,13 @@ public class ActOfServiceDay2016 extends RealmObject implements ActOfServiceDay 
         return date;
     }
 
-    private static ArrayList<ActOfServiceDay> createActsList() {
+    private static List<ActOfServiceDay2016> createActsList() {
         Resources res = HabitsApplication.context.getResources();
         String[] titles = res.getStringArray(LIGHT_TITLES_ID);
         String[] acts = res.getStringArray(LIGHT_ACTS_ID);
 
         int days = 25;
-        ArrayList<ActOfServiceDay> serviceDays = new ArrayList<>(25);
+        ArrayList<ActOfServiceDay2016> serviceDays = new ArrayList<>(25);
         for (int i = 0; i < days; i++) {
             int day = i + 1;
             String title = titles[i];
@@ -87,18 +88,24 @@ public class ActOfServiceDay2016 extends RealmObject implements ActOfServiceDay 
                     new ActOfServiceDay2016(day, title, act1, act2, act3);
             serviceDays.add(actOfServiceDay);
         }
-        return serviceDays;
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        final List<ActOfServiceDay2016> managedArray = realm.copyToRealmOrUpdate(serviceDays);
+        realm.commitTransaction();
+        return managedArray;
     }
 
-    public static ArrayList<ActOfServiceDay> getActsList() {
-        RealmResults<ActOfServiceDay2016> results = Realm.getDefaultInstance().where(ActOfServiceDay2016.class).findAll().sort("day");
-        ArrayList<ActOfServiceDay> list = new ArrayList<>(25);
+    public static List<ActOfServiceDay> getActsList() {
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<ActOfServiceDay2016> results = realm.where(ActOfServiceDay2016.class).findAll().sort("day");
+        List<ActOfServiceDay> list = new ArrayList<>(25);
         if (results.size() != 25) {
-            list = createActsList();
-        } else {
-            for (int i = 0; i < 25; i++) {
-                list.add(results.get(i));
-            }
+            createActsList();
+            results = realm.where(ActOfServiceDay2016.class).findAll().sort("day");
+        }
+
+        for (int i = 0; i < 25; i++) {
+            list.add(results.get(i));
         }
         return list;
     }
@@ -134,6 +141,33 @@ public class ActOfServiceDay2016 extends RealmObject implements ActOfServiceDay 
 
     @Override
     public boolean getCBox(int cBoxNum) {
-        return false;
+        boolean checked = false;
+        switch (cBoxNum) {
+            case 1:
+                checked = cBox1;
+                break;
+            case 2:
+                checked = cBox2;
+                break;
+            case 3:
+                checked = cBox3;
+                break;
+        }
+        return checked;
+    }
+
+    @Override
+    public void setCBox(int cBoxNum, boolean checked) {
+        switch (cBoxNum) {
+            case 1:
+                cBox1 = checked;
+                break;
+            case 2:
+                cBox2 = checked;
+                break;
+            case 3:
+                cBox3 = checked;
+                break;
+        }
     }
 }
