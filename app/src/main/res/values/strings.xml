@@ -316,5 +316,6 @@
     <string name="report_progress_summaryoff">Journal entries are not being shared</string>
     <string name="add_default_habits">Add Default Habits</string>
     <string name="done">Done</string>
+    <string name="custom_loading">Custom Loading..</string>
 
 </resources>

@@ -370,6 +370,15 @@
 
         <activity android:name=".activities.service.ServiceActivity"/>
 
+        <receiver android:name="com.beakon.newheart.widgets.DailyTasksWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_daily_tasks_info" />
+        </receiver>
 
     </application>
 

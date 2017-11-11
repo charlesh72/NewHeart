@@ -21,7 +21,7 @@ package com.beakon.newheart.activities.service;
  * Created by Charles on 11/9/2017.
  */
 
-interface ActOfServiceDay {
+public interface ActOfServiceDay {
 
     int getDay();
 

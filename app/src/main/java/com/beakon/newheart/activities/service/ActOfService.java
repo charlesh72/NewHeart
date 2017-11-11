@@ -15,45 +15,27 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.widgets;
+package com.beakon.newheart.activities.service;
 
-import android.app.PendingIntent;
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
+import io.realm.RealmObject;
 
 /**
  * Created by Charles on 11/10/2017.
  */
 
-public class IncompleteWidget extends BaseWidget {
+public class ActOfService extends RealmObject {
 
-    public IncompleteWidget(@NonNull Context context, int id) {
-        super(context, id);
-    }
+    public String text;
 
-    @Override
-    public PendingIntent getOnClickPendingIntent(Context context) {
-        return null;
-    }
-
-    @Override
-    public void refreshData(View widgetView) {
+    public ActOfService() {
 
     }
 
     @Override
-    protected View buildView() {
-        return null;
-    }
-
-    @Override
-    protected int getDefaultHeight() {
-        return 125;
-    }
-
-    @Override
-    protected int getDefaultWidth() {
-        return 250;
+    public boolean equals(Object obj) {
+        if (obj instanceof ActOfService){
+            return text.equals(((ActOfService) obj).text);
+        }
+        return super.equals(obj);
     }
 }

@@ -68,7 +68,7 @@ public class ActOfServiceAdapter extends
                 break;
             default:
                 View actViewDefault = inflater.inflate(R.layout.item_light_day_2017, parent, false);
-                viewHolder = new ViewHolderLightDay(actViewDefault);
+                viewHolder = new ViewHolder2016(actViewDefault);
                 break;
         }
 
@@ -95,21 +95,24 @@ public class ActOfServiceAdapter extends
     }
 
     private void configureViewHolder2016(ViewHolder2016 holder, int position) {
-        configueViewHolderLightDay(holder, position);
-    }
+        ActOfServiceDay2016 serviceDay = (ActOfServiceDay2016) lightDays.get(position);
 
-    private void configureViewHolder2017(ViewHolder2017 holder, int position) {
-        configueViewHolderLightDay(holder, position);
+        holder.day.setText(String.valueOf(serviceDay.getDay()));
+        holder.title.setText(serviceDay.getTitle());
 
-        ActOfServiceDay2017 serviceDay = (ActOfServiceDay2017) lightDays.get(position);
-        holder.ref.setText(serviceDay.getRef());
-
+        holder.act1.setText(serviceDay.getAct(1));
+        holder.act1.setOnCheckedChangeListener(null);
+        holder.act1.setChecked(serviceDay.getCBox(1));
         holder.act1.setOnCheckedChangeListener((buttonView, isChecked) -> {
             Realm realm = Realm.getDefaultInstance();
             realm.beginTransaction();
             serviceDay.setCBox(1, isChecked);
             realm.commitTransaction();
         });
+
+        holder.act2.setText(serviceDay.getAct(2));
+        holder.act2.setOnCheckedChangeListener(null);
+        holder.act2.setChecked(serviceDay.getCBox(2));
         holder.act2.setOnCheckedChangeListener((buttonView, isChecked) -> {
             Realm realm = Realm.getDefaultInstance();
             realm.beginTransaction();
@@ -117,6 +120,9 @@ public class ActOfServiceAdapter extends
             realm.commitTransaction();
         });
 
+        holder.act3.setText(serviceDay.getAct(3));
+        holder.act3.setOnCheckedChangeListener(null);
+        holder.act3.setChecked(serviceDay.getCBox(3));
         holder.act3.setOnCheckedChangeListener((buttonView, isChecked) -> {
             Realm realm = Realm.getDefaultInstance();
             realm.beginTransaction();
@@ -125,23 +131,42 @@ public class ActOfServiceAdapter extends
         });
     }
 
-    private void configueViewHolderLightDay(ViewHolderLightDay holder, int position) {
-        ActOfServiceDay serviceDay = lightDays.get(position);
+    private void configureViewHolder2017(ViewHolder2017 holder, int position) {
+        ActOfServiceDay2017 serviceDay = (ActOfServiceDay2017) lightDays.get(position);
 
         holder.day.setText(String.valueOf(serviceDay.getDay()));
         holder.title.setText(serviceDay.getTitle());
-
+        holder.ref.setText(serviceDay.getRef());
 
         holder.act1.setText(serviceDay.getAct(1));
+        holder.act1.setOnCheckedChangeListener(null);
         holder.act1.setChecked(serviceDay.getCBox(1));
-
+        holder.act1.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            serviceDay.setCBox(1, isChecked);
+            realm.commitTransaction();
+        });
 
         holder.act2.setText(serviceDay.getAct(2));
+        holder.act2.setOnCheckedChangeListener(null);
         holder.act2.setChecked(serviceDay.getCBox(2));
-
+        holder.act2.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            serviceDay.setCBox(2, isChecked);
+            realm.commitTransaction();
+        });
 
         holder.act3.setText(serviceDay.getAct(3));
+        holder.act3.setOnCheckedChangeListener(null);
         holder.act3.setChecked(serviceDay.getCBox(3));
+        holder.act3.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            serviceDay.setCBox(3, isChecked);
+            realm.commitTransaction();
+        });
     }
 
     @Override
@@ -159,7 +184,7 @@ public class ActOfServiceAdapter extends
         return -1;
     }
 
-    public class ViewHolderLightDay extends RecyclerView.ViewHolder {
+    public class ViewHolder2016 extends RecyclerView.ViewHolder {
 
         public TextView day;
 
@@ -171,7 +196,7 @@ public class ActOfServiceAdapter extends
 
         public CheckBox act3;
 
-        public ViewHolderLightDay(View itemView) {
+        public ViewHolder2016(View itemView) {
             super(itemView);
 
             day = (TextView) itemView.findViewById(R.id.lightDayTVDay);
@@ -180,25 +205,34 @@ public class ActOfServiceAdapter extends
             act2 = (CheckBox) itemView.findViewById(R.id.lightDayCBact2);
             act3 = (CheckBox) itemView.findViewById(R.id.lightDayCBact3);
 
+            this.setIsRecyclable(false);
         }
     }
 
-    public class ViewHolder2016 extends ViewHolderLightDay {
+    public class ViewHolder2017 extends RecyclerView.ViewHolder {
 
-        public ViewHolder2016(View itemView) {
-            super(itemView);
-        }
-    }
+        public TextView day;
 
-    public class ViewHolder2017 extends ViewHolderLightDay {
+        public TextView title;
 
         public TextView ref;
 
+        public CheckBox act1;
+
+        public CheckBox act2;
+
+        public CheckBox act3;
 
         public ViewHolder2017(View itemView) {
             super(itemView);
-
+            day = (TextView) itemView.findViewById(R.id.lightDayTVDay);
+            title = (TextView) itemView.findViewById(R.id.lightDayTVTitle);
             ref = (TextView) itemView.findViewById(R.id.lightDayTVRef);
+            act1 = (CheckBox) itemView.findViewById(R.id.lightDayCBact1);
+            act2 = (CheckBox) itemView.findViewById(R.id.lightDayCBact2);
+            act3 = (CheckBox) itemView.findViewById(R.id.lightDayCBact3);
+
+            this.setIsRecyclable(false);
         }
     }
 }
