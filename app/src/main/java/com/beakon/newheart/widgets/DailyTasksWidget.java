@@ -22,27 +22,16 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.util.Log;
-import android.view.View;
 import android.widget.RemoteViews;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.activities.service.ActOfServiceDay;
-import com.beakon.newheart.activities.service.ActOfServiceDay2016;
-import com.beakon.newheart.activities.service.ActOfServiceDay2017;
+import com.beakon.newheart.activities.service.ActOfService;
+import com.beakon.newheart.activities.service.DaysActsOfService;
+import com.beakon.newheart.utils.DateUtils;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Random;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
 
 /**
  * Created by Charles on 11/10/2017.
@@ -51,11 +40,9 @@ import io.realm.RealmResults;
 public class DailyTasksWidget extends AppWidgetProvider {
 
 
-    List<String> actsOfService;
 
     public DailyTasksWidget() {
         super();
-        actsOfService = new ArrayList<>();
     }
 
     @Override
@@ -69,24 +56,26 @@ public class DailyTasksWidget extends AppWidgetProvider {
                     R.layout.widget_daily_tasks);
 
             Realm realm = Realm.getDefaultInstance();
-            GregorianCalendar today = new GregorianCalendar();
-            int day = today.get(GregorianCalendar.DAY_OF_MONTH);
-            ActOfServiceDay result = realm.where(ActOfServiceDay2017.class)
-                    .equalTo("day", day).findFirst();
+            GregorianCalendar calendar = new GregorianCalendar();
+            long todaysID = DateUtils.getStartOfDay(calendar.getTimeInMillis());
+            DaysActsOfService result = realm.where(DaysActsOfService.class)
+                    .equalTo("date", todaysID).findFirst();
 
-            for (int j = 0; j < 3; j++) {
-                String act = result.getAct(j+1);
-                if (result.getCBox(j+1) && !actsOfService.contains(act)) {
-                    actsOfService.add(act);
-                }
+            ActOfService act;
+            if (result != null) {
+                act = result.getNext();
+            } else {
+                act = null;
             }
 
+            String text;
+            if (act == null) {
+                text = "No Acts of Service selected for today!";
+            } else {
 
-            String text = "No Acts of Service selected for today!";
-            int size = actsOfService.size();
-            if (size > 0) {
-                text = actsOfService.get(new Random().nextInt(size));
+                text = act.text;
             }
+
             remoteViews.setTextViewText(R.id.widgetDTTVLabel, text);
 
 

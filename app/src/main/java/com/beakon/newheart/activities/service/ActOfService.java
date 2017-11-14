@@ -18,6 +18,7 @@
 package com.beakon.newheart.activities.service;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Charles on 11/10/2017.
@@ -25,10 +26,15 @@ import io.realm.RealmObject;
 
 public class ActOfService extends RealmObject {
 
+    @PrimaryKey
     public String text;
 
     public ActOfService() {
 
+    }
+
+    public ActOfService(String text) {
+        this.text = text;
     }
 
     @Override

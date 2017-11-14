@@ -72,7 +72,8 @@ public class ActOfServiceDay2017 extends RealmObject implements ActOfServiceDay 
     }
 
     public GregorianCalendar getDate() {
-        GregorianCalendar date = new GregorianCalendar(2017, 12, day);
+        GregorianCalendar date = new GregorianCalendar();
+        date.set(GregorianCalendar.DAY_OF_MONTH, day);
         return date;
     }
 

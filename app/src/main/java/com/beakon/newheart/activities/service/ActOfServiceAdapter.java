@@ -27,7 +27,6 @@ import android.widget.TextView;
 
 import com.beakon.newheart.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
@@ -108,6 +107,7 @@ public class ActOfServiceAdapter extends
             realm.beginTransaction();
             serviceDay.setCBox(1, isChecked);
             realm.commitTransaction();
+            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(1), isChecked);
         });
 
         holder.act2.setText(serviceDay.getAct(2));
@@ -118,6 +118,8 @@ public class ActOfServiceAdapter extends
             realm.beginTransaction();
             serviceDay.setCBox(2, isChecked);
             realm.commitTransaction();
+            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(2), isChecked);
+
         });
 
         holder.act3.setText(serviceDay.getAct(3));
@@ -127,6 +129,7 @@ public class ActOfServiceAdapter extends
             Realm realm = Realm.getDefaultInstance();
             realm.beginTransaction();
             serviceDay.setCBox(3, isChecked);
+            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(3), isChecked);
             realm.commitTransaction();
         });
     }
@@ -146,6 +149,7 @@ public class ActOfServiceAdapter extends
             realm.beginTransaction();
             serviceDay.setCBox(1, isChecked);
             realm.commitTransaction();
+            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(1), isChecked);
         });
 
         holder.act2.setText(serviceDay.getAct(2));
@@ -156,6 +160,7 @@ public class ActOfServiceAdapter extends
             realm.beginTransaction();
             serviceDay.setCBox(2, isChecked);
             realm.commitTransaction();
+            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(2), isChecked);
         });
 
         holder.act3.setText(serviceDay.getAct(3));
@@ -166,6 +171,7 @@ public class ActOfServiceAdapter extends
             realm.beginTransaction();
             serviceDay.setCBox(3, isChecked);
             realm.commitTransaction();
+            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(3), isChecked);
         });
     }
 
