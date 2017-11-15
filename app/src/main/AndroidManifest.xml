@@ -32,14 +32,15 @@
         android:maxSdkVersion="18" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <application tools:replace="android:label,android:theme"
+    <application
         android:name=".HabitsApplication"
         android:allowBackup="true"
         android:backupAgent=".HabitsBackupAgent"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/main_activity_title"
         android:supportsRtl="true"
-        android:theme="@style/AppBaseTheme">
+        android:theme="@style/AppBaseTheme"
+        tools:replace="android:label,android:theme">
         <meta-data
             android:name="com.google.android.backup.api_key"
             android:value="AEdPqrEAAAAI6aeWncbnMNo8E5GWeZ44dlc5cQ7tCROwFhOtiw" />
@@ -48,12 +49,11 @@
             android:name=".activities.habits.list.ListHabitsActivity"
             android:exported="true"
             android:label="@string/main_activity_title"
-            android:launchMode="singleTop" >
+            android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.home.HomeActivity" />
         </activity>
-
         <activity
             android:name=".activities.home.HomeActivity"
             android:exported="true" />
@@ -231,14 +231,14 @@
         </provider>
 
         <activity
-            android:name="com.beakon.newheart.scripturestudy.list.ScriptureListActivity"
+            android:name=".scripturestudy.list.ScriptureListActivity"
             android:label="@string/app_name"
             android:launchMode="standard"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 
         <!-- "Share" text from Gospel Library and add as scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturestudy.AddScriptureTextActivity"
+            android:name=".scripturestudy.AddScriptureTextActivity"
             android:label="Add Scripture to Ponderize"
             android:theme="@style/AppBaseTheme.NoActionBar">
             <intent-filter android:label="Ponderize Scripture">
@@ -247,25 +247,10 @@
         </activity>
 
         <activity-alias
-            android:name=".AddScriptureTextActivityFromAnyApp"
-            android:enabled="false"
-            android:label="Add Scripture to Ponderize"
-            android:targetActivity="com.beakon.newheart.scripturestudy.AddScriptureTextActivity">
-
-            <!-- This activity-alias is disabled by default, but can be enabled from settings -->
-            <intent-filter android:label="Ponderize Scripture">
-                <action android:name="android.intent.action.SEND" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:mimeType="text/plain" />
-            </intent-filter>
-        </activity-alias>
-        <activity-alias
             android:name=".AddScriptureTextOnlyGospelLibrary"
             android:enabled="true"
             android:label="Add Scripture to Ponderize"
-            android:targetActivity="com.beakon.newheart.scripturestudy.AddScriptureTextActivity">
+            android:targetActivity=".scripturestudy.AddScriptureTextActivity">
 
             <!-- This activity-alias is enabled by default, but will be disabled when that^ one -->
             <!-- is enabled -->
@@ -277,17 +262,31 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity-alias>
+        <activity-alias
+            android:name=".AddScriptureTextActivityFromAnyApp"
+            android:enabled="false"
+            android:label="Add Scripture to Ponderize"
+            android:targetActivity=".scripturestudy.AddScriptureTextActivity">
+
+            <!-- This activity-alias is disabled by default, but can be enabled from settings -->
+            <intent-filter android:label="Ponderize Scripture">
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity-alias>
 
         <!-- Shows instructions for adding from Gospel Library -->
-        <activity android:name="com.beakon.newheart.scripturestudy.AddScriptureInstructions" />
-
+        <activity android:name=".scripturestudy.AddScriptureInstructions" />
         <activity android:name=".scripturestudy.AddScriptureReferenceActivity" />
 
         <!-- Displays the text of a scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturestudy.scriptureview.ScriptureViewActivity"
+            android:name=".scripturestudy.scriptureview.ScriptureViewActivity"
             android:launchMode="singleTop"
-            android:parentActivityName="com.beakon.newheart.scripturestudy.list.ScriptureListActivity">
+            android:parentActivityName=".scripturestudy.list.ScriptureListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.beakon.newheart.scripturestudy.list.ScriptureListActivity" />
@@ -295,24 +294,24 @@
 
         <!-- Adds a note about a certain scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturestudy.scriptureview.AddNoteActivity"
+            android:name=".scripturestudy.scriptureview.AddNoteActivity"
             android:label="@string/title_activity_add_note"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 
         <!-- Practice memorizing a scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturestudy.memorize.MemorizeActivity"
+            android:name=".scripturestudy.memorize.MemorizeActivity"
             android:label="@string/title_activity_memorize"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 
         <!-- Test your knowledge of a scripture -->
         <activity
-            android:name="com.beakon.newheart.scripturestudy.memorize.MemorizeTestActivity"
+            android:name=".scripturestudy.memorize.MemorizeTestActivity"
             android:label="@string/title_activity_memorize_test"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 
         <!-- Scripture widget provider -->
-        <receiver android:name="com.beakon.newheart.scripturestudy.widget.ScriptureAppWidget">
+        <receiver android:name=".scripturestudy.widget.ScriptureAppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -324,16 +323,16 @@
 
         <!-- Scripture widget list data service -->
         <service
-            android:name="com.beakon.newheart.scripturestudy.widget.ScriptureAppWidget$ListPopulatorService"
+            android:name=".scripturestudy.widget.ScriptureAppWidget$ListPopulatorService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <!-- Scripture widget "context menu" -->
         <activity
-            android:name="com.beakon.newheart.scripturestudy.widget.WidgetPopupMenuActivity"
+            android:name=".scripturestudy.widget.WidgetPopupMenuActivity"
             android:theme="@style/Dialog" />
 
         <!-- Scripture widget configuration activity -->
-        <activity android:name="com.beakon.newheart.scripturestudy.widget.ScriptureAppWidgetConfigureActivity">
+        <activity android:name=".scripturestudy.widget.ScriptureAppWidgetConfigureActivity">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
@@ -341,15 +340,16 @@
 
         <!-- Export scriptures and notes -->
         <activity
-            android:name="com.beakon.newheart.scripturestudy.ExportActivity"
+            android:name=".scripturestudy.ExportActivity"
             android:label="@string/title_activity_export"
             android:theme="@style/AppBaseTheme.NoActionBar" />
 
         <!-- About the app -->
 
+
         <!-- App settings -->
         <activity
-            android:name="com.beakon.newheart.scripturestudy.settings.ScriptureSettingsActivity"
+            android:name=".scripturestudy.settings.ScriptureSettingsActivity"
             android:label="@string/settings"
             android:theme="@style/AppBaseTheme.NoActionBar">
             <intent-filter>
@@ -360,17 +360,15 @@
         </activity>
 
         <receiver
-            android:name="com.beakon.newheart.scripturestudy.settings.ReminderReceiver"
+            android:name=".scripturestudy.settings.ReminderReceiver"
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name="com.beakon.newheart.scripturestudy.AccountabilityFriendsActivity"/>
+        <activity android:name=".scripturestudy.AccountabilityFriendsActivity" />
+        <activity android:name=".scripturestudy.attributes.ChristlikeAttributesActivity" />
+        <activity android:name=".activities.service.ServiceActivity" />
 
-        <activity android:name="com.beakon.newheart.scripturestudy.attributes.ChristlikeAttributesActivity"/>
-
-        <activity android:name=".activities.service.ServiceActivity"/>
-
-        <receiver android:name="com.beakon.newheart.widgets.DailyTasksWidget">
+        <receiver android:name=".widgets.DailyTasksWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -380,6 +378,10 @@
                 android:resource="@xml/widget_daily_tasks_info" />
         </receiver>
 
+        <service
+            android:name=".widgets.DailyTasksWidgetService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

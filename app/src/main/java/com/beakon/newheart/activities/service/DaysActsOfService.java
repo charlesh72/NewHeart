@@ -59,7 +59,7 @@ public class DaysActsOfService extends RealmObject {
     }
 
     public ActOfService getNext() {
-        if (acts == null) {
+        if (acts == null || acts.size() == 0) {
             return null;
         }
         ActOfService act;
@@ -87,10 +87,13 @@ public class DaysActsOfService extends RealmObject {
 
     public static long findId(int day) {
         GregorianCalendar calendar = new GregorianCalendar();
-        int dayOfMonth = calendar.get(GregorianCalendar.DAY_OF_MONTH);
-        if (day < dayOfMonth) {
-            calendar.add(GregorianCalendar.MONTH, 1);
-        }
+//        int dayOfMonth = calendar.get(GregorianCalendar.DAY_OF_MONTH);
+//        // Set the act of service for the next month if the day has already passed
+//        if (day < dayOfMonth) {
+//            calendar.add(GregorianCalendar.MONTH, 1);
+//        }
+
+        calendar.set(GregorianCalendar.DAY_OF_MONTH, day);
 
         long id = DateUtils.getStartOfDay(calendar.getTimeInMillis());
 
@@ -111,7 +114,6 @@ public class DaysActsOfService extends RealmObject {
     }
 
     public static void addAct(int day, String text) {
-
         long date = findId(day);
         DaysActsOfService target = findDay(date);
 
@@ -121,7 +123,6 @@ public class DaysActsOfService extends RealmObject {
 
     private static void removeAct(int day, String text) {
         long date = findId(day);
-
         DaysActsOfService target = findDay(date);
         if (target == null) {
             Log.e("TODAYSACT", "Target should exists here");

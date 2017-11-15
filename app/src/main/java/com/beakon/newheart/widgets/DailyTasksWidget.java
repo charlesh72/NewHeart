@@ -17,11 +17,14 @@
 
 package com.beakon.newheart.widgets;
 
+import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.widget.RemoteViews;
 
 import com.beakon.newheart.R;
@@ -29,6 +32,7 @@ import com.beakon.newheart.activities.service.ActOfService;
 import com.beakon.newheart.activities.service.DaysActsOfService;
 import com.beakon.newheart.utils.DateUtils;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import io.realm.Realm;
@@ -39,7 +43,7 @@ import io.realm.Realm;
 
 public class DailyTasksWidget extends AppWidgetProvider {
 
-
+    private PendingIntent service = null;
 
     public DailyTasksWidget() {
         super();
@@ -55,30 +59,20 @@ public class DailyTasksWidget extends AppWidgetProvider {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
                     R.layout.widget_daily_tasks);
 
-            Realm realm = Realm.getDefaultInstance();
-            GregorianCalendar calendar = new GregorianCalendar();
-            long todaysID = DateUtils.getStartOfDay(calendar.getTimeInMillis());
-            DaysActsOfService result = realm.where(DaysActsOfService.class)
-                    .equalTo("date", todaysID).findFirst();
-
-            ActOfService act;
-            if (result != null) {
-                act = result.getNext();
-            } else {
-                act = null;
-            }
-
-            String text;
-            if (act == null) {
-                text = "No Acts of Service selected for today!";
-            } else {
-
-                text = act.text;
-            }
+            String text = getTaskText();
 
             remoteViews.setTextViewText(R.id.widgetDTTVLabel, text);
 
+//            // Intent for our service
+//            final Intent alarmIntent = new Intent(context, DailyTasksWidget.class);
+//            final PendingIntent pending = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//            final AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+//            alarm.cancel(pending);
+//            long interval = 1000*100;
+//            alarm.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime(),interval, pending);
 
+
+            // Click listener for button
             Intent refreshIntent = new Intent(context, DailyTasksWidget.class);
             refreshIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
             refreshIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
@@ -86,6 +80,54 @@ public class DailyTasksWidget extends AppWidgetProvider {
                     0, refreshIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             remoteViews.setOnClickPendingIntent(R.id.widgetDTBRefresh, pendingIntent);
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
+
+
+            final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+            final Calendar TIME = Calendar.getInstance();
+            TIME.set(Calendar.MINUTE, 0);
+            TIME.set(Calendar.SECOND, 0);
+            TIME.set(Calendar.MILLISECOND, 0);
+
+            final Intent alarmIntent = new Intent(context, DailyTasksWidgetService.class);
+
+            if (service == null)
+            {
+                service = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+            }
+
+            m.setRepeating(AlarmManager.RTC, TIME.getTime().getTime(), 1000 * 60, service);
         }
+    }
+
+    @Override
+    public void onDisabled(Context context)
+    {
+        final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        m.cancel(service);
+    }
+
+    public static String getTaskText() {
+        Realm realm = Realm.getDefaultInstance();
+        GregorianCalendar calendar = new GregorianCalendar();
+        long todaysID = DateUtils.getStartOfDay(calendar.getTimeInMillis());
+        DaysActsOfService result = realm.where(DaysActsOfService.class)
+                .equalTo("date", todaysID).findFirst();
+
+        ActOfService act;
+        if (result != null) {
+            act = result.getNext();
+        } else {
+            act = null;
+        }
+
+        String text;
+        if (act == null) {
+            text = "No Acts of Service selected for today!";
+        } else {
+            text = act.text;
+        }
+        return text;
     }
 }
