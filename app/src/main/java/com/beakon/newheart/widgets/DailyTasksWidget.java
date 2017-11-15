@@ -96,6 +96,7 @@ public class DailyTasksWidget extends AppWidgetProvider {
                 service = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
             }
 
+            // TODO: 11/14/2017 Use one time alarms as described in setRepeating documentation
             m.setRepeating(AlarmManager.RTC, TIME.getTime().getTime(), 1000 * 60, service);
         }
     }
