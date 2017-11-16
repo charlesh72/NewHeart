@@ -31,20 +31,23 @@
         android:id="@+id/quizTVTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Christlike Attributes Quiz"
+        android:text="@string/christlike_attributes_quiz_title"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/quizTVKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1 = Never  2 = Sometimes  3 = Often \n4 = Almost always  5 = Always"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Material.Small"
+        android:textSize="18sp" />
 
     <ListView
         android:id="@+id/christlikeLVquestionList"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <Button
-        android:id="@+id/quizBSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Submit" />
 
 </LinearLayout>

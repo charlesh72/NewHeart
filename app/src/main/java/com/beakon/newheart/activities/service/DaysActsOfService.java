@@ -119,11 +119,15 @@ public class DaysActsOfService extends RealmObject {
 
         ActOfService act = new ActOfService(text);
         target.addActOfService(act);
+        for (ActOfService e : target.acts) {
+            Log.i("ACTS: ", "id: " + target.date + " act: " + e.text);
+        }
     }
 
     private static void removeAct(int day, String text) {
         long date = findId(day);
         DaysActsOfService target = findDay(date);
+
         if (target == null) {
             Log.e("TODAYSACT", "Target should exists here");
             return;

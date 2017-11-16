@@ -15,22 +15,27 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.scripturestudy.attributes;
+package com.beakon.newheart.scripturestudy.attributes.results;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.beakon.newheart.HabitsApplication;
+import com.beakon.newheart.R;
 import com.beakon.newheart.activities.ActivityModule;
 import com.beakon.newheart.activities.BaseActivity;
-import com.beakon.newheart.preferences.Preferences;
 
 /**
- * Created by Charles on 10/11/2017.
+ * Created by Charles on 11/15/2017.
  */
 
-public class ChristlikeAttributesActivity extends BaseActivity {
+public class AttributesResultsActivity extends BaseActivity {
 
-    private ChristlikeAttributesComponent component;
+    private AttributesResultsComponent component;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,21 +43,20 @@ public class ChristlikeAttributesActivity extends BaseActivity {
 
         HabitsApplication app = (HabitsApplication) getApplicationContext();
 
-        component = DaggerChristlikeAttributesComponent
+        component = DaggerAttributesResultsComponent
                 .builder()
                 .appComponent(app.getComponent())
                 .activityModule(new ActivityModule(this))
                 .build();
 
-        ChristlikeAttributesRootView rootView = component.getRootView();
-        ChristlikeAttributesScreen screen = component.getScreen();
-        ChristlikeAttributesController controller = component.getController();
+        AttributesResultsRootView rootView = component.getRootView();
+        AttributesResultsScreen screen = component.getScreen();
+        AttributesResultsController controller = component.getController();
 
         setScreen(screen);
         screen.setMenu(component.getMenu());
         screen.setController(controller);
 
-        controller.populateQuiz();
-
     }
+
 }

@@ -317,5 +317,7 @@
     <string name="add_default_habits">Add Default Habits</string>
     <string name="done">Done</string>
     <string name="custom_loading">Custom Loading..</string>
+    <string name="christlike_attributes_quiz_title">Christlike Attributes Quiz</string>
+    <string name="title_activity_attribute_result">AttributeResultActivity</string>
 
 </resources>
