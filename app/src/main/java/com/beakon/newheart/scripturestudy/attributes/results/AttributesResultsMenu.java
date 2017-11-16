@@ -56,8 +56,8 @@ public class AttributesResultsMenu extends BaseMenu {
         switch (item.getItemId())
         {
             case R.id.action_done:
+                screen.showHomeScreen();
                 return true;
-
             default:
                 return false;
         }

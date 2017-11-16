@@ -20,15 +20,22 @@ package com.beakon.newheart.scripturestudy.attributes.results;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Gravity;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.ActivityContext;
 import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseRootView;
 import com.beakon.newheart.intents.IntentFactory;
+import com.beakon.newheart.scripturestudy.attributes.ChristlikeQuizQuestion;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -46,6 +53,9 @@ public class AttributesResultsRootView extends BaseRootView {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @BindView(R.id.attrResultsLLContainer)
+    LinearLayout lLayout;
+
     private final IntentFactory intents;
 
     @Inject
@@ -57,7 +67,31 @@ public class AttributesResultsRootView extends BaseRootView {
         addView(inflate(getContext(), R.layout.attributes_results, null));
         ButterKnife.bind(this);
 
+        loadResults();
+
         initToolbar();
+    }
+
+    private void loadResults() {
+        List<ChristlikeQuizQuestion> list = ChristlikeQuizQuestion.loadQuizQuestions();
+        int[] results = ChristlikeQuizQuestion.results(list);
+        double[] percentages = ChristlikeQuizQuestion.resultsAsPercent(results);
+        String[] attrs = ChristlikeQuizQuestion.getAttributes();
+
+        Log.i("CLATTRCONTROLLER", "Attrs: " + Arrays.toString(attrs));
+        for (int i = 0; i < attrs.length; i++) {
+            TextView tv = new TextView(getContext());
+            DecimalFormat df = new DecimalFormat("##%");
+            String formattedPercent = df.format(percentages[i]);
+            tv.setText(attrs[i] + " - " + formattedPercent);
+            tv.setId(i);
+            tv.setTextSize(20);
+            tv.setGravity(Gravity.CENTER);
+            tv.setLayoutParams(new LinearLayout.LayoutParams(
+                    LayoutParams.FILL_PARENT,
+                    LayoutParams.WRAP_CONTENT)); // Add weight param to fill height of screen
+            lLayout.addView(tv);
+        }
     }
 
 

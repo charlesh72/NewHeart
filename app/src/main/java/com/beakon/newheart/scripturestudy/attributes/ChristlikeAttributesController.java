@@ -71,8 +71,7 @@ public class ChristlikeAttributesController {
         if (!adapter.quizComplete()) {
             Toast.makeText(rootView.getContext(), "Unable to use results unless you complete the enitre quiz.", Toast.LENGTH_SHORT).show();
         } else {
-            // Bring us back to the home screen
-            screen.showHomeScreen();
+            screen.showResultsScreen();
         }
 
 

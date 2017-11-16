@@ -206,4 +206,14 @@ public class ChristlikeQuizQuestion extends RealmObject{
         }
         return arrayOfQs;
     }
+
+    /**
+     * Returns a simple string array containing the names of each attribute
+     * @return the string array from our resources for each attribute
+     */
+    public static String[] getAttributes() {
+        Resources res = HabitsApplication.context.getResources();
+        String[] clAttributes = res.getStringArray(ATTRIBUTES_ID);
+        return clAttributes;
+    }
 }

@@ -66,4 +66,10 @@ public class ChristlikeAttributesScreen extends BaseScreen {
         activity.startActivity(intent);
         activity.finish();
     }
+
+    public void showResultsScreen() {
+        Intent intent = intentFactory.startResultsActivity(activity);
+        activity.startActivity(intent);
+        activity.finish();
+    }
 }

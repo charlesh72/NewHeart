@@ -24,6 +24,7 @@ import android.net.*;
 import android.support.annotation.*;
 
 import com.beakon.newheart.*;
+import com.beakon.newheart.activities.BaseActivity;
 import com.beakon.newheart.activities.about.*;
 import com.beakon.newheart.activities.habits.list.ListHabitsActivity;
 import com.beakon.newheart.activities.habits.show.*;
@@ -34,6 +35,7 @@ import com.beakon.newheart.models.*;
 
 import com.beakon.newheart.activities.service.ServiceActivity;
 import com.beakon.newheart.scripturestudy.attributes.ChristlikeAttributesActivity;
+import com.beakon.newheart.scripturestudy.attributes.results.AttributesResultsActivity;
 import com.beakon.newheart.scripturestudy.list.ScriptureListActivity;
 
 import javax.inject.*;
@@ -106,6 +108,11 @@ public class IntentFactory
 
     public Intent startServiceActivity(Context context) {
         Intent intent = new Intent(context, ServiceActivity.class);
+        return intent;
+    }
+
+    public Intent startResultsActivity(Context context) {
+        Intent intent = new Intent(context, AttributesResultsActivity.class);
         return intent;
     }
 

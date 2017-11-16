@@ -385,7 +385,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".scripturestudy.attributes.AttributeResultActivity"
+            android:name=".scripturestudy.attributes.results.AttributesResultsActivity"
             android:label="@string/title_activity_attribute_result"
             android:parentActivityName=".scripturestudy.attributes.ChristlikeAttributesActivity"
             android:theme="@style/AppTheme.NoActionBar" >
