@@ -37,4 +37,6 @@ public interface ServiceComponent {
     ServiceRootView getRootView();
 
     ServiceScreen getScreen();
+
+    ServiceMenu getMenu();
 }

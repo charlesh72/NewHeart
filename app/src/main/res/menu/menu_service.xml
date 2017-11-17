@@ -16,19 +16,11 @@
   ~ with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/Toolbar"
-        app:popupTheme="?toolbarPopupTheme" />
-
-    <ListView
-        android:id="@+id/serviceManagerLVacts"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:title="@string/done"
+        android:id="@+id/action_done"
+        app:showAsAction="always|withText"
+        android:icon="@drawable/ic_done_white_24dp"/>
+</menu>

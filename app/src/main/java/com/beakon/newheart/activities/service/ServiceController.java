@@ -44,11 +44,16 @@ public class ServiceController {
     @NonNull
     private final ServiceRootView rootView;
 
+    @NonNull
+    private final ServiceScreen screen;
+
     @Inject
     public ServiceController(@NonNull HabitList habitList,
-                             @NonNull ServiceRootView rootView) {
+                             @NonNull ServiceRootView rootView,
+                             @NonNull ServiceScreen screen) {
         this.habitList = habitList;
         this.rootView = rootView;
+        this.screen = screen;
     }
 
     /**
@@ -57,5 +62,9 @@ public class ServiceController {
     public void toggleTodaysServiceGoal() {
         Habit habit = habitList.getById(Habit.ID_SERVICE);
         habit.getRepetitions().addTimestamp(DateUtils.getStartOfToday());
+    }
+
+    public void done() {
+        screen.showServiceManagerScreen();
     }
 }

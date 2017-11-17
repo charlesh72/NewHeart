@@ -48,6 +48,7 @@ public class ServiceActivity extends BaseActivity {
         ServiceScreen screen = component.getScreen();
 
         setScreen(screen);
+        screen.setMenu(component.getMenu());
         screen.setController(controller);
 
     }

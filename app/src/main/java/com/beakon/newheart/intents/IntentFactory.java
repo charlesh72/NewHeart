@@ -30,6 +30,7 @@ import com.beakon.newheart.activities.habits.list.ListHabitsActivity;
 import com.beakon.newheart.activities.habits.show.*;
 import com.beakon.newheart.activities.home.HomeActivity;
 import com.beakon.newheart.activities.intro.*;
+import com.beakon.newheart.activities.service.manager.ServiceManagerActivity;
 import com.beakon.newheart.activities.settings.*;
 import com.beakon.newheart.models.*;
 
@@ -113,6 +114,11 @@ public class IntentFactory
 
     public Intent startResultsActivity(Context context) {
         Intent intent = new Intent(context, AttributesResultsActivity.class);
+        return intent;
+    }
+
+    public Intent startServiceManagerActivity(Context context) {
+        Intent intent = new Intent(context, ServiceManagerActivity.class);
         return intent;
     }
 
