@@ -17,31 +17,12 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/Toolbar"
-        app:popupTheme="?toolbarPopupTheme" />
-
-    <TextView
-        android:id="@+id/attrResultsTVcomment"
+    <ListView
+        android:id="@+id/serviceManagerLVacts"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/attr_results_comment"
-        android:textAlignment="center"
-        android:textSize="18sp" />
-
-    <LinearLayout
-        android:id="@+id/attrResultsLLContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-    </LinearLayout>
-
-
+        android:layout_height="match_parent" />
 </LinearLayout>

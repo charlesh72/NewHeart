@@ -35,7 +35,7 @@ import io.realm.Realm;
  * Created by Charles on 11/2/2017.
  */
 
-public class ActOfServiceAdapter extends
+public class ActOfServiceListAdapter extends
         RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final int ACT2016 = 0;
@@ -44,7 +44,7 @@ public class ActOfServiceAdapter extends
     private List<ActOfServiceDay> lightDays;
     public Context context;
 
-    public ActOfServiceAdapter(Context context, List<ActOfServiceDay> lightDays) {
+    public ActOfServiceListAdapter(Context context, List<ActOfServiceDay> lightDays) {
         this.context = context;
         this.lightDays = lightDays;
     }

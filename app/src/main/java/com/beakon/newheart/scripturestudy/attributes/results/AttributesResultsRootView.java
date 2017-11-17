@@ -18,6 +18,7 @@
 package com.beakon.newheart.scripturestudy.attributes.results;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -78,18 +79,31 @@ public class AttributesResultsRootView extends BaseRootView {
         double[] percentages = ChristlikeQuizQuestion.resultsAsPercent(results);
         String[] attrs = ChristlikeQuizQuestion.getAttributes();
 
-        Log.i("CLATTRCONTROLLER", "Attrs: " + Arrays.toString(attrs));
+        // Find the lowest scoring
+        double low = 1;
+        int lowId = 0;
+        for (int i = 0; i < percentages.length; i++) {
+            if (percentages[i] < low) {
+                low = percentages[i];
+                lowId = i;
+            }
+        }
+
         for (int i = 0; i < attrs.length; i++) {
             TextView tv = new TextView(getContext());
             DecimalFormat df = new DecimalFormat("##%");
             String formattedPercent = df.format(percentages[i]);
             tv.setText(attrs[i] + " - " + formattedPercent);
             tv.setId(i);
-            tv.setTextSize(20);
+            tv.setTextSize(18);
             tv.setGravity(Gravity.CENTER);
             tv.setLayoutParams(new LinearLayout.LayoutParams(
                     LayoutParams.FILL_PARENT,
                     LayoutParams.WRAP_CONTENT)); // Add weight param to fill height of screen
+            // Set the lowest scoring attribute to a different color
+            if (i == lowId) {
+                tv.setTextColor(Color.BLUE);
+            }
             lLayout.addView(tv);
         }
     }

@@ -319,5 +319,6 @@
     <string name="custom_loading">Custom Loading..</string>
     <string name="christlike_attributes_quiz_title">Christlike Attributes Quiz</string>
     <string name="title_activity_attribute_result">AttributeResultActivity</string>
+    <string name="attr_results_comment">It is recommended for you to focus on the lowest scoring attribute. (Highlighted in blue)</string>
 
 </resources>

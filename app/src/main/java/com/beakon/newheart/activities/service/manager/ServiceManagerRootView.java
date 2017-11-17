@@ -15,17 +15,17 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.activities.service;
+package com.beakon.newheart.activities.service.manager;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.ActivityContext;
+import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseRootView;
+import com.beakon.newheart.intents.IntentFactory;
 
 import javax.inject.Inject;
 
@@ -33,39 +33,29 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Charles on 11/1/2017.
+ * Created by Charles on 11/16/2017.
  */
 
-class ServiceRootView extends BaseRootView {
+@ActivityScope
+class ServiceManagerRootView extends BaseRootView{
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.serviceRVActs)
-    RecyclerView rvActsOfService;
-
-    ActOfServiceListAdapter adapter;
+    private final IntentFactory intents;
 
     @Inject
-    public ServiceRootView(@NonNull @ActivityContext Context context) {
+    public ServiceManagerRootView(@NonNull @ActivityContext Context context,
+                                     @NonNull IntentFactory intents) {
         super(context);
+        this.intents = intents;
 
-        addView(inflate(getContext(), R.layout.service_list, null));
+        addView(inflate(getContext(), R.layout.service_manager, null));
         ButterKnife.bind(this);
 
         initToolbar();
-
-        initRecyclerView();
     }
 
-    public void initRecyclerView() {
-        // Initialize our adapter
-        adapter = new ActOfServiceListAdapter(getContext(), ActOfServiceDay2017.getActsList());
-        // Set layout manager to position the items
-        rvActsOfService.setLayoutManager(new LinearLayoutManager(getContext()));
-        // Attach the adapter to the recycler view
-        rvActsOfService.setAdapter(adapter);
-    }
 
     @NonNull
     @Override

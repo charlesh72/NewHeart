@@ -368,6 +368,8 @@
         <activity android:name=".scripturestudy.AccountabilityFriendsActivity" />
         <activity android:name=".scripturestudy.attributes.ChristlikeAttributesActivity" />
         <activity android:name=".activities.service.ServiceActivity" />
+        <activity android:name=".activities.service.manager.ServiceManagerActivity" />
+
 
         <receiver android:name=".widgets.DailyTasksWidget" >
             <intent-filter>

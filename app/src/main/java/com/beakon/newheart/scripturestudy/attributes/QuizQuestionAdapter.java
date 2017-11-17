@@ -39,12 +39,12 @@ import io.realm.Realm;
 
 public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
 
-    int layoutResourceId;
+    public static final int layoutResourceId = R.layout.christlike_quiz_question;
+
     List<ChristlikeQuizQuestion> questions;
 
     public QuizQuestionAdapter(Context context, List<ChristlikeQuizQuestion> questions) {
         super(context, 0, questions);
-        layoutResourceId = R.layout.christlike_quiz_question;
         this.questions = questions;
     }
 
