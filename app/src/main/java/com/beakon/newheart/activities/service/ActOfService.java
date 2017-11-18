@@ -19,6 +19,7 @@ package com.beakon.newheart.activities.service;
 
 import io.realm.RealmObject;
 import io.realm.RealmResults;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.LinkingObjects;
 import io.realm.annotations.PrimaryKey;
 
@@ -33,6 +34,9 @@ public class ActOfService extends RealmObject {
 
     @LinkingObjects("acts")
     private final RealmResults<DaysActsOfService> days = null;
+
+    @Ignore
+    public boolean checked = false;
 
     public ActOfService() {
 

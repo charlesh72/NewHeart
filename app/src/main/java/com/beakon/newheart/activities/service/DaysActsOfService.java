@@ -51,10 +51,13 @@ public class DaysActsOfService extends RealmObject {
     }
 
     public void addActOfService(ActOfService act) {
+        // If the act is already present, do nothing
+        if (acts.contains(act)) {
+            return;
+        }
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        ActOfService managedAct = realm.copyToRealmOrUpdate(act);
-        acts.add(managedAct);
+        acts.add(act);
         realm.commitTransaction();
     }
 

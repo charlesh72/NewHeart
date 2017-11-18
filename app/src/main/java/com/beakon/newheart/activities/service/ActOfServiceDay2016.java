@@ -162,7 +162,6 @@ public class ActOfServiceDay2016 extends RealmObject implements ActOfServiceDay 
 
     @Override
     public void setCBox(int cBoxNum, boolean checked) {
-        DaysActsOfService day = DaysActsOfService.findDay(DaysActsOfService.findId(getDay()));
         switch (cBoxNum) {
             case 1:
                 DaysActsOfService.modifyAct(getDay(), act1, checked);

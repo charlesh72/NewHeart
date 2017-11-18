@@ -76,9 +76,9 @@ class ServiceManagerRootView extends BaseRootView{
     private void initListView() {
         Realm realm = Realm.getDefaultInstance();
         GregorianCalendar calendar = new GregorianCalendar();
-        long todaysID = DateUtils.getStartOfDay(calendar.getTimeInMillis());
-        DaysActsOfService result = realm.where(DaysActsOfService.class)
-                .equalTo("date", todaysID).findFirst();
+        int day = calendar.get(GregorianCalendar.DAY_OF_MONTH);
+        long todaysID = DaysActsOfService.findId(day);
+        DaysActsOfService result = DaysActsOfService.findDay(todaysID);
 
         // If the day class for the list is null create an empty one
         if (result == null) {
@@ -102,6 +102,9 @@ class ServiceManagerRootView extends BaseRootView{
         actsLV.setAdapter(adapter);
     }
 
+    void removeChecked() {
+        adapter.removeChecked();
+    }
 
     @NonNull
     @Override

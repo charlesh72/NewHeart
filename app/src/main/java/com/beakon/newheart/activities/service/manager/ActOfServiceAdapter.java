@@ -20,6 +20,7 @@ package com.beakon.newheart.activities.service.manager;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,10 @@ import android.widget.CheckBox;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.service.ActOfService;
+import com.beakon.newheart.activities.service.DaysActsOfService;
 
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -59,7 +63,7 @@ public class ActOfServiceAdapter extends ArrayAdapter<ActOfService> {
 
             viewHolder.rowCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 int pos = (Integer) buttonView.getTag();
-                // TODO: 11/17/2017 Possibly do something on check, or remove and create a on confirm method
+                list.get(pos).checked = isChecked;
             });
         } else {
             viewHolder = (ViewHolder) row.getTag();
@@ -70,6 +74,15 @@ public class ActOfServiceAdapter extends ArrayAdapter<ActOfService> {
         viewHolder.rowCheckBox.setText(list.get(position).text);
 
         return row;
+    }
+
+    public void removeChecked() {
+        int day = (new GregorianCalendar()).get(GregorianCalendar.DAY_OF_MONTH);
+        for (ActOfService a : list) {
+            if (a.checked) {
+                DaysActsOfService.modifyAct(day, a, false);
+            }
+        }
     }
 
     static class ViewHolder {

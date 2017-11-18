@@ -22,10 +22,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.ActivityContext;
 import com.beakon.newheart.activities.BaseRootView;
+
+import java.util.GregorianCalendar;
 
 import javax.inject.Inject;
 
@@ -65,6 +68,12 @@ class ServiceRootView extends BaseRootView {
         rvActsOfService.setLayoutManager(new LinearLayoutManager(getContext()));
         // Attach the adapter to the recycler view
         rvActsOfService.setAdapter(adapter);
+
+        int day = (new GregorianCalendar()).get(GregorianCalendar.DAY_OF_MONTH) - 1;
+        if (day > 25 || day < 0) {
+            day = 0;
+        }
+        rvActsOfService.scrollToPosition(day);
     }
 
     @NonNull

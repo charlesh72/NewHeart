@@ -21,6 +21,9 @@ import android.support.annotation.NonNull;
 
 import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseSystem;
+import com.beakon.newheart.activities.service.ActOfService;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -50,7 +53,7 @@ class ServiceManagerController {
     }
 
     public void done() {
-
+        rootView.removeChecked();
         screen.showHomeScreen();
     }
 }
