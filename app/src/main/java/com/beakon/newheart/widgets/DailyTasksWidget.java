@@ -106,7 +106,7 @@ public class DailyTasksWidget extends AppWidgetProvider {
     {
         final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-        m.cancel(service);
+//        m.cancel(service);
     }
 
     public static String getTaskText() {

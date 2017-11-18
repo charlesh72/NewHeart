@@ -58,6 +58,10 @@ public class DaysActsOfService extends RealmObject {
         realm.commitTransaction();
     }
 
+    public boolean contains(ActOfService act) {
+        return acts.contains(act);
+    }
+
     public ActOfService getNext() {
         if (acts == null || acts.size() == 0) {
             return null;
@@ -113,18 +117,17 @@ public class DaysActsOfService extends RealmObject {
         return target;
     }
 
-    public static void addAct(int day, String text) {
+    public static void addAct(int day, ActOfService act) {
         long date = findId(day);
         DaysActsOfService target = findDay(date);
 
-        ActOfService act = new ActOfService(text);
         target.addActOfService(act);
         for (ActOfService e : target.acts) {
             Log.i("ACTS: ", "id: " + target.date + " act: " + e.text);
         }
     }
 
-    private static void removeAct(int day, String text) {
+    private static void removeAct(int day, ActOfService act) {
         long date = findId(day);
         DaysActsOfService target = findDay(date);
 
@@ -132,17 +135,17 @@ public class DaysActsOfService extends RealmObject {
             Log.e("TODAYSACT", "Target should exists here");
             return;
         }
-        boolean removed = target.removeAct(new ActOfService(text));
+        boolean removed = target.removeAct(act);
         if (!removed) {
             Log.e("TODAYSACT", "Trying to remove act that doesn't exist");
         }
     }
 
-    public static void modifyAct(int day, String text, boolean add) {
+    public static void modifyAct(int day, ActOfService act, boolean add) {
         if (add) {
-            addAct(day, text);
+            addAct(day, act);
         } else {
-            removeAct(day, text);
+            removeAct(day, act);
         }
     }
 }

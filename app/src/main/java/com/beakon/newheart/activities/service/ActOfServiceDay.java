@@ -27,7 +27,7 @@ public interface ActOfServiceDay {
 
     String getTitle();
 
-    String getAct(int actNum);
+    ActOfService getAct(int actNum);
 
     boolean getCBox(int cBoxNum);
 

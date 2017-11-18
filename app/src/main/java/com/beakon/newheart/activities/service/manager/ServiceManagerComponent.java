@@ -38,5 +38,5 @@ public interface ServiceManagerComponent {
 
     ServiceManagerController getController();
 
-//    ServiceManagerMenu getMenu();
+    ServiceManagerMenu getMenu();
 }

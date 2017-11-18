@@ -99,38 +99,25 @@ public class ActOfServiceListAdapter extends
         holder.day.setText(String.valueOf(serviceDay.getDay()));
         holder.title.setText(serviceDay.getTitle());
 
-        holder.act1.setText(serviceDay.getAct(1));
+        holder.act1.setText(serviceDay.getAct(1).text);
         holder.act1.setOnCheckedChangeListener(null);
         holder.act1.setChecked(serviceDay.getCBox(1));
         holder.act1.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            Realm realm = Realm.getDefaultInstance();
-            realm.beginTransaction();
             serviceDay.setCBox(1, isChecked);
-            realm.commitTransaction();
-            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(1), isChecked);
         });
 
-        holder.act2.setText(serviceDay.getAct(2));
+        holder.act2.setText(serviceDay.getAct(2).text);
         holder.act2.setOnCheckedChangeListener(null);
         holder.act2.setChecked(serviceDay.getCBox(2));
         holder.act2.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            Realm realm = Realm.getDefaultInstance();
-            realm.beginTransaction();
             serviceDay.setCBox(2, isChecked);
-            realm.commitTransaction();
-            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(2), isChecked);
-
         });
 
-        holder.act3.setText(serviceDay.getAct(3));
+        holder.act3.setText(serviceDay.getAct(3).text);
         holder.act3.setOnCheckedChangeListener(null);
         holder.act3.setChecked(serviceDay.getCBox(3));
         holder.act3.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            Realm realm = Realm.getDefaultInstance();
-            realm.beginTransaction();
             serviceDay.setCBox(3, isChecked);
-            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(3), isChecked);
-            realm.commitTransaction();
         });
     }
 
@@ -141,37 +128,25 @@ public class ActOfServiceListAdapter extends
         holder.title.setText(serviceDay.getTitle());
         holder.ref.setText(serviceDay.getRef());
 
-        holder.act1.setText(serviceDay.getAct(1));
+        holder.act1.setText(serviceDay.getAct(1).text);
         holder.act1.setOnCheckedChangeListener(null);
         holder.act1.setChecked(serviceDay.getCBox(1));
         holder.act1.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            Realm realm = Realm.getDefaultInstance();
-            realm.beginTransaction();
             serviceDay.setCBox(1, isChecked);
-            realm.commitTransaction();
-            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(1), isChecked);
         });
 
-        holder.act2.setText(serviceDay.getAct(2));
+        holder.act2.setText(serviceDay.getAct(2).text);
         holder.act2.setOnCheckedChangeListener(null);
         holder.act2.setChecked(serviceDay.getCBox(2));
         holder.act2.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            Realm realm = Realm.getDefaultInstance();
-            realm.beginTransaction();
             serviceDay.setCBox(2, isChecked);
-            realm.commitTransaction();
-            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(2), isChecked);
         });
 
-        holder.act3.setText(serviceDay.getAct(3));
+        holder.act3.setText(serviceDay.getAct(3).text);
         holder.act3.setOnCheckedChangeListener(null);
         holder.act3.setChecked(serviceDay.getCBox(3));
         holder.act3.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            Realm realm = Realm.getDefaultInstance();
-            realm.beginTransaction();
             serviceDay.setCBox(3, isChecked);
-            realm.commitTransaction();
-            DaysActsOfService.modifyAct(serviceDay.day, serviceDay.getAct(3), isChecked);
         });
     }
 

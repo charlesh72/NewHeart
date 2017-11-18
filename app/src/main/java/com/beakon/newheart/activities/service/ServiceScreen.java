@@ -59,6 +59,5 @@ class ServiceScreen extends BaseScreen{
     public void showServiceManagerScreen() {
         Intent intent = intentFactory.startServiceManagerActivity(activity);
         activity.startActivity(intent);
-        activity.finish();
     }
 }

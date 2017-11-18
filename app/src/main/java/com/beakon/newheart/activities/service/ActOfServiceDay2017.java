@@ -53,13 +53,13 @@ public class ActOfServiceDay2017 extends RealmObject implements ActOfServiceDay 
     public String ref;
 
     // Three choices for service.
-    public String act1, act2, act3;
+    public ActOfService act1, act2, act3;
     public boolean cBox1, cBox2, cBox3;
 
     public ActOfServiceDay2017() {
     }
 
-    public ActOfServiceDay2017(int day, String title, String ref, String act1, String act2, String act3) {
+    public ActOfServiceDay2017(int day, String title, String ref, ActOfService act1, ActOfService act2, ActOfService act3) {
         this.day = day;
         this.title = title;
         this.act1 = act1;
@@ -82,22 +82,22 @@ public class ActOfServiceDay2017 extends RealmObject implements ActOfServiceDay 
         String[] titles = res.getStringArray(LIGHT_TITLES_ID);
         String[] refs = res.getStringArray(LIGHT_REFS_ID);
         String[] acts = res.getStringArray(LIGHT_ACTS_ID);
-
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
         int days = 25;
         ArrayList<ActOfServiceDay2017> serviceDays = new ArrayList<>(25);
         for (int i = 0; i < days; i++) {
             int day = i + 1;
             String title = titles[i];
             String ref = refs[i];
-            String act1 = acts[i * 3];
-            String act2 = acts[i * 3 + 1];
-            String act3 = acts[i * 3 + 2];
+            ActOfService act1 = realm.copyToRealm(new ActOfService(acts[i * 3]));
+            ActOfService act2 = realm.copyToRealm(new ActOfService(acts[i * 3 + 1]));
+            ActOfService act3 = realm.copyToRealm(new ActOfService(acts[i * 3 + 2]));
             ActOfServiceDay2017 actOfServiceDay =
                     new ActOfServiceDay2017(day, title, ref, act1, act2, act3);
             serviceDays.add(actOfServiceDay);
         }
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
+
         final List<ActOfServiceDay2017> managedArray = realm.copyToRealmOrUpdate(serviceDays);
         realm.commitTransaction();
         return managedArray;
@@ -133,36 +133,39 @@ public class ActOfServiceDay2017 extends RealmObject implements ActOfServiceDay 
     }
 
     @Override
-    public String getAct(int actNum) {
-        String text;
+    public ActOfService getAct(int actNum) {
+        ActOfService act;
         switch (actNum) {
             case 1:
-                text = act1;
+                act = act1;
                 break;
             case 2:
-                text = act2;
+                act = act2;
                 break;
             case 3:
-                text = act3;
+                act = act3;
                 break;
             default:
-                text = "";
+                act = null;
         }
-        return text;
+        return act;
     }
 
     @Override
     public boolean getCBox(int cBoxNum) {
+        // Get the current list of currently active acts for the day
+        DaysActsOfService day = DaysActsOfService.findDay(
+                DaysActsOfService.findId(getDay()));
         boolean checked = false;
         switch (cBoxNum) {
             case 1:
-                checked = cBox1;
+                checked = day.contains(act1);
                 break;
             case 2:
-                checked = cBox2;
+                checked = day.contains(act2);
                 break;
             case 3:
-                checked = cBox3;
+                checked = day.contains(act3);
                 break;
         }
         return checked;
@@ -170,15 +173,16 @@ public class ActOfServiceDay2017 extends RealmObject implements ActOfServiceDay 
 
     @Override
     public void setCBox(int cBoxNum, boolean checked) {
+        DaysActsOfService day = DaysActsOfService.findDay(DaysActsOfService.findId(getDay()));
         switch (cBoxNum) {
             case 1:
-                cBox1 = checked;
+                DaysActsOfService.modifyAct(getDay(), act1, checked);
                 break;
             case 2:
-                cBox2 = checked;
+                DaysActsOfService.modifyAct(getDay(), act2, checked);
                 break;
             case 3:
-                cBox3 = checked;
+                DaysActsOfService.modifyAct(getDay(), act3, checked);
                 break;
         }
     }

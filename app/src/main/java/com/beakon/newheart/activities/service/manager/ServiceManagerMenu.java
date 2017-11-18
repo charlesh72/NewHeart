@@ -18,39 +18,51 @@
 package com.beakon.newheart.activities.service.manager;
 
 import android.support.annotation.NonNull;
+import android.view.MenuItem;
 
+import com.beakon.newheart.R;
 import com.beakon.newheart.activities.ActivityScope;
-import com.beakon.newheart.activities.BaseSystem;
+import com.beakon.newheart.activities.BaseActivity;
+import com.beakon.newheart.activities.BaseMenu;
+import com.beakon.newheart.activities.service.ServiceController;
 
 import javax.inject.Inject;
 
 /**
- * Created by Charles on 11/16/2017.
+ * Created by Charles on 11/18/2017.
  */
 
 @ActivityScope
-class ServiceManagerController {
+public class ServiceManagerMenu extends BaseMenu {
 
     @NonNull
     private final ServiceManagerScreen screen;
 
     @NonNull
-    private final BaseSystem system;
-
-    @NonNull
-    private final ServiceManagerRootView rootView;
+    private final ServiceManagerController controller;
 
     @Inject
-    public ServiceManagerController(@NonNull ServiceManagerScreen screen,
-                                @NonNull BaseSystem system,
-                                @NonNull ServiceManagerRootView rootView) {
+    public ServiceManagerMenu(@NonNull BaseActivity activity,
+                              @NonNull ServiceManagerScreen screen,
+                              @NonNull ServiceManagerController controller) {
+        super(activity);
         this.screen = screen;
-        this.system = system;
-        this.rootView = rootView;
+        this.controller = controller;
     }
 
-    public void done() {
+    @Override
+    public boolean onItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                controller.done();
+                return true;
+            default:
+                return false;
+        }
+    }
 
-        screen.showHomeScreen();
+    @Override
+    protected int getMenuResourceId() {
+        return R.menu.menu_service;
     }
 }
