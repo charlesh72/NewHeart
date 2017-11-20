@@ -371,7 +371,8 @@
         <activity android:name=".activities.service.manager.ServiceManagerActivity" />
 
 
-        <receiver android:name=".widgets.DailyTasksWidget" >
+        <receiver android:name=".widgets.DailyTasksWidget"
+            android:label="@string/daily_tasks_widget_label">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

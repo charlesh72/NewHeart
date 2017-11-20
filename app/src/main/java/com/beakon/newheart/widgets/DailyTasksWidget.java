@@ -30,7 +30,9 @@ import android.widget.RemoteViews;
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.service.ActOfService;
 import com.beakon.newheart.activities.service.DaysActsOfService;
+import com.beakon.newheart.activities.service.manager.ServiceManagerActivity;
 import com.beakon.newheart.utils.DateUtils;
+import com.google.common.util.concurrent.ServiceManager;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -63,14 +65,6 @@ public class DailyTasksWidget extends AppWidgetProvider {
 
             remoteViews.setTextViewText(R.id.widgetDTTVLabel, text);
 
-//            // Intent for our service
-//            final Intent alarmIntent = new Intent(context, DailyTasksWidget.class);
-//            final PendingIntent pending = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//            final AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-//            alarm.cancel(pending);
-//            long interval = 1000*100;
-//            alarm.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime(),interval, pending);
-
 
             // Click listener for button
             Intent refreshIntent = new Intent(context, DailyTasksWidget.class);
@@ -82,31 +76,32 @@ public class DailyTasksWidget extends AppWidgetProvider {
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
 
 
-            final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            //Just let widget update every 30 minutes
+//            final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+//
+//            final GregorianCalendar curTime = new GregorianCalendar();
+//            long time = DateUtils.getStartOfDay(curTime.getTimeInMillis());
+//
+//            final Intent alarmIntent = new Intent(context, DailyTasksWidgetService.class);
+//
+//            if (service == null)
+//            {
+//                service = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+//            }
 
-            final Calendar TIME = Calendar.getInstance();
-            TIME.set(Calendar.MINUTE, 0);
-            TIME.set(Calendar.SECOND, 0);
-            TIME.set(Calendar.MILLISECOND, 0);
-
-            final Intent alarmIntent = new Intent(context, DailyTasksWidgetService.class);
-
-            if (service == null)
-            {
-                service = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-            }
-
-            // TODO: 11/14/2017 Use one time alarms as described in setRepeating documentation
-            m.setRepeating(AlarmManager.RTC, TIME.getTime().getTime(), 1000 * 60, service);
+            // For cycling through items on the widget (doesn't fully work)
+//            m.setRepeating(AlarmManager.RTC, TIME.getTime().getTime(), 1000 * 60, service);
         }
     }
 
     @Override
     public void onDisabled(Context context)
     {
-        final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-
-//        m.cancel(service);
+//        final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+//
+//        if (service != null) {
+//            m.cancel(service);
+//        }
     }
 
     public static String getTaskText() {

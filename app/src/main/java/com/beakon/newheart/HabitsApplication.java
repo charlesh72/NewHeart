@@ -21,6 +21,7 @@ package com.beakon.newheart;
 
 import android.app.*;
 import android.content.*;
+import android.util.Log;
 
 import com.activeandroid.*;
 
@@ -32,6 +33,8 @@ import com.beakon.newheart.utils.*;
 import com.beakon.newheart.widgets.*;
 
 import java.io.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -56,6 +59,8 @@ public class HabitsApplication extends Application
         return component;
     }
 
+    private PendingIntent alarmService;
+
     public static void setComponent(AppComponent component)
     {
         HabitsApplication.component = component;
@@ -77,6 +82,7 @@ public class HabitsApplication extends Application
     @Override
     public void onCreate()
     {
+        Log.d("APPLICATION", "onCreate()");
         super.onCreate();
         context = this;
 
@@ -103,6 +109,8 @@ public class HabitsApplication extends Application
         }
 
         initializeRealm();
+
+        initializeAlarm();
 
         widgetUpdater = component.getWidgetUpdater();
         widgetUpdater.startListening();
@@ -133,6 +141,28 @@ public class HabitsApplication extends Application
                 .build();
 
         Realm.setDefaultConfiguration(config);
+    }
+
+    private void initializeAlarm() {
+        boolean alarmUp = (PendingIntent.getBroadcast(context, 0,
+                new Intent(context, DailyTasksWidgetService.class),
+                PendingIntent.FLAG_NO_CREATE) != null);
+
+        if (alarmUp)
+        {
+            Log.d("myTag", "Alarm is already active");
+        } else {
+            final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            final GregorianCalendar calendar = new GregorianCalendar();
+            // TODO: 11/20/2017 Make sure it's not going off in the middle of the night
+            calendar.add(GregorianCalendar.SECOND, 30);
+            long time = calendar.getTimeInMillis();
+            final Intent alarmIntent = new Intent(context, DailyTasksWidgetService.class);
+            if (alarmService == null) {
+                alarmService = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+            }
+            m.set(AlarmManager.RTC, time, alarmService);
+        }
     }
 
     @Override
