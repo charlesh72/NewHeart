@@ -78,7 +78,6 @@ public class DailyTasksWidgetService extends Service {
 
         // Start the ServiceManager Activity IF there are still acts of service uncompleted.
         boolean taskRemaining = true;
-        Realm realm = Realm.getDefaultInstance();
         DaysActsOfService day = DaysActsOfService.findDay(DateUtils.getStartOfToday());
         if (day.acts.size() < 1) {
             taskRemaining = false;

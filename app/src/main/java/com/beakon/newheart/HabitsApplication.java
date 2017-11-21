@@ -155,7 +155,7 @@ public class HabitsApplication extends Application
             final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             final GregorianCalendar calendar = new GregorianCalendar();
             // TODO: 11/20/2017 Make sure it's not going off in the middle of the night
-            calendar.add(GregorianCalendar.SECOND, 30);
+            calendar.add(GregorianCalendar.MINUTE, 5);
             long time = calendar.getTimeInMillis();
             final Intent alarmIntent = new Intent(context, DailyTasksWidgetService.class);
             if (alarmService == null) {

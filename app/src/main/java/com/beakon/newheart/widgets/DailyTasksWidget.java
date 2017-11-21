@@ -67,12 +67,14 @@ public class DailyTasksWidget extends AppWidgetProvider {
 
 
             // Click listener for button
-            Intent refreshIntent = new Intent(context, DailyTasksWidget.class);
-            refreshIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-            refreshIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
-                    0, refreshIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            remoteViews.setOnClickPendingIntent(R.id.widgetDTBRefresh, pendingIntent);
+//            Intent refreshIntent = new Intent(context, DailyTasksWidget.class);
+//            refreshIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+//            refreshIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+//            PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
+//                    0, refreshIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//            remoteViews.setOnClickPendingIntent(R.id.widgetDTBRefresh, pendingIntent);
+
+
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
 
 
