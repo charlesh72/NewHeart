@@ -40,7 +40,7 @@
         android:scrollHorizontally="true"
         android:text="Hi"
         android:textColor="@color/white"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/widgetDTBRefresh"

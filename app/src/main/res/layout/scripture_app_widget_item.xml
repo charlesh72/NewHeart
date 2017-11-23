@@ -3,7 +3,8 @@
     android:id="@+id/widget_body"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
     android:contentDescription="@string/widget_body_description"
+    android:padding="8dp"
     android:textAppearance="?android:attr/textAppearanceSmall"
-    android:textColor="@android:color/white" />
+    android:textColor="@android:color/white"
+    android:textSize="18sp" />

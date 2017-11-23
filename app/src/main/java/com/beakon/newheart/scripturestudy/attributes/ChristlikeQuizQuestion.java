@@ -18,6 +18,11 @@
 package com.beakon.newheart.scripturestudy.attributes;
 
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.ColorMatrix;
+import android.provider.CalendarContract;
+import android.support.annotation.ColorInt;
 
 import com.beakon.newheart.HabitsApplication;
 import com.beakon.newheart.R;
@@ -74,7 +79,6 @@ public class ChristlikeQuizQuestion extends RealmObject{
         checkedRadioButtonPos = 0;
     }
 
-
     /**
      * Uses the radio button ids to find the score for the question
      * @param checkedRadioButtonId
@@ -129,6 +133,41 @@ public class ChristlikeQuizQuestion extends RealmObject{
 
     public int getCheckedRadioButtonPos() {
         return checkedRadioButtonPos;
+    }
+
+    public int getLineColor() {
+        int color = Color.BLACK;
+        switch (attributeCategory) {
+            case ATTR_FAITH:
+                color = Color.BLUE;
+                break;
+            case ATTR_HOPE:
+                color = Color.RED;
+                break;
+            case ATTR_CHARITY_LOVE:
+                color = Color.GREEN;
+                break;
+            case ATTR_VIRTUE:
+                color = Color.CYAN;
+                break;
+            case ATTR_KNOWLEDGE:
+                color = Color.YELLOW;
+                break;
+            case ATTR_PATIENCE:
+                color = Color.MAGENTA;
+                break;
+            case ATTR_HUMILITY:
+                color = Color.CYAN;
+                break;
+            case ATTR_DILIGENCE:
+                color = Color.BLUE;
+                break;
+            case ATTR_OBEDIENCE:
+                color = Color.DKGRAY;
+                break;
+        }
+
+        return color;
     }
 
     /**

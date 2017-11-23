@@ -65,7 +65,6 @@ public class DailyTasksWidget extends AppWidgetProvider {
 
             remoteViews.setTextViewText(R.id.widgetDTTVLabel, text);
 
-
             // Click listener for button
 //            Intent refreshIntent = new Intent(context, DailyTasksWidget.class);
 //            refreshIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
@@ -84,7 +83,7 @@ public class DailyTasksWidget extends AppWidgetProvider {
 //            final GregorianCalendar curTime = new GregorianCalendar();
 //            long time = DateUtils.getStartOfDay(curTime.getTimeInMillis());
 //
-//            final Intent alarmIntent = new Intent(context, DailyTasksWidgetService.class);
+//            final Intent alarmIntent = new Intent(context, DailyTasksAlarmService.class);
 //
 //            if (service == null)
 //            {

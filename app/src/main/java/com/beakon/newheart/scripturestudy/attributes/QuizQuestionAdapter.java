@@ -80,6 +80,7 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
         holder.rowRadioGroup.setTag(position);
 
         // setup both views from the values stored in your questions list
+        holder.coloredLine.setBackgroundColor(questions.get(position).getLineColor());
         holder.rowTextView.setText(questions.get(position).getQuestionText());
         if (questions.get(position).getCheckedRadioButtonId() != -1) {
             holder.rowRadioGroup.check(questions.get(position).getCheckedRadioButtonId());
@@ -109,10 +110,12 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
     static class ViewHolder {
         TextView rowTextView = null;
         RadioGroup rowRadioGroup = null;
+        View coloredLine = null;
 
         ViewHolder(View row) {
             this.rowTextView = (TextView) row.findViewById(R.id.quizTVquestion);
             this.rowRadioGroup = (RadioGroup) row.findViewById(R.id.quizRadioGroup);
+            this.coloredLine = row.findViewById(R.id.quizVColoredLine);
         }
     }
 }

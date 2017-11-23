@@ -323,5 +323,6 @@
     <string name="service_manager_title">Today\'s Acts Of Service</string>
     <string name="daily_tasks_widget_label">ActsOfService</string>
     <string name="service_manager_header">Select which acts of service to mark as complete</string>
+    <string name="help_widget_label">Help!</string>
 
 </resources>

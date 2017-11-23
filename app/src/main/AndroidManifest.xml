@@ -382,8 +382,19 @@
                 android:resource="@xml/widget_daily_tasks_info" />
         </receiver>
 
+        <receiver android:name=".widgets.HelpWidget"
+            android:label="@string/help_widget_label">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_help_info" />
+        </receiver>
+
         <service
-            android:name=".widgets.DailyTasksWidgetService"
+            android:name=".DailyTasksAlarmService"
             android:enabled="true"
             android:exported="true" />
 

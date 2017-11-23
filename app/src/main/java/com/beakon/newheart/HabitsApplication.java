@@ -33,7 +33,6 @@ import com.beakon.newheart.utils.*;
 import com.beakon.newheart.widgets.*;
 
 import java.io.*;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import io.realm.Realm;
@@ -145,7 +144,7 @@ public class HabitsApplication extends Application
 
     private void initializeAlarm() {
         boolean alarmUp = (PendingIntent.getBroadcast(context, 0,
-                new Intent(context, DailyTasksWidgetService.class),
+                new Intent(context, DailyTasksAlarmService.class),
                 PendingIntent.FLAG_NO_CREATE) != null);
 
         if (alarmUp)
@@ -155,9 +154,9 @@ public class HabitsApplication extends Application
             final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             final GregorianCalendar calendar = new GregorianCalendar();
             // TODO: 11/20/2017 Make sure it's not going off in the middle of the night
-            calendar.add(GregorianCalendar.MINUTE, 5);
+            calendar.add(GregorianCalendar.SECOND, 30);
             long time = calendar.getTimeInMillis();
-            final Intent alarmIntent = new Intent(context, DailyTasksWidgetService.class);
+            final Intent alarmIntent = new Intent(context, DailyTasksAlarmService.class);
             if (alarmService == null) {
                 alarmService = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
             }

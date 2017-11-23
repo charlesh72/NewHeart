@@ -15,15 +15,11 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.beakon.newheart.widgets;
+package com.beakon.newheart;
 
 import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Ringtone;
@@ -31,21 +27,14 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.RemoteViews;
 
-import com.beakon.newheart.R;
-import com.beakon.newheart.activities.service.ActOfService;
-import com.beakon.newheart.activities.service.ActOfServiceDay;
 import com.beakon.newheart.activities.service.DaysActsOfService;
 import com.beakon.newheart.activities.service.manager.ServiceManagerActivity;
 import com.beakon.newheart.utils.DateUtils;
 
 import java.util.GregorianCalendar;
 
-import io.realm.Realm;
-import io.realm.RealmResults;
-
-public class DailyTasksWidgetService extends Service {
+public class DailyTasksAlarmService extends Service {
 
     PendingIntent alarmService;
     @Override
@@ -79,7 +68,7 @@ public class DailyTasksWidgetService extends Service {
         // Start the ServiceManager Activity IF there are still acts of service uncompleted.
         boolean taskRemaining = true;
         DaysActsOfService day = DaysActsOfService.findDay(DateUtils.getStartOfToday());
-        if (day.acts.size() < 1) {
+        if (day.getNext() == null) {
             taskRemaining = false;
         }
         // TODO: 11/20/2017 Also check if there are goals waiting to be marked off
@@ -96,24 +85,33 @@ public class DailyTasksWidgetService extends Service {
         }
 
 
-        final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        final GregorianCalendar calendar = new GregorianCalendar();
+        boolean alarmUp = (PendingIntent.getBroadcast(context, 0,
+                new Intent(context, DailyTasksAlarmService.class),
+                PendingIntent.FLAG_NO_CREATE) != null);
 
-        int interval =  Double.valueOf(Math.random() * 60).intValue() + 120;
-        calendar.add(GregorianCalendar.MINUTE, interval);
+        if (alarmUp) {
+            Log.d("myTag", "Alarm is already active");
+        } else {
 
-        // Instead of setting an alarm after 10/before 9 set the hour to 9am
-        int hourOfDay = calendar.get(GregorianCalendar.HOUR_OF_DAY);
-        if (hourOfDay > 21 || hourOfDay < 9) {
-            calendar.set(GregorianCalendar.HOUR_OF_DAY, 8);
+            final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            final GregorianCalendar calendar = new GregorianCalendar();
+
+            int interval = Double.valueOf(Math.random() * 60).intValue() + 120;
+            calendar.add(GregorianCalendar.MINUTE, interval);
+
+            // Instead of setting an alarm after 10/before 9 set the hour to 9am
+            int hourOfDay = calendar.get(GregorianCalendar.HOUR_OF_DAY);
+            if (hourOfDay > 21 || hourOfDay < 9) {
+                calendar.set(GregorianCalendar.HOUR_OF_DAY, 8);
+            }
+
+            long time = calendar.getTimeInMillis();
+            final Intent alarmIntent = new Intent(context, DailyTasksAlarmService.class);
+            if (alarmService == null) {
+                alarmService = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+            }
+            m.set(AlarmManager.RTC, time, alarmService);
         }
-
-        long time = calendar.getTimeInMillis();
-        final Intent alarmIntent = new Intent(context, DailyTasksWidgetService.class);
-        if (alarmService == null) {
-            alarmService = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-        }
-        m.set(AlarmManager.RTC, time, alarmService);
 
         this.stopSelf();
     }
