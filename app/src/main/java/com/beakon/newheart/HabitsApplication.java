@@ -158,7 +158,7 @@ public class HabitsApplication extends Application
             long time = calendar.getTimeInMillis();
             final Intent alarmIntent = new Intent(context, DailyTasksAlarmService.class);
             if (alarmService == null) {
-                alarmService = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+                alarmService = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
             }
             m.set(AlarmManager.RTC, time, alarmService);
         }
