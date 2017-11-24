@@ -310,7 +310,6 @@
     <string name="send_feedback">Send Feedback</string>
     <string name="add_scripture">Add Scripture</string>
     <string name="accountability_friends">Accountability Friends</string>
-    <string name="prefkey_report_progress">report_progress</string>
     <string name="report_progress">Report Progress</string>
     <string name="report_progress_summaryon">Newly created journal entries are now being shared with active accountability friends</string>
     <string name="report_progress_summaryoff">Journal entries are not being shared</string>

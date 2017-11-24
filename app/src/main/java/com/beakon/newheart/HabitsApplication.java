@@ -58,8 +58,6 @@ public class HabitsApplication extends Application
         return component;
     }
 
-    private PendingIntent alarmService;
-
     public static void setComponent(AppComponent component)
     {
         HabitsApplication.component = component;
@@ -143,7 +141,8 @@ public class HabitsApplication extends Application
     }
 
     private void initializeAlarm() {
-        boolean alarmUp = (PendingIntent.getBroadcast(context, 0,
+
+        boolean alarmUp = (PendingIntent.getService(context, 0,
                 new Intent(context, DailyTasksAlarmService.class),
                 PendingIntent.FLAG_NO_CREATE) != null);
 
@@ -157,9 +156,7 @@ public class HabitsApplication extends Application
             calendar.add(GregorianCalendar.SECOND, 30);
             long time = calendar.getTimeInMillis();
             final Intent alarmIntent = new Intent(context, DailyTasksAlarmService.class);
-            if (alarmService == null) {
-                alarmService = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-            }
+            PendingIntent alarmService = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
             m.set(AlarmManager.RTC, time, alarmService);
         }
     }

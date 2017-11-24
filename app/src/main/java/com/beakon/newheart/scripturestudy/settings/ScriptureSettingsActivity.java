@@ -2,6 +2,8 @@ package com.beakon.newheart.scripturestudy.settings;
 
 import android.app.FragmentManager;
 import android.content.ComponentName;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.Preference;

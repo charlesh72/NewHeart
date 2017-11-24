@@ -26,6 +26,7 @@ import android.widget.RemoteViews;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.home.HomeActivity;
+import com.beakon.newheart.scripturestudy.HelpActivity;
 import com.beakon.newheart.scripturestudy.memorize.MemorizeActivity;
 import com.beakon.newheart.scripturestudy.scriptureview.ScriptureIntent;
 
@@ -52,7 +53,7 @@ public class HelpWidget extends AppWidgetProvider {
 
             // Click listener for button
             // TODO: 11/22/2017 Set up code for sending a help message
-            Intent hIntent = new Intent(context, HomeActivity.class);
+            Intent hIntent = new Intent(context, HelpActivity.class);
             PendingIntent helpIntent = PendingIntent.getActivity(context, widgetId,
                     hIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             remoteViews.setOnClickPendingIntent(R.id.widgetBHelp, helpIntent);

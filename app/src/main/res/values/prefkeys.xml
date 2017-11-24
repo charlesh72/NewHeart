@@ -7,4 +7,5 @@
     <string name="prefkey_allow_notifs">allow_notifs</string>
     <string name="prefkey_notif_sound">notif_sound</string>
     <string name="prefkey_notif_vibrate">notif_vibrate</string>
+    <string name="prefkey_report_progress">report_progress</string>
 </resources>

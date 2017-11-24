@@ -35,8 +35,8 @@ import com.beakon.newheart.utils.DateUtils;
 import java.util.GregorianCalendar;
 
 public class DailyTasksAlarmService extends Service {
+    // TODO: 11/24/2017 Change to broadcast receiver https://developer.android.com/training/scheduling/alarms.html
 
-    PendingIntent alarmService;
     @Override
     public void onCreate()
     {
@@ -85,7 +85,7 @@ public class DailyTasksAlarmService extends Service {
         }
 
 
-        boolean alarmUp = (PendingIntent.getBroadcast(context, 0,
+        boolean alarmUp = (PendingIntent.getService(context, 0,
                 new Intent(context, DailyTasksAlarmService.class),
                 PendingIntent.FLAG_NO_CREATE) != null);
 
@@ -107,9 +107,8 @@ public class DailyTasksAlarmService extends Service {
 
             long time = calendar.getTimeInMillis();
             final Intent alarmIntent = new Intent(context, DailyTasksAlarmService.class);
-            if (alarmService == null) {
-                alarmService = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-            }
+
+            PendingIntent alarmService = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
             m.set(AlarmManager.RTC, time, alarmService);
         }
 

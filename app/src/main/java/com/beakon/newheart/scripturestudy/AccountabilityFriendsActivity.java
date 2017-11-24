@@ -35,6 +35,7 @@ public class AccountabilityFriendsActivity extends AppCompatActivity {
 
     public static final String NAME_KEY = "name";
     public static final String PHONE_KEY = "phone";
+    public static final String SHARE_KEY = "share";
 
     @BindView(R.id.accFriendsETName)
     EditText name;
