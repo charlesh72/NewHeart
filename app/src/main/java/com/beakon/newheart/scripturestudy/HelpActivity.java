@@ -18,19 +18,33 @@
 package com.beakon.newheart.scripturestudy;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.beakon.newheart.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Charles on 11/24/2017.
  */
 
 public class HelpActivity extends BaseShareActivity {
+
+    @BindView(R.id.widgetBHelp)
+    Button help;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.widget_help);
 
+        ButterKnife.bind(this);
+
+        help.setEnabled(false);
+
+        Toast.makeText(this, "Message(s) attempting to send", Toast.LENGTH_SHORT).show();
 
         share("I'm about to do something stupid!", "Help!");
     }

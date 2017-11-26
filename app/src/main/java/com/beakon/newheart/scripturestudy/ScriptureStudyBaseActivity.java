@@ -33,6 +33,7 @@ import android.view.MenuItem;
 import com.beakon.newheart.BuildConfig;
 import com.beakon.newheart.R;
 import com.beakon.newheart.activities.BaseActivity;
+import com.beakon.newheart.scripturestudy.accountability.AccountabilityFriendsActivity;
 import com.beakon.newheart.scripturestudy.settings.ReminderPreference;
 import com.beakon.newheart.scripturestudy.settings.ScriptureSettingsActivity;
 

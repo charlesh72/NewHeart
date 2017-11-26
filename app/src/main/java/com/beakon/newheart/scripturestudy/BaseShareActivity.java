@@ -26,6 +26,7 @@ import android.telephony.SmsManager;
 
 import com.beakon.newheart.HabitsApplication;
 import com.beakon.newheart.activities.BaseActivity;
+import com.beakon.newheart.scripturestudy.accountability.AccountabilityFriendsActivity;
 
 import java.util.ArrayList;
 

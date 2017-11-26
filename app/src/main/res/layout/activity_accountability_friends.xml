@@ -22,7 +22,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.beakon.newheart.scripturestudy.AccountabilityFriendsActivity">
+    tools:context="com.beakon.newheart.scripturestudy.accountability.AccountabilityFriendsActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -58,5 +58,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="phone" />
+
+    <ListView
+        android:id="@+id/accFriendsLVfriends"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

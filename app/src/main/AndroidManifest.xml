@@ -365,10 +365,11 @@
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name=".scripturestudy.AccountabilityFriendsActivity" />
+        <activity android:name=".scripturestudy.accountability.AccountabilityFriendsActivity" />
         <activity android:name=".scripturestudy.attributes.ChristlikeAttributesActivity" />
         <activity android:name=".activities.service.ServiceActivity" />
         <activity android:name=".activities.service.manager.ServiceManagerActivity" />
+        <activity android:name=".scripturestudy.HelpActivity"/>
 
 
         <receiver android:name=".widgets.DailyTasksWidget"
