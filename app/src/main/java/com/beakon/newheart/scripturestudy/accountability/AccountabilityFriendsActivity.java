@@ -17,16 +17,19 @@
 
 package com.beakon.newheart.scripturestudy.accountability;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.telephony.PhoneNumberUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.beakon.newheart.R;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,7 +46,10 @@ public class AccountabilityFriendsActivity extends AppCompatActivity {
     @BindView(R.id.accFriendsETPhone)
     EditText phone;
 
-    SharedPreferences accPrefs;
+    @BindView(R.id.accFriendsLVfriends)
+    ListView listView;
+
+    AccountabilityFriendAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +60,16 @@ public class AccountabilityFriendsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        accPrefs = getSharedPreferences("AccountabilityFriends", Context.MODE_PRIVATE);
 
-        // Retrieves current values for Name and Phone
-        String curName = accPrefs.getString(NAME_KEY, "name");
-        String curPhone = accPrefs.getString(PHONE_KEY, "");
+        initListView();
+    }
 
-        // Sets the fields to display the current values
-        name.setText(curName);
-        phone.setText(curPhone);
+    private void initListView() {
+        List<AccountabilityFriend> list = AccountabilityFriend.getAll();
+
+        adapter = new AccountabilityFriendAdapter(this, list);
+
+        listView.setAdapter(adapter);
     }
 
     /**
@@ -70,20 +77,41 @@ public class AccountabilityFriendsActivity extends AppCompatActivity {
      */
     private void saveAndFinish() {
 
-        SharedPreferences.Editor editor = accPrefs.edit();
+        String nameEntry = name.getText().toString();
+        String phoneEntry = phone.getText().toString();
 
-        editor.putString(NAME_KEY, name.getText().toString());
-        editor.putString(PHONE_KEY, phone.getText().toString());
+        String errorMessage = "";
+        boolean error = false;
+        if (!PhoneNumberUtils.isGlobalPhoneNumber(phoneEntry)) {
+            errorMessage = errorMessage + "The phone number is not valid.";
+            error = true;
+        }
+        if (nameEntry.length() < 1) {
+            errorMessage = errorMessage + "You didn't enter a name.";
+            error = true;
+        }
+        if (error) {
+            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        editor.apply();
+        AccountabilityFriend friend = new AccountabilityFriend(nameEntry, phoneEntry, true);
+
+        AccountabilityFriend.addFriend(friend);
 
         finish();
+    }
+
+    private void removeInactive() {
+        AccountabilityFriend.removeInactive();
+        adapter = new AccountabilityFriendAdapter(this, AccountabilityFriend.getAll());
+        listView.setAdapter(adapter);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_done, menu);
+        getMenuInflater().inflate(R.menu.menu_acc_friends, menu);
         super.onCreateOptionsMenu(menu);
         return true;
     }
@@ -98,6 +126,8 @@ public class AccountabilityFriendsActivity extends AppCompatActivity {
         if (id == R.id.action_done) {
             saveAndFinish();
             return true;
+        } else if (id == R.id.action_remove_inactive){
+            removeInactive();
         }
 
         return super.onOptionsItemSelected(item);

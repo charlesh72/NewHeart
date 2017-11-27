@@ -87,8 +87,8 @@ public class AccountabilityFriendAdapter extends ArrayAdapter<AccountabilityFrie
         Switch rowSwitch = null;
 
         ViewHolder(View row) {
-            this.rowName = (TextView) row.findViewById(R.id.accFriendsTVName);
-            this.rowName = (TextView) row.findViewById(R.id.accFriendsTVPhone);
+            this.rowName = (TextView) row.findViewById(R.id.accFriendItemTVName);
+            this.rowPhone = (TextView) row.findViewById(R.id.accFriendItemTVPhone);
             this.rowSwitch = (Switch) row.findViewById(R.id.accFriendItemSactive);
         }
     }

@@ -26,9 +26,11 @@ import android.telephony.SmsManager;
 
 import com.beakon.newheart.HabitsApplication;
 import com.beakon.newheart.activities.BaseActivity;
+import com.beakon.newheart.scripturestudy.accountability.AccountabilityFriend;
 import com.beakon.newheart.scripturestudy.accountability.AccountabilityFriendsActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
@@ -78,20 +80,16 @@ public class BaseShareActivity extends BaseActivity {
 
         int length = text.length();
 
-        // TODO: 8/17/2017 Check the settings to make sure "share" is enabled
-        // Retrieve saved phone number.
-        SharedPreferences accPrefs = getSharedPreferences("AccountabilityFriends", Context.MODE_PRIVATE);
-        String phone = accPrefs.getString(AccountabilityFriendsActivity.PHONE_KEY, "");
-        // TODO: 8/23/2017 Use a better check for a valid phone number
-        if (phone.length() > 1) {
+        List<AccountabilityFriend> list = AccountabilityFriend.getAllActive();
+        for (AccountabilityFriend a : list) {
             controller.toggleTodaysShareGoal();
             // Check length of text, if greater than sms message limit then split it up.
             if (length > 160) {
                 ArrayList<String> messagelist = smsManager.divideMessage(text);
 
-                smsManager.sendMultipartTextMessage(phone, null, messagelist, null, null);
+                smsManager.sendMultipartTextMessage(a.phone, null, messagelist, null, null);
             } else {
-                smsManager.sendTextMessage(phone, null, text, null, null);
+                smsManager.sendTextMessage(a.phone, null, text, null, null);
             }
         }
     }

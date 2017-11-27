@@ -25,6 +25,7 @@ import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseActivity;
 import com.beakon.newheart.activities.BaseScreen;
 import com.beakon.newheart.intents.IntentFactory;
+import com.beakon.newheart.scripturestudy.accountability.AccountabilityFriendsActivity;
 
 import javax.inject.Inject;
 
@@ -59,5 +60,10 @@ public class HomeScreen extends BaseScreen {
 
     public void setController(@Nullable HomeController controller) {
         this.controller = controller;
+    }
+
+    public void showAccountabilityFriends() {
+        Intent intent = new Intent(activity, AccountabilityFriendsActivity.class);
+        activity.startActivity(intent);
     }
 }

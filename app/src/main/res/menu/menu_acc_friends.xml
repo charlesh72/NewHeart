@@ -17,17 +17,16 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:title="@string/done"
+        android:id="@+id/action_done"
+        app:showAsAction="always|withText"
+        android:icon="@drawable/ic_done_white_24dp"/>
 
     <item
-        android:id="@+id/accountability_friends"
-        android:orderInCategory="97"
-        android:title="Accountability Friends"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/action_help"
-        android:title="@string/help"
-        app:showAsAction="never"/>
-
+        android:title="@string/acc_friends_menu_remove_inactive"
+        android:id="@+id/action_remove_inactive"
+        app:showAsAction="ifRoom"/>
 </menu>

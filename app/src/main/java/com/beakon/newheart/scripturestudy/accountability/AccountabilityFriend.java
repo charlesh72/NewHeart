@@ -15,7 +15,7 @@ import io.realm.annotations.PrimaryKey;
 public class AccountabilityFriend extends RealmObject {
 
     @PrimaryKey
-    String phone;
+    public String phone;
 
     String name;
 
@@ -31,6 +31,22 @@ public class AccountabilityFriend extends RealmObject {
         this.active = active;
     }
 
+    public void setActive(boolean active) {
+        Realm.getDefaultInstance().beginTransaction();
+        this.active = active;
+        Realm.getDefaultInstance().commitTransaction();
+    }
+
+    public static List<AccountabilityFriend> getAll() {
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<AccountabilityFriend> results = realm.where(AccountabilityFriend.class).findAll();
+        List<AccountabilityFriend> list = new ArrayList<>();
+        for (AccountabilityFriend a : results) {
+            list.add(a);
+        }
+        return list;
+    }
+
     public static List<AccountabilityFriend> getAllActive() {
         Realm realm = Realm.getDefaultInstance();
         RealmResults<AccountabilityFriend> results = realm.where(AccountabilityFriend.class).equalTo("active", true).findAll();
@@ -41,9 +57,20 @@ public class AccountabilityFriend extends RealmObject {
         return list;
     }
 
-    public void setActive(boolean active) {
+    public static void addFriend(AccountabilityFriend friend) {
+        Realm realm = Realm.getDefaultInstance();
         Realm.getDefaultInstance().beginTransaction();
-        this.active = active;
+        realm.copyToRealmOrUpdate(friend);
         Realm.getDefaultInstance().commitTransaction();
+    }
+
+    public static void removeInactive() {
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<AccountabilityFriend> results = realm.where(AccountabilityFriend.class).equalTo("active", false).findAll();
+        realm.beginTransaction();
+        for (AccountabilityFriend a : results) {
+            a.deleteFromRealm();
+        }
+        realm.commitTransaction();
     }
 }

@@ -323,5 +323,6 @@
     <string name="daily_tasks_widget_label">ActsOfService</string>
     <string name="service_manager_header">Select which acts of service to mark as complete</string>
     <string name="help_widget_label">Help!</string>
+    <string name="acc_friends_menu_remove_inactive">Remove Inactive</string>
 
 </resources>

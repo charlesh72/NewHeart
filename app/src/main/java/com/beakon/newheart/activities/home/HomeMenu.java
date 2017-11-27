@@ -17,6 +17,7 @@
 
 package com.beakon.newheart.activities.home;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
 
@@ -25,6 +26,7 @@ import com.beakon.newheart.activities.ActivityScope;
 import com.beakon.newheart.activities.BaseActivity;
 import com.beakon.newheart.activities.BaseMenu;
 import com.beakon.newheart.activities.BaseScreen;
+import com.beakon.newheart.scripturestudy.accountability.AccountabilityFriendsActivity;
 
 import javax.inject.Inject;
 
@@ -53,7 +55,9 @@ public class HomeMenu extends BaseMenu {
             case R.id.action_help:
                 screen.showFAQScreen();
                 return true;
-
+            case R.id.accountability_friends:
+                screen.showAccountabilityFriends();
+                return true;
             default:
                 return false;
         }
