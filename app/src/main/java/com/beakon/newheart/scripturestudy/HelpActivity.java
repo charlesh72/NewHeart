@@ -17,14 +17,21 @@
 
 package com.beakon.newheart.scripturestudy;
 
+import android.Manifest;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.beakon.newheart.R;
+import com.beakon.newheart.scripturestudy.accountability.AccountabilityFriend;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import permissions.dispatcher.NeedsPermission;
 
 /**
  * Created by Charles on 11/24/2017.
@@ -46,6 +53,20 @@ public class HelpActivity extends BaseShareActivity {
 
         Toast.makeText(this, "Message(s) attempting to send", Toast.LENGTH_SHORT).show();
 
-        share("I'm about to do something stupid!", "Help!");
+        shareHelp();
     }
+
+    @NeedsPermission(Manifest.permission.SEND_SMS)
+    private void shareHelp() {
+        SmsManager smsManager = SmsManager.getDefault();
+
+        String text = "Help! I'm about to do something stupid!";
+
+        List<AccountabilityFriend> list = AccountabilityFriend.getAllHelpActive();
+        for (AccountabilityFriend a : list) {
+            smsManager.sendTextMessage(a.phone, null, text, null, null);
+        }
+    }
+
+
 }

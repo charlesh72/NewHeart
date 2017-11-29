@@ -24,17 +24,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.beakon.newheart.R;
-import com.beakon.newheart.activities.service.ActOfService;
-import com.beakon.newheart.activities.service.DaysActsOfService;
 
-import org.w3c.dom.Text;
-
-import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -63,17 +57,23 @@ public class AccountabilityFriendAdapter extends ArrayAdapter<AccountabilityFrie
             viewHolder = new ViewHolder(row);
             row.setTag(viewHolder);
 
-            viewHolder.rowSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewHolder.rowShareSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 int pos = (Integer) buttonView.getTag();
-                list.get(pos).setActive(isChecked);
+                list.get(pos).setShareActive(isChecked);
+            });
+            viewHolder.rowHelpSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                int pos = (Integer) buttonView.getTag();
+                list.get(pos).setHelpActive(isChecked);
             });
         } else {
             viewHolder = (ViewHolder) row.getTag();
         }
 
-        viewHolder.rowSwitch.setTag(position);
+        viewHolder.rowShareSwitch.setTag(position);
+        viewHolder.rowHelpSwitch.setTag(position);
 
-        viewHolder.rowSwitch.setChecked(list.get(position).active);
+        viewHolder.rowShareSwitch.setChecked(list.get(position).shareActive);
+        viewHolder.rowHelpSwitch.setChecked(list.get(position).helpActive);
         viewHolder.rowName.setText(list.get(position).name);
         viewHolder.rowPhone.setText(list.get(position).phone);
 
@@ -84,12 +84,14 @@ public class AccountabilityFriendAdapter extends ArrayAdapter<AccountabilityFrie
 
         TextView rowName = null;
         TextView rowPhone = null;
-        Switch rowSwitch = null;
+        Switch rowShareSwitch = null;
+        Switch rowHelpSwitch = null;
 
         ViewHolder(View row) {
-            this.rowName = (TextView) row.findViewById(R.id.accFriendItemTVName);
-            this.rowPhone = (TextView) row.findViewById(R.id.accFriendItemTVPhone);
-            this.rowSwitch = (Switch) row.findViewById(R.id.accFriendItemSactive);
+            this.rowName = row.findViewById(R.id.accFriendItemTVName);
+            this.rowPhone = row.findViewById(R.id.accFriendItemTVPhone);
+            this.rowHelpSwitch = row.findViewById(R.id.accFriendItemShActive);
+            this.rowShareSwitch = row.findViewById(R.id.accFriendItemSsActive);
         }
     }
 }

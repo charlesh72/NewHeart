@@ -18,8 +18,6 @@
 package com.beakon.newheart.scripturestudy;
 
 import android.Manifest;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.telephony.SmsManager;
@@ -27,7 +25,6 @@ import android.telephony.SmsManager;
 import com.beakon.newheart.HabitsApplication;
 import com.beakon.newheart.activities.BaseActivity;
 import com.beakon.newheart.scripturestudy.accountability.AccountabilityFriend;
-import com.beakon.newheart.scripturestudy.accountability.AccountabilityFriendsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +62,7 @@ public class BaseShareActivity extends BaseActivity {
 
     /**
      * Takes the note content and the scripture reference and shares it
-     * with the current saved accountability friend.
+     * with the current active share accountability friends.
      * @param text The contents of the note
      * @param ref The reference to the scripture
      */
@@ -80,7 +77,7 @@ public class BaseShareActivity extends BaseActivity {
 
         int length = text.length();
 
-        List<AccountabilityFriend> list = AccountabilityFriend.getAllActive();
+        List<AccountabilityFriend> list = AccountabilityFriend.getAllShareActive();
         for (AccountabilityFriend a : list) {
             controller.toggleTodaysShareGoal();
             // Check length of text, if greater than sms message limit then split it up.

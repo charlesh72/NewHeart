@@ -95,7 +95,7 @@ public class AccountabilityFriendsActivity extends AppCompatActivity {
             return;
         }
 
-        AccountabilityFriend friend = new AccountabilityFriend(nameEntry, phoneEntry, true);
+        AccountabilityFriend friend = new AccountabilityFriend(nameEntry, phoneEntry, false, true);
 
         AccountabilityFriend.addFriend(friend);
 

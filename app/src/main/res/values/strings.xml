@@ -52,7 +52,7 @@
     <string name="discard">Discard</string>
     <string name="save">Save</string>
     <string name="streaks">Streaks</string>
-    <string name="no_habits_found">You have no active habits</string>
+    <string name="no_habits_found">You have no shareActive habits</string>
     <string name="long_press_to_toggle">Press-and-hold to check or uncheck</string>
     <string name="reminder_off">Off</string>
     <string name="validation_name_should_not_be_blank">Name cannot be blank.</string>
@@ -311,7 +311,7 @@
     <string name="add_scripture">Add Scripture</string>
     <string name="accountability_friends">Accountability Friends</string>
     <string name="report_progress">Report Progress</string>
-    <string name="report_progress_summaryon">Newly created journal entries are now being shared with active accountability friends</string>
+    <string name="report_progress_summaryon">Newly created journal entries are now being shared with shareActive accountability friends</string>
     <string name="report_progress_summaryoff">Journal entries are not being shared</string>
     <string name="add_default_habits">Add Default Habits</string>
     <string name="done">Done</string>

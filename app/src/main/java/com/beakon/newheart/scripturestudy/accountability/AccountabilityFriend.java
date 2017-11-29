@@ -19,21 +19,29 @@ public class AccountabilityFriend extends RealmObject {
 
     String name;
 
-    boolean active;
+    boolean shareActive;
+    boolean helpActive;
 
     public AccountabilityFriend() {
 
     }
 
-    public AccountabilityFriend(String name, String phone, boolean active) {
+    public AccountabilityFriend(String name, String phone, boolean helpActive, boolean shareActive) {
         this.name = name;
         this.phone = phone;
-        this.active = active;
+        this.helpActive = helpActive;
+        this.shareActive = shareActive;
     }
 
-    public void setActive(boolean active) {
+    public void setShareActive(boolean shareActive) {
         Realm.getDefaultInstance().beginTransaction();
-        this.active = active;
+        this.shareActive = shareActive;
+        Realm.getDefaultInstance().commitTransaction();
+    }
+
+    public void setHelpActive(boolean helpActive) {
+        Realm.getDefaultInstance().beginTransaction();
+        this.helpActive = helpActive;
         Realm.getDefaultInstance().commitTransaction();
     }
 
@@ -47,9 +55,19 @@ public class AccountabilityFriend extends RealmObject {
         return list;
     }
 
-    public static List<AccountabilityFriend> getAllActive() {
+    public static List<AccountabilityFriend> getAllShareActive() {
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<AccountabilityFriend> results = realm.where(AccountabilityFriend.class).equalTo("active", true).findAll();
+        RealmResults<AccountabilityFriend> results = realm.where(AccountabilityFriend.class).equalTo("shareActive", true).findAll();
+        List<AccountabilityFriend> list = new ArrayList<>();
+        for (AccountabilityFriend a : results) {
+            list.add(a);
+        }
+        return list;
+    }
+
+    public static List<AccountabilityFriend> getAllHelpActive() {
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<AccountabilityFriend> results = realm.where(AccountabilityFriend.class).equalTo("helpActive", true).findAll();
         List<AccountabilityFriend> list = new ArrayList<>();
         for (AccountabilityFriend a : results) {
             list.add(a);
@@ -66,7 +84,8 @@ public class AccountabilityFriend extends RealmObject {
 
     public static void removeInactive() {
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<AccountabilityFriend> results = realm.where(AccountabilityFriend.class).equalTo("active", false).findAll();
+        RealmResults<AccountabilityFriend> results = realm.where(AccountabilityFriend.class)
+                .equalTo("shareActive", false).equalTo("helpActive", false).findAll();
         realm.beginTransaction();
         for (AccountabilityFriend a : results) {
             a.deleteFromRealm();
