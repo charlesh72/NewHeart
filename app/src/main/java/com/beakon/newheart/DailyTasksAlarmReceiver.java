@@ -19,13 +19,12 @@ package com.beakon.newheart;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.IBinder;
 import android.util.Log;
 
 import com.beakon.newheart.activities.service.DaysActsOfService;
@@ -34,22 +33,7 @@ import com.beakon.newheart.utils.DateUtils;
 
 import java.util.GregorianCalendar;
 
-public class DailyTasksAlarmService extends Service {
-    // TODO: 11/24/2017 Change to broadcast receiver https://developer.android.com/training/scheduling/alarms.html
-
-    @Override
-    public void onCreate()
-    {
-        super.onCreate();
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId)
-    {
-        buildUpdate();
-
-        return super.onStartCommand(intent, flags, startId);
-    }
+public class DailyTasksAlarmReceiver extends BroadcastReceiver {
 
     private void buildUpdate()
     {
@@ -65,6 +49,12 @@ public class DailyTasksAlarmService extends Service {
 //        manager.updateAppWidget(thisWidget, view);
 
 
+
+
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
         // Start the ServiceManager Activity IF there are still acts of service uncompleted.
         boolean taskRemaining = true;
         DaysActsOfService day = DaysActsOfService.findDay(DateUtils.getStartOfToday());
@@ -73,25 +63,25 @@ public class DailyTasksAlarmService extends Service {
         }
         // TODO: 11/20/2017 Also check if there are goals waiting to be marked off
 
-        Context context = getApplicationContext();
         if (taskRemaining) {
-            Intent intent = new Intent (context, ServiceManagerActivity.class);
-            intent.setFlags (Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity (intent);
+            Intent SMIntent = new Intent (context, ServiceManagerActivity.class);
+            SMIntent.setFlags (Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity (SMIntent);
 
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+            Ringtone r = RingtoneManager.getRingtone(context, notification);
             r.play();
         }
 
 
-        boolean alarmUp = (PendingIntent.getService(context, 0,
-                new Intent(context, DailyTasksAlarmService.class),
+        boolean alarmUp = (PendingIntent.getBroadcast(context, 0,
+                new Intent(context, DailyTasksAlarmReceiver.class),
                 PendingIntent.FLAG_NO_CREATE) != null);
 
-        if (alarmUp) {
-            Log.d("myTag", "Alarm is already active");
-        } else {
+//        if (alarmUp) {
+//            Log.d("myTag", "Alarm is already active");
+//        } else
+        {
 
             final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             final GregorianCalendar calendar = new GregorianCalendar();
@@ -106,18 +96,10 @@ public class DailyTasksAlarmService extends Service {
             }
 
             long time = calendar.getTimeInMillis();
-            final Intent alarmIntent = new Intent(context, DailyTasksAlarmService.class);
+            final Intent alarmIntent = new Intent(context, DailyTasksAlarmReceiver.class);
 
-            PendingIntent alarmService = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+            PendingIntent alarmService = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
             m.set(AlarmManager.RTC, time, alarmService);
         }
-
-        this.stopSelf();
-    }
-
-    @Override
-    public IBinder onBind(Intent intent)
-    {
-        return null;
     }
 }

@@ -394,10 +394,13 @@
                 android:resource="@xml/widget_help_info" />
         </receiver>
 
-        <service
-            android:name=".DailyTasksAlarmService"
-            android:enabled="true"
-            android:exported="true" />
+        <receiver
+            android:name=".DailyTasksAlarmReceiver" >
+            <intent-filter>
+                <action android:name="com.beakon.newheart.ALARM_NOTIF" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".scripturestudy.attributes.results.AttributesResultsActivity"

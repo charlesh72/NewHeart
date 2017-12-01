@@ -142,8 +142,8 @@ public class HabitsApplication extends Application
 
     private void initializeAlarm() {
 
-        boolean alarmUp = (PendingIntent.getService(context, 0,
-                new Intent(context, DailyTasksAlarmService.class),
+        boolean alarmUp = (PendingIntent.getBroadcast(context, 0,
+                new Intent(context, DailyTasksAlarmReceiver.class),
                 PendingIntent.FLAG_NO_CREATE) != null);
 
         if (alarmUp)
@@ -153,10 +153,10 @@ public class HabitsApplication extends Application
             final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             final GregorianCalendar calendar = new GregorianCalendar();
             // TODO: 11/20/2017 Make sure it's not going off in the middle of the night
-            calendar.add(GregorianCalendar.SECOND, 30);
+            calendar.add(GregorianCalendar.MINUTE, 45);
             long time = calendar.getTimeInMillis();
-            final Intent alarmIntent = new Intent(context, DailyTasksAlarmService.class);
-            PendingIntent alarmService = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+            final Intent alarmIntent = new Intent(context, DailyTasksAlarmReceiver.class);
+            PendingIntent alarmService = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
             m.set(AlarmManager.RTC, time, alarmService);
         }
     }

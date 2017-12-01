@@ -83,7 +83,7 @@ public class DailyTasksWidget extends AppWidgetProvider {
 //            final GregorianCalendar curTime = new GregorianCalendar();
 //            long time = DateUtils.getStartOfDay(curTime.getTimeInMillis());
 //
-//            final Intent alarmIntent = new Intent(context, DailyTasksAlarmService.class);
+//            final Intent alarmIntent = new Intent(context, DailyTasksAlarmReceiver.class);
 //
 //            if (service == null)
 //            {

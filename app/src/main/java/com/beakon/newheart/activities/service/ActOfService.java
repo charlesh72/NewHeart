@@ -32,8 +32,7 @@ public class ActOfService extends RealmObject {
     @PrimaryKey
     public String text;
 
-    @LinkingObjects("acts")
-    private final RealmResults<DaysActsOfService> days = null;
+    // TODO: 11/30/2017 Set up a check for the dates this act was selected.
 
     @Ignore
     public boolean checked = false;
