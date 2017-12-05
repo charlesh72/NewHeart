@@ -18,46 +18,115 @@
 package com.beakon.newheart.scripturestudy;
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.beakon.newheart.R;
 import com.beakon.newheart.scripturestudy.accountability.AccountabilityFriend;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
 
 /**
  * Created by Charles on 11/24/2017.
  */
 
+@RuntimePermissions
 public class HelpActivity extends BaseShareActivity {
 
-    @BindView(R.id.widgetBHelp)
-    Button help;
+    public static final String HELP_PREF = "help_activity";
+
+    SharedPreferences myPrefs;
+
+    @BindView(R.id.helpBgetImage)
+    Button getImage;
+
+    @BindView(R.id.helpIVimage)
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.widget_help);
+        setContentView(R.layout.help_activty_layout);
 
         ButterKnife.bind(this);
 
-        help.setEnabled(false);
 
         Toast.makeText(this, "Message(s) attempting to send", Toast.LENGTH_SHORT).show();
 
+
         shareHelp();
+
+        myPrefs= getSharedPreferences(HELP_PREF, 0);
+
+        try {
+            final Uri imageUri = Uri.parse(myPrefs.getString("image", "defaultString"));
+            HelpActivityPermissionsDispatcher.setImageWithCheck(this, imageUri);
+        } catch (IllegalArgumentException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    @OnClick(R.id.helpBgetImage)
+    public void getImage() {
+        pickImage();
+    }
+
+    @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+    void setImage(Uri imageUri) {
+        try {
+            final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+            final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+            imageView.setImageBitmap(selectedImage);
+        } catch (FileNotFoundException e) {
+            Toast.makeText(this, "Your photo can not be found.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+    void pickImage() {
+        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+        photoPickerIntent.setType("image/*");
+        startActivityForResult(photoPickerIntent, 5);
+    }
+
+    @Override
+    protected void onActivityResult(int request, int result, Intent data) {
+        super.onActivityResult(request, result, data);
+
+        if (result == RESULT_OK) {
+                final Uri imageUri = data.getData();
+                HelpActivityPermissionsDispatcher.setImageWithCheck(this, imageUri);
+
+                SharedPreferences.Editor myPrefsEdit = myPrefs.edit();
+
+                myPrefsEdit.putString("image", imageUri.toString());
+                myPrefsEdit.apply();
+        } else {
+            Toast.makeText(HelpActivity.this, "You haven't picked Image",Toast.LENGTH_LONG).show();
+        }
     }
 
     @NeedsPermission(Manifest.permission.SEND_SMS)
-    private void shareHelp() {
+    void shareHelp() {
         SmsManager smsManager = SmsManager.getDefault();
 
         String text = "Help! I'm about to do something stupid!";
@@ -67,6 +136,4 @@ public class HelpActivity extends BaseShareActivity {
             smsManager.sendTextMessage(a.phone, null, text, null, null);
         }
     }
-
-
 }
