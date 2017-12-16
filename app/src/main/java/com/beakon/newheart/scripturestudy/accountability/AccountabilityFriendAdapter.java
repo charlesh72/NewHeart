@@ -88,10 +88,10 @@ public class AccountabilityFriendAdapter extends ArrayAdapter<AccountabilityFrie
         Switch rowHelpSwitch = null;
 
         ViewHolder(View row) {
-            this.rowName = row.findViewById(R.id.accFriendItemTVName);
-            this.rowPhone = row.findViewById(R.id.accFriendItemTVPhone);
-            this.rowHelpSwitch = row.findViewById(R.id.accFriendItemShActive);
-            this.rowShareSwitch = row.findViewById(R.id.accFriendItemSsActive);
+            this.rowName = (TextView) row.findViewById(R.id.accFriendItemTVName);
+            this.rowPhone = (TextView) row.findViewById(R.id.accFriendItemTVPhone);
+            this.rowHelpSwitch = (Switch) row.findViewById(R.id.accFriendItemShActive);
+            this.rowShareSwitch = (Switch) row.findViewById(R.id.accFriendItemSsActive);
         }
     }
 }

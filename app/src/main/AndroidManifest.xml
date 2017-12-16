@@ -231,6 +231,14 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <!-- supposed to fix active android crash on oreo, temp dropped compile target to 25 TODO: Figure out why it didn't-->
+        <provider
+            android:name="com.activeandroid.content.ContentProvider"
+            android:authorities="com.beakon.newheart"
+            android:enabled="true"
+            android:exported="false">
+        </provider>
+
         <activity
             android:name=".scripturestudy.list.ScriptureListActivity"
             android:label="@string/app_name"

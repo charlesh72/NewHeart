@@ -186,7 +186,7 @@ public abstract class RepetitionList
     @NonNull
     public Repetition toggleTodaysTimestamp(long timestamp)
     {
-        timestamp = DateUtils.getStartOfToday();
+//        timestamp = DateUtils.getStartOfToday();
         Repetition rep = getByTimestamp(timestamp);
 
         if (rep != null) remove(rep);
