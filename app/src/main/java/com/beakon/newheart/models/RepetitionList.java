@@ -20,6 +20,7 @@
 package com.beakon.newheart.models;
 
 import android.support.annotation.*;
+import android.util.Log;
 
 import com.beakon.newheart.utils.*;
 
@@ -184,17 +185,20 @@ public abstract class RepetitionList
      * @return the repetition that has been added or removed.
      */
     @NonNull
-    public Repetition toggleTodaysTimestamp(long timestamp)
+    public Repetition toggleTimestamp(long timestamp)
     {
-//        timestamp = DateUtils.getStartOfToday();
+        long todaysTimestamp = DateUtils.getStartOfToday();
         Repetition rep = getByTimestamp(timestamp);
 
         if (rep != null) remove(rep);
         else
         {
-            rep = new Repetition(timestamp);
+            boolean checkedOnTime = (timestamp == todaysTimestamp);
+            rep = new Repetition(timestamp, checkedOnTime);
             add(rep);
         }
+
+        Log.d("REP LIST", "checkedOnTime: " + rep.getCheckedOnTime());
 
         habit.getScores().invalidateNewerThan(timestamp);
         habit.getCheckmarks().invalidateNewerThan(timestamp);
@@ -215,10 +219,14 @@ public abstract class RepetitionList
     public boolean addTimestamp(long timestamp) {
         boolean added = false;
 
+
         timestamp = DateUtils.getStartOfDay(timestamp);
+
         Repetition rep = getByTimestamp(timestamp);
         if (rep == null) {
-            rep = new Repetition(timestamp);
+            long todaysTimestamp = DateUtils.getStartOfToday();
+            boolean checkedOnTime = (timestamp == todaysTimestamp);
+            rep = new Repetition(timestamp, checkedOnTime);
             add(rep);
             added = true;
 

@@ -20,9 +20,6 @@
 package com.beakon.newheart.commands;
 
 import com.beakon.newheart.models.*;
-import com.beakon.newheart.utils.DateUtils;
-
-import org.greenrobot.eventbus.EventBus;
 
 /**
  * Command to toggle a repetition.
@@ -41,7 +38,7 @@ public class ToggleRepetitionCommand extends Command
     @Override
     public void execute()
     {
-        habit.getRepetitions().toggleTodaysTimestamp(offset);
+        habit.getRepetitions().toggleTimestamp(offset);
     }
 
     @Override

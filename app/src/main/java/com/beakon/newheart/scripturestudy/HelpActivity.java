@@ -71,10 +71,9 @@ public class HelpActivity extends BaseShareActivity {
 
         Toast.makeText(this, "Message(s) attempting to send", Toast.LENGTH_SHORT).show();
 
+        HelpActivityPermissionsDispatcher.shareHelpWithCheck(this);
 
-        shareHelp();
-
-        myPrefs= getSharedPreferences(HELP_PREF, 0);
+        myPrefs = getSharedPreferences(HELP_PREF, 0);
 
         try {
             final Uri imageUri = Uri.parse(myPrefs.getString("image", "defaultString"));

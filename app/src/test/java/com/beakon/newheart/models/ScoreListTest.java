@@ -202,6 +202,6 @@ public class ScoreListTest extends BaseUnitTest
         long day = DateUtils.millisecondsInOneDay;
 
         for (int i = from; i < to; i++)
-            reps.toggleTodaysTimestamp(today - i * day);
+            reps.toggleTimestamp(today - i * day);
     }
 }

@@ -38,6 +38,9 @@ public class RepetitionRecord extends Model implements SQLiteRecord
     @Column(name = "timestamp")
     public Long timestamp;
 
+    @Column(name = "checkedontime")
+    public boolean checkedOnTime;
+
     public static RepetitionRecord get(Long id)
     {
         return RepetitionRecord.load(RepetitionRecord.class, id);
@@ -46,16 +49,18 @@ public class RepetitionRecord extends Model implements SQLiteRecord
     public void copyFrom(Repetition repetition)
     {
         timestamp = repetition.getTimestamp();
+        checkedOnTime = repetition.getCheckedOnTime();
     }
 
     @Override
     public void copyFrom(Cursor c)
     {
         timestamp = c.getLong(1);
+        // TODO: 12/16/2017 Find out if I need to load checked on time from here or not (Probably not)
     }
 
     public Repetition toRepetition()
     {
-        return new Repetition(timestamp);
+        return new Repetition(timestamp, checkedOnTime);
     }
 }

@@ -58,11 +58,11 @@ public class RepetitionListTest extends BaseUnitTest
         today = DateUtils.getStartOfToday();
         day = DateUtils.millisecondsInOneDay;
 
-        reps.toggleTodaysTimestamp(today - 3 * day);
-        reps.toggleTodaysTimestamp(today - 2 * day);
-        reps.toggleTodaysTimestamp(today);
-        reps.toggleTodaysTimestamp(today - 7 * day);
-        reps.toggleTodaysTimestamp(today - 5 * day);
+        reps.toggleTimestamp(today - 3 * day);
+        reps.toggleTimestamp(today - 2 * day);
+        reps.toggleTimestamp(today);
+        reps.toggleTimestamp(today - 7 * day);
+        reps.toggleTimestamp(today - 5 * day);
 
         listener = mock(ModelObservable.Listener.class);
         reps.getObservable().addListener(listener);
@@ -130,7 +130,7 @@ public class RepetitionListTest extends BaseUnitTest
                         weekdayCount[month][week]++;
                         monthCount[month]++;
                     }
-                    reps.toggleTodaysTimestamp(day.getTimeInMillis());
+                    reps.toggleTimestamp(day.getTimeInMillis());
                 }
             }
 
@@ -158,13 +158,13 @@ public class RepetitionListTest extends BaseUnitTest
     public void test_toggleTimestamp()
     {
         assertThat(reps.containsTimestamp(today), equalTo(true));
-        reps.toggleTodaysTimestamp(today);
+        reps.toggleTimestamp(today);
         assertThat(reps.containsTimestamp(today), equalTo(false));
         verify(listener).onModelChange();
         reset(listener);
 
         assertThat(reps.containsTimestamp(today - day), equalTo(false));
-        reps.toggleTodaysTimestamp(today - day);
+        reps.toggleTimestamp(today - day);
         assertThat(reps.containsTimestamp(today - day), equalTo(true));
         verify(listener).onModelChange();
     }

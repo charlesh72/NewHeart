@@ -30,6 +30,8 @@ public final class Repetition
 
     private final long timestamp;
 
+    private final boolean checkedOnTime;
+
     /**
      * Creates a new repetition with given parameters.
      * <p>
@@ -38,9 +40,10 @@ public final class Repetition
      *
      * @param timestamp the time this repetition occurred.
      */
-    public Repetition(long timestamp)
+    public Repetition(long timestamp, boolean checkedOnTime)
     {
         this.timestamp = timestamp;
+        this.checkedOnTime = checkedOnTime;
     }
 
     public long getTimestamp()
@@ -48,11 +51,16 @@ public final class Repetition
         return timestamp;
     }
 
+    public boolean getCheckedOnTime() {
+        return checkedOnTime;
+    }
+
     @Override
     public String toString()
     {
         return new ToStringBuilder(this)
             .append("timestamp", timestamp)
+            .append("checkedOnTime", checkedOnTime)
             .toString();
     }
 }

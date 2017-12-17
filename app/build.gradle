@@ -7,12 +7,16 @@ android {
     compileSdkVersion 25
     buildToolsVersion '26.0.2'
 
+    dexOptions {
+        incremental true
+    }
+
     defaultConfig {
         applicationId "com.beakon.newheart"
         minSdkVersion 16
         targetSdkVersion 25
 
-        buildConfigField "Integer", "databaseVersion", "15"
+        buildConfigField "Integer", "databaseVersion", "16"
         buildConfigField "String", "databaseFilename", "\"newheartgoals.db\""
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

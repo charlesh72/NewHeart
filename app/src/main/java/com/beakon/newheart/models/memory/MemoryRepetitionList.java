@@ -67,7 +67,8 @@ public class MemoryRepetitionList extends RepetitionList
     public Repetition getByTimestamp(long timestamp)
     {
         for (Repetition r : list)
-            if (r.getTimestamp() == timestamp) return r;
+            if (r.getTimestamp() == timestamp)
+                return r;
 
         return null;
     }

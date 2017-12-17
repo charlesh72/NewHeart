@@ -108,7 +108,7 @@ public class HabitBullCSVImporter extends AbstractImporter
             }
 
             if(!h.getRepetitions().containsTimestamp(timestamp))
-                h.getRepetitions().toggleTodaysTimestamp(timestamp);
+                h.getRepetitions().toggleTimestamp(timestamp);
         }
     }
 }
