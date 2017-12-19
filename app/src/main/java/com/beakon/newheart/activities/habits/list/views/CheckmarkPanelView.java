@@ -20,6 +20,7 @@
 package com.beakon.newheart.activities.habits.list.views;
 
 import android.content.*;
+import android.graphics.Color;
 import android.support.annotation.*;
 import android.util.*;
 import android.widget.*;
@@ -184,12 +185,21 @@ public class CheckmarkPanelView extends LinearLayout implements Preferences.List
         long day = DateUtils.millisecondsInOneDay;
         timestamp -= day * dataOffset;
 
+        RepetitionList repetitionList = habit.getRepetitions();
+        long startTime = DateUtils.getStartOfToday();
+
         for (int i = 0; i < nButtons; i++)
         {
             CheckmarkButtonView buttonView = indexToButton(i);
             if(i + dataOffset >= checkmarkValues.length) break;
             buttonView.setValue(checkmarkValues[i + dataOffset]);
-            buttonView.setColor(color);
+            Repetition repetition = repetitionList.getByTimestamp(startTime - (i * day));
+            if (repetition != null && !repetition.getCheckedOnTime()) {
+                //Change the color if they checked it off after the day had past
+                buttonView.setColor(Color.GREEN);
+            } else {
+                buttonView.setColor(color);
+            }
             setupButtonControllers(timestamp, buttonView);
             timestamp -= day;
         }

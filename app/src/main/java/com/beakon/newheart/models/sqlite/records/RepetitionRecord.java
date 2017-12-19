@@ -56,7 +56,7 @@ public class RepetitionRecord extends Model implements SQLiteRecord
     public void copyFrom(Cursor c)
     {
         timestamp = c.getLong(1);
-        // TODO: 12/16/2017 Find out if I need to load checked on time from here or not (Probably not)
+        checkedOnTime = (c.getInt(2) == 1);
     }
 
     public Repetition toRepetition()

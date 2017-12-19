@@ -198,7 +198,6 @@ public abstract class RepetitionList
             add(rep);
         }
 
-        Log.d("REP LIST", "checkedOnTime: " + rep.getCheckedOnTime());
 
         habit.getScores().invalidateNewerThan(timestamp);
         habit.getCheckmarks().invalidateNewerThan(timestamp);
