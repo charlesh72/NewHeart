@@ -33,6 +33,11 @@ import org.apache.commons.lang3.builder.*;
 public final class Checkmark
 {
     /**
+     * Indicates that there was a repetition at the timestamp, but it was
+     * checked off at a later date
+     */
+    public static final int CHECKED_EXPLICITLY_NOT_ON_TIME = 3;
+    /**
      * Indicates that there was a repetition at the timestamp.
      */
     public static final int CHECKED_EXPLICITLY = 2;

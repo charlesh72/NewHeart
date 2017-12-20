@@ -101,7 +101,7 @@ public class CheckmarkButtonView extends View
         super.onDraw(canvas);
         Resources resources = getResources();
 
-        paint.setColor(value == CHECKED_EXPLICITLY ? color : lowContrastColor);
+        paint.setColor(value >= CHECKED_EXPLICITLY ? color : lowContrastColor);
         int id = (value == UNCHECKED ? R.string.fa_times : R.string.fa_check);
         String label = resources.getString(id);
         float em = paint.measureText("m");

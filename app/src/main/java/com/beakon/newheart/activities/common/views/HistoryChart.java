@@ -123,7 +123,7 @@ public class HistoryChart extends ScrollableChart
         int offset = timestampToOffset(timestamp);
         if (offset < checkmarks.length)
         {
-            boolean isChecked = checkmarks[offset] == CHECKED_EXPLICITLY;
+            boolean isChecked = checkmarks[offset] >= CHECKED_EXPLICITLY;
             checkmarks[offset] = (isChecked ? UNCHECKED : CHECKED_EXPLICITLY);
         }
 
@@ -365,25 +365,23 @@ public class HistoryChart extends ScrollableChart
         int green = Color.green(primaryColor);
         int blue = Color.blue(primaryColor);
 
-        if (isBackgroundTransparent)
-        {
-            colors = new int[3];
+        colors = new int[4];
+        if (isBackgroundTransparent) {
             colors[0] = Color.argb(16, 255, 255, 255);
             colors[1] = Color.argb(128, red, green, blue);
-            colors[2] = primaryColor;
             textColor = Color.WHITE;
             reverseTextColor = Color.WHITE;
         }
-        else
-        {
-            colors = new int[3];
+        else {
             colors[0] = res.getColor(R.attr.lowContrastTextColor);
             colors[1] = Color.argb(127, red, green, blue);
-            colors[2] = primaryColor;
             textColor = res.getColor(R.attr.mediumContrastTextColor);
             reverseTextColor =
                 res.getColor(R.attr.highContrastReverseTextColor);
         }
+        colors[2] = primaryColor;
+        colors[3] = primaryColor; // TODO: 12/20/2017 We can change this to show checked on time data in the habit view
+
     }
 
     private void initDateFormats()

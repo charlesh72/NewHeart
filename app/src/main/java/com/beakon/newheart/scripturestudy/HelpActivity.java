@@ -102,7 +102,7 @@ public class HelpActivity extends BaseShareActivity {
 
     @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
     void pickImage() {
-        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+        Intent photoPickerIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, 5);
     }

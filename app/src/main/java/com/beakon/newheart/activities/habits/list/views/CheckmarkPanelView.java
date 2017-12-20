@@ -185,18 +185,14 @@ public class CheckmarkPanelView extends LinearLayout implements Preferences.List
         long day = DateUtils.millisecondsInOneDay;
         timestamp -= day * dataOffset;
 
-        RepetitionList repetitionList = habit.getRepetitions();
-        long startTime = DateUtils.getStartOfToday();
-
         for (int i = 0; i < nButtons; i++)
         {
             CheckmarkButtonView buttonView = indexToButton(i);
             if(i + dataOffset >= checkmarkValues.length) break;
             buttonView.setValue(checkmarkValues[i + dataOffset]);
-            Repetition repetition = repetitionList.getByTimestamp(startTime - (i * day));
-            if (repetition != null && !repetition.getCheckedOnTime()) {
+            if (checkmarkValues[i + dataOffset] == Checkmark.CHECKED_EXPLICITLY_NOT_ON_TIME) {
                 //Change the color if they checked it off after the day had past
-                buttonView.setColor(Color.GREEN);
+                buttonView.setColor(Color.YELLOW);
             } else {
                 buttonView.setColor(color);
             }

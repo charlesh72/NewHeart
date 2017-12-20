@@ -239,7 +239,11 @@ public abstract class CheckmarkList
         for (Repetition rep : reps)
         {
             int offset = (int) ((rep.getTimestamp() - fromExtended) / day);
-            checks[nDaysExtended - offset - 1] = Checkmark.CHECKED_EXPLICITLY;
+            if (rep.getCheckedOnTime()) {
+                checks[nDaysExtended - offset - 1] = Checkmark.CHECKED_EXPLICITLY;
+            } else {
+                checks[nDaysExtended - offset - 1] = Checkmark.CHECKED_EXPLICITLY_NOT_ON_TIME;
+            }
         }
 
         for (int i = 0; i < nDays; i++)
@@ -250,7 +254,7 @@ public abstract class CheckmarkList
                 if (checks[i + j] == 2) counter++;
 
             if (counter >= freq.getNumerator())
-                if (checks[i] != Checkmark.CHECKED_EXPLICITLY)
+                if (checks[i] != Checkmark.CHECKED_EXPLICITLY && checks[i] != Checkmark.CHECKED_EXPLICITLY_NOT_ON_TIME)
                     checks[i] = Checkmark.CHECKED_IMPLICITLY;
         }
 

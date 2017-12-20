@@ -4,13 +4,12 @@ apply plugin: 'jacoco'
 apply plugin: 'realm-android'
 
 android {
+
     compileSdkVersion 25
     buildToolsVersion '26.0.2'
-
     dexOptions {
         incremental true
     }
-
     defaultConfig {
         applicationId "com.beakon.newheart"
         minSdkVersion 16
@@ -22,7 +21,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArgument "size", "medium"
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -32,16 +30,13 @@ android {
             testCoverageEnabled = false
         }
     }
-
     lintOptions {
         checkReleaseBuilds false
     }
-
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
-
     testOptions {
         unitTests.all {
             testLogging {
@@ -104,7 +99,6 @@ dependencies {
     provided 'javax.annotation:jsr250-api:1.0'
     testAnnotationProcessor 'com.google.dagger:dagger-compiler:2.2'
     compile 'org.greenrobot:eventbus:3.0.0'
-
 }
 
 retrolambda {

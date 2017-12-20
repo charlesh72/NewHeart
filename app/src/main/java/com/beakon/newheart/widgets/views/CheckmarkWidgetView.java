@@ -68,6 +68,7 @@ public class CheckmarkWidgetView extends HabitWidgetView
 
         switch (checkmarkValue)
         {
+            case Checkmark.CHECKED_EXPLICITLY_NOT_ON_TIME:
             case Checkmark.CHECKED_EXPLICITLY:
                 text = getResources().getString(R.string.fa_check);
                 bgColor = activeColor;
