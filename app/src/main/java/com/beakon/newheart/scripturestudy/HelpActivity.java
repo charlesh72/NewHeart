@@ -79,7 +79,6 @@ public class HelpActivity extends BaseShareActivity {
             final Uri imageUri = Uri.parse(myPrefs.getString("image", "defaultString"));
             HelpActivityPermissionsDispatcher.setImageWithCheck(this, imageUri);
         } catch (IllegalArgumentException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -128,7 +127,7 @@ public class HelpActivity extends BaseShareActivity {
     void shareHelp() {
         SmsManager smsManager = SmsManager.getDefault();
 
-        String text = "Help! I'm about to do something stupid!";
+        String text = "Help! I'm about to make a terrible mistake. Please call me ASAP!";
 
         List<AccountabilityFriend> list = AccountabilityFriend.getAllHelpActive();
         for (AccountabilityFriend a : list) {

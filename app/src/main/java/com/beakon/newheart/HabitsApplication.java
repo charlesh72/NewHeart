@@ -149,11 +149,12 @@ public class HabitsApplication extends Application
         if (alarmUp)
         {
             Log.d("myTag", "Alarm is already active");
-        } else {
+        } else
+               {
             final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             final GregorianCalendar calendar = new GregorianCalendar();
             // TODO: 11/20/2017 Make sure it's not going off in the middle of the night
-            calendar.add(GregorianCalendar.MINUTE, 45);
+            calendar.add(GregorianCalendar.SECOND, 10);
             long time = calendar.getTimeInMillis();
             final Intent alarmIntent = new Intent(context, DailyTasksAlarmReceiver.class);
             PendingIntent alarmService = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);

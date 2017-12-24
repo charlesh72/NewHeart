@@ -197,6 +197,7 @@ public abstract class HabitList implements Iterable<Habit>
     public int getDailyScore(long timestamp){
         int score = 0;
         timestamp = DateUtils.getStartOfDay(timestamp);
+        //TODO: Fix error on initial app run when habit does not exist
         for (Habit h: this) {
             if (h.getRepetitions().containsTimestamp(timestamp)) {
                 score++;

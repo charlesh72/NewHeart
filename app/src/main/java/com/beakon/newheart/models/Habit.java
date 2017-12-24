@@ -37,13 +37,14 @@ public class Habit
         "content://com.beakon.newheart/habit/%d";
 
     // Reserved id values for default habits
-    public static final Long ID_SCRIPTURE_STUDY = 8261l;
-    public static final Long ID_PRAYER_EVENING = 8262l;
-    public static final Long ID_PRAYER_MORNING = 8263l;
-    public static final Long ID_SERVICE = 8264l;
-    public static final Long ID_CLEAN = 8265l;
-    public static final Long ID_INSIGHTS_SHARED = 8266l;
-    public static final Long ID_GRATITUDE_RECORDED = 8267l;
+    public static final Long ID_SCRIPTURE_STUDY = 8261L;
+    public static final Long ID_PRAYER_EVENING = 8262L;
+    public static final Long ID_PRAYER_MORNING = 8263L;
+    public static final Long ID_SERVICE = 8264L;
+    public static final Long ID_CLEAN = 8265L;
+    public static final Long ID_INSIGHTS_SHARED = 8266L;
+    public static final Long ID_GRATITUDE_RECORDED = 8267L;
+    public static final Long ID_GOSPEL_SHARED = 8268L;
 
     private boolean defaultHabit = false;
 

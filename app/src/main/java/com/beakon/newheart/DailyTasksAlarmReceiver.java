@@ -62,7 +62,7 @@ public class DailyTasksAlarmReceiver extends BroadcastReceiver {
             taskRemaining = false;
         }
         // TODO: 11/20/2017 Also check if there are goals waiting to be marked off
-
+        Log.d("DAILYTASKRECEIVER", "OnReceive");
         if (taskRemaining) {
             Intent SMIntent = new Intent (context, ServiceManagerActivity.class);
             SMIntent.setFlags (Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -78,9 +78,9 @@ public class DailyTasksAlarmReceiver extends BroadcastReceiver {
                 new Intent(context, DailyTasksAlarmReceiver.class),
                 PendingIntent.FLAG_NO_CREATE) != null);
 
-//        if (alarmUp) {
-//            Log.d("myTag", "Alarm is already active");
-//        } else
+        if (alarmUp) {
+            Log.d("myTag", "Alarm is already active");
+        } else
         {
 
             final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);

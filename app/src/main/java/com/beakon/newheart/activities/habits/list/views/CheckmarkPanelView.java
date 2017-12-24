@@ -49,6 +49,8 @@ public class CheckmarkPanelView extends LinearLayout implements Preferences.List
 
     private int color;
 
+    private int lateColor;
+
     private Controller controller;
 
     @NonNull
@@ -98,6 +100,8 @@ public class CheckmarkPanelView extends LinearLayout implements Preferences.List
     public void setColor(int color)
     {
         this.color = color;
+
+        this.lateColor = Color.argb(100, Color.red(color), Color.green(color), Color.blue(color));
         setupCheckmarkButtons();
     }
 
@@ -192,7 +196,7 @@ public class CheckmarkPanelView extends LinearLayout implements Preferences.List
             buttonView.setValue(checkmarkValues[i + dataOffset]);
             if (checkmarkValues[i + dataOffset] == Checkmark.CHECKED_EXPLICITLY_NOT_ON_TIME) {
                 //Change the color if they checked it off after the day had past
-                buttonView.setColor(Color.YELLOW);
+                buttonView.setColor(lateColor);
             } else {
                 buttonView.setColor(color);
             }

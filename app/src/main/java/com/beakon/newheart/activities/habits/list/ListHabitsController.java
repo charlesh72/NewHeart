@@ -254,6 +254,7 @@ public class ListHabitsController
         addDefaultHabit("Gratitude Recorded", Habit.ID_GRATITUDE_RECORDED);
         addDefaultHabit("Evening Prayer", Habit.ID_PRAYER_EVENING);
         addDefaultHabit("Clean!", Habit.ID_CLEAN);
+        addDefaultHabit("Gospel Shared", Habit.ID_GOSPEL_SHARED);
     }
 
     /**
