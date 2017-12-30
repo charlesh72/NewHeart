@@ -68,9 +68,6 @@ public class HelpActivity extends BaseShareActivity {
 
         ButterKnife.bind(this);
 
-
-        Toast.makeText(this, "Message(s) attempting to send", Toast.LENGTH_SHORT).show();
-
         HelpActivityPermissionsDispatcher.shareHelpWithCheck(this);
 
         myPrefs = getSharedPreferences(HELP_PREF, 0);
@@ -78,9 +75,12 @@ public class HelpActivity extends BaseShareActivity {
         try {
             final Uri imageUri = Uri.parse(myPrefs.getString("image", "defaultString"));
             HelpActivityPermissionsDispatcher.setImageWithCheck(this, imageUri);
+
         } catch (IllegalArgumentException e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
+
     }
 
     @OnClick(R.id.helpBgetImage)
@@ -94,7 +94,7 @@ public class HelpActivity extends BaseShareActivity {
             final InputStream imageStream = getContentResolver().openInputStream(imageUri);
             final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
             imageView.setImageBitmap(selectedImage);
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             Toast.makeText(this, "Your photo can not be found.", Toast.LENGTH_SHORT).show();
         }
     }
@@ -111,13 +111,13 @@ public class HelpActivity extends BaseShareActivity {
         super.onActivityResult(request, result, data);
 
         if (result == RESULT_OK) {
-                final Uri imageUri = data.getData();
-                HelpActivityPermissionsDispatcher.setImageWithCheck(this, imageUri);
+            final Uri imageUri = data.getData();
+            HelpActivityPermissionsDispatcher.setImageWithCheck(this, imageUri);
 
-                SharedPreferences.Editor myPrefsEdit = myPrefs.edit();
+            SharedPreferences.Editor myPrefsEdit = myPrefs.edit();
 
-                myPrefsEdit.putString("image", imageUri.toString());
-                myPrefsEdit.apply();
+            myPrefsEdit.putString("image", imageUri.toString());
+            myPrefsEdit.apply();
         } else {
             Toast.makeText(HelpActivity.this, "You haven't picked Image",Toast.LENGTH_LONG).show();
         }

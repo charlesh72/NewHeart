@@ -4,7 +4,14 @@ apply plugin: 'jacoco'
 apply plugin: 'realm-android'
 
 android {
-
+    signingConfigs {
+        test {
+            keyAlias 'test'
+            keyPassword 'testing'
+            storeFile file('C:/Users/Charles/StudioProjects/NewHeart/newhearttest.jks')
+            storePassword 'testing'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion '26.0.2'
     dexOptions {
@@ -12,7 +19,7 @@ android {
     }
     defaultConfig {
         applicationId "com.beakon.newheart"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 25
 
         buildConfigField "Integer", "databaseVersion", "16"
@@ -25,6 +32,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.test
         }
         debug {
             testCoverageEnabled = false
