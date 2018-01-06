@@ -18,6 +18,8 @@
 package com.beakon.newheart.scripturestudy.attributes;
 
 import android.content.Context;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,11 +81,15 @@ public class QuizQuestionAdapter extends ArrayAdapter<ChristlikeQuizQuestion> {
         // **Tag each RadioGroup so we know what item it refers to**
         holder.rowRadioGroup.setTag(position);
 
+        ChristlikeQuizQuestion question = questions.get(position);
         // setup both views from the values stored in your questions list
-        holder.coloredLine.setBackgroundColor(questions.get(position).getLineColor());
-        holder.rowTextView.setText(questions.get(position).getQuestionText());
-        if (questions.get(position).getCheckedRadioButtonId() != -1) {
-            holder.rowRadioGroup.check(questions.get(position).getCheckedRadioButtonId());
+        holder.coloredLine.setBackgroundColor(question.getLineColor());
+
+        holder.rowTextView.setText(Html.fromHtml(question.getQuestionText()));
+        Log.i("QUIZADAPTER", question.getQuestionText());
+        holder.rowTextView.setMovementMethod(LinkMovementMethod.getInstance());
+        if (question.getCheckedRadioButtonId() != -1) {
+            holder.rowRadioGroup.check(question.getCheckedRadioButtonId());
         } else {
             holder.rowRadioGroup.clearCheck();
         }

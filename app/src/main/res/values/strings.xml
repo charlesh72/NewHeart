@@ -318,7 +318,7 @@
     <string name="custom_loading">Custom Loading..</string>
     <string name="christlike_attributes_quiz_title">Christlike Attributes Quiz</string>
     <string name="title_activity_attribute_result">AttributeResultActivity</string>
-    <string name="attr_results_comment">It is recommended for you to focus on the lowest scoring attribute. (Highlighted in blue)</string>
+    <string name="attr_results_comment">It is recommended for you to focus on the lowest scoring attribute.</string><!--Todo: Remove or put back into title (Highlighted in blue)-->
     <string name="service_manager_title">Today\'s Acts Of Service</string>
     <string name="daily_tasks_widget_label">ActsOfService</string>
     <string name="service_manager_header">Select which acts of service to mark as complete</string>

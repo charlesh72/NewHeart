@@ -100,10 +100,12 @@ public class AttributesResultsRootView extends BaseRootView {
             tv.setLayoutParams(new LinearLayout.LayoutParams(
                     LayoutParams.FILL_PARENT,
                     LayoutParams.WRAP_CONTENT)); // Add weight param to fill height of screen
-            // Set the lowest scoring attribute to a different color
-            if (i == lowId) {
-                tv.setTextColor(Color.BLUE);
-            }
+            tv.setTextColor(ChristlikeQuizQuestion.getLineColor(i));
+
+//            // Set the lowest scoring attribute to a different color
+//            if (i == lowId) {
+//                tv.setTextColor(Color.BLUE);
+//            }
             lLayout.addView(tv);
         }
     }

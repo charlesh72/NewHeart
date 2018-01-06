@@ -135,9 +135,17 @@ public class ChristlikeQuizQuestion extends RealmObject{
         return checkedRadioButtonPos;
     }
 
+    public int getAttributeCategory() {
+        return attributeCategory;
+    }
+
     public int getLineColor() {
+        return getLineColor(attributeCategory);
+    }
+
+    public static int getLineColor(int attrCategory) {
         int color = Color.BLACK;
-        switch (attributeCategory) {
+        switch (attrCategory) {
             case ATTR_FAITH:
                 color = Color.BLUE;
                 break;
